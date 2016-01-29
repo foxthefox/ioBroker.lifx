@@ -35,6 +35,6 @@
   "bugs": {
     "url": "https://github.com/foxthefox/ioBroker.lifx/issues"
   },
-  "main": "lifx.js",
+  "main": "main.js",
   "readmeFilename": "README.md"
 }
