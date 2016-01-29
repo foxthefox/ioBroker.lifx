@@ -1,5 +1,5 @@
+![Logo](admin/lifx_logo.png)
 # ioBroker.lifx
-![Logo](admin/easybulb_logo.png)
 =================
 Lifx adapter for ioBroker
 
