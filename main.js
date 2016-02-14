@@ -2,6 +2,7 @@
 /*jslint node: true */
 
 var lifx=require('lifx');
+var util = require('util');
 
 "use strict";
 
@@ -65,10 +66,10 @@ function main() {
 
     lx.on('bulb', function(b) {
         adapter.log.info('New bulb found: ' + b.name + " : " + b.addr.toString("hex"));
-        adapter.setObject('Bulb_' + b.address, {
+        adapter.setObject('Bulb_' + b.addr, {
             type: 'channel',
             common: {
-                name: 'LifxBulb ' + b.address,
+                name: 'LifxBulb ' + b.addr,
                 role: 'light.color.rgbw'
             },
             native: {
