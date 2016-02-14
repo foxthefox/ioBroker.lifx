@@ -51,13 +51,18 @@ function main() {
 
     // The adapters config (in the instance object everything under the attribute "native") is accessible via
     // adapter.config:
+    
     var lx = lifx.init();
-    //lifx.setDebug(true);
-
+    
+    
+    
     lx.on('bulbstate', function(b) {
         adapter.log.info('Bulb state: ' + util.inspect(b));
-        adapter.setState('Bulb_'+ b.addr+'.hue', {val: b.hue, ack: true});
-        adapter.setState('Bulb_'+ b.addr+'.sat', {val: b.sat, ack: true});
+        adapter.log.info('Bulb state nur adresse1: ' + util.inspect(b.addr));
+        adapter.log.info('Bulb state nur adresse2: ' + b.addr);
+        var inst = b.addr.toString("hex");
+        adapter.setState('Bulb_'+ inst +'.hue', {val: b.hue, ack: true});
+        adapter.setState('Bulb_'+ inst +'.sat', {val: b.saturation, ack: true});
     });
 
     lx.on('bulbonoff', function(b) {
@@ -66,17 +71,18 @@ function main() {
 
     lx.on('bulb', function(b) {
         adapter.log.info('New bulb found: ' + b.name + " : " + b.addr.toString("hex"));
-        adapter.setObject('Bulb_' + b.addr, {
+        var inst = b.addr.toString("hex");
+        adapter.setObject('Bulb_' + inst, {
             type: 'channel',
             common: {
-                name: 'LifxBulb ' + b.addr,
+                name: 'LifxBulb ' + b.address,
                 role: 'light.color.rgbw'
             },
             native: {
                 "add": b.address
             }
         });
-        adapter.setObject('Bulb_' + b.addr + '.hue',
+        adapter.setObject('Bulb_' + inst + '.hue',
             {
                 "type": "state",
                 "common": {
@@ -91,7 +97,7 @@ function main() {
                 },
                 "native": {}
             });
-        adapter.setObject('Bulb_' + b.addr + '.sat',
+        adapter.setObject('Bulb_' + inst + '.sat',
             {
                 "type": "state",
                 "common": {
@@ -106,7 +112,7 @@ function main() {
                 },
                 "native": {}
             });
-        adapter.setObject('Bulb_' + b.addr + '.bright',
+        adapter.setObject('Bulb_' + inst + '.bright',
             {
                 "type": "state",
                 "common": {
@@ -121,7 +127,7 @@ function main() {
                 },
                 "native": {}
             });
-        adapter.setObject('Bulb_' + b.addr + '.dim',
+        adapter.setObject('Bulb_' + inst + '.dim',
             {
                 "type": "state",
                 "common": {
@@ -136,7 +142,7 @@ function main() {
                 },
                 "native": {}
             });
-        adapter.setObject('Bulb_' + b.addr + '.temp',
+        adapter.setObject('Bulb_' + inst + '.temp',
             {
                 "type": "state",
                 "common": {
@@ -152,7 +158,7 @@ function main() {
                 },
                 "native": {}
             });
-        adapter.setObject('Bulb_' + b.addr + '.power',
+        adapter.setObject('Bulb_' + inst + '.power',
             {
                 "type": "state",
                 "common": {
