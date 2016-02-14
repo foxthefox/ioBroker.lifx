@@ -3,12 +3,22 @@
 =================
 Lifx adapter for ioBroker
 
-ALPHA 
-
 Installation:
 
-Setup
+npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --production
 
-TODO
+Settings:
 
-Changelog
+IP-Adress-> IP Lifx
+
+Configuration:
+in io-package.json
+
+TODO:
+
+
+known issues:
+
+
+Changelog: 
+0.0.1 initial setup
