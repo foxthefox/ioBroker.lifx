@@ -23,32 +23,6 @@
 
     ],
     "instanceObjects": [
-        {
-            "_id": "power",
-            "type": "state",
-            "common": {
-                "name":  "Lamp state",
-                "type":  "boolean",
-                "role":  "button",
-                "read":  true,
-                "write": true,
-                "def":   null
-            },
-            "native": {
-                "command": "lamp-state",
-                "values": ["off","on","toggle","query"]
-            }
-        },
-        {
-            "_id": "connected",
-            "type": "state",
-            "common": {
-                "name":  "Input selector",
-                "type":  "string",
-                "role":  "indicator",
-                "read":  true,
-                "write": false
-            }
-        }
+
     ]
 }
