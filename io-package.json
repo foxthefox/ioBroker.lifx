@@ -16,8 +16,6 @@
 
     },
       "native": {
-        "lifxlampIp":  "192.x.x.x",
-        "lifxlampPort": "9999"
     },
     "objects": [
 
