@@ -53,20 +53,50 @@ function main() {
     adapter.log.info('config test1: ' + adapter.config.test1);
     adapter.log.info('config test1: ' + adapter.config.test2);
 
-    var options = {
-        bridge:     adapter.config.lifx-ip       || '192.168.178.33',
-        port:       adapter.config.lifx-port     || 8899
-    };
+    var lx = lifx.init();
+    //lifx.setDebug(true);
 
-    /**
-     *
-     *      For every state in the system there has to be also an object of type state
-     *
-     *      Here a simple template for a boolean variable named "testVariable"
-     *
-     *      Because every adapter instance uses its own unique namespace variable names can't collide with other adapters variables
-     *
-     */
+    lx.on('bulbstate', function(b) {
+        adapter.log.info('Bulb state: ' + util.inspect(b));
+    });
+
+    lx.on('bulbonoff', function(b) {
+        adapter.log.info('Bulb on/off: ' + util.inspect(b));
+    });
+
+    lx.on('bulb', function(b) {
+        adapter.log.info('New bulb found: ' + b.name + " : " + b.addr.toString("hex"));
+    });
+
+    lx.on('gateway', function(g) {
+        adapter.log.info('New gateway found: ' + g.ip);
+    });
+
+    lx.on('packet', function(p) {
+        // Show informational packets
+        switch (p.packetTypeShortName) {
+            case 'powerState':
+            case 'wifiInfo':
+            case 'wifiFirmwareState':
+            case 'wifiState':
+            case 'accessPoint':
+            case 'bulbLabel':
+            case 'tags':
+            case 'tagLabels':
+            //case 'lightStatus':
+            case 'timeState':
+            case 'resetSwitchState':
+            case 'meshInfo':
+            case 'meshFirmware':
+            case 'versionState':
+            case 'infoState':
+            case 'mcuRailVoltage':
+                adapter.log.info(p.packetTypeName + " - " + p.preamble.bulbAddress.toString('hex') + " - " + util.inspect(p.payload));
+                break;
+            default:
+                break;
+        }
+    });
 
 
 
