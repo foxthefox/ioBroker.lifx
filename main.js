@@ -50,14 +50,13 @@ function main() {
 
     // The adapters config (in the instance object everything under the attribute "native") is accessible via
     // adapter.config:
-    adapter.log.info('config test1: ' + adapter.config.test1);
-    adapter.log.info('config test1: ' + adapter.config.test2);
-
     var lx = lifx.init();
     //lifx.setDebug(true);
 
     lx.on('bulbstate', function(b) {
         adapter.log.info('Bulb state: ' + util.inspect(b));
+        adapter.setState('Bulb_'+ b.addr+'.hue', {val: b.hue, ack: true});
+        adapter.setState('Bulb_'+ b.addr+'.sat', {val: b.sat, ack: true});
     });
 
     lx.on('bulbonoff', function(b) {
@@ -66,10 +65,121 @@ function main() {
 
     lx.on('bulb', function(b) {
         adapter.log.info('New bulb found: ' + b.name + " : " + b.addr.toString("hex"));
+        adapter.setObject('Bulb_' + b.address, {
+            type: 'channel',
+            common: {
+                name: 'LifxBulb ' + b.address,
+                role: 'light.color.rgbw'
+            },
+            native: {
+                "add": b.address
+            }
+        });
+        adapter.setObject('Bulb_' + b.addr + '.hue',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Farbe",
+                    "type":  "number",
+                    "role":  "level.color.hue",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Farbe",
+                    "min":   "0",
+                    "max":   "65535",
+                },
+                "native": {}
+            });
+        adapter.setObject('Bulb_' + b.addr + '.sat',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Sättigung",
+                    "type":  "number",
+                    "role":  "level.color.sat",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Sättigung",
+                    "min":   "0",
+                    "max":   "65535",
+                },
+                "native": {}
+            });
+        adapter.setObject('Bulb_' + b.addr + '.bright',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Helligkeit",
+                    "type":  "number",
+                    "role":  "level.color.bri",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Helligkeit",
+                    "min":   "0",
+                    "max":   "65535",
+                },
+                "native": {}
+            });
+        adapter.setObject('Bulb_' + b.addr + '.dim',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Dim",
+                    "type":  "number",
+                    "role":  "level.color.dim",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Dim",
+                    "min":   "0",
+                    "max":   "65535",
+                },
+                "native": {}
+            });
+        adapter.setObject('Bulb_' + b.addr + '.temp',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Farbtemp",
+                    "type":  "number",
+                    "role":  "level.color.temp",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Farbtemp",
+                    "min":   "0",
+                    "max":   "65535",
+                    "unit":  "Kelvin"
+                },
+                "native": {}
+            });
+        adapter.setObject('Bulb_' + b.addr + '.power',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Power",
+                    "type":  "number",
+                    "role":  "level.color.power",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Power",
+                    "min":   "0",
+                    "max":   "65535",
+                },
+                "native": {}
+            });
     });
 
     lx.on('gateway', function(g) {
         adapter.log.info('New gateway found: ' + g.ip);
+        adapter.setObject('Gateway_' + g.ip, {
+            type: 'channel',
+            common: {
+                name: 'LifxGateway ' + g.ip,
+                role: 'light.color.rgbw'
+            },
+            native: {
+                "ip": g.ip
+            }
+        });
     });
 
     lx.on('packet', function(p) {
