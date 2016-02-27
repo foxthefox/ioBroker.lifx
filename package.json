@@ -20,7 +20,7 @@
     "url": "https://github.com/foxthefox/ioBroker.lifx"
   },
   "dependencies": {
-    "lifx": "^0.3.1"
+    "node-lifx": "^0.4.0"
   },
   "devDependencies": {
       "grunt": "^0.4.5",
