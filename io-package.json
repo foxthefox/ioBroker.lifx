@@ -1,7 +1,7 @@
 {
     "common": {
         "name":                 "lifx",
-        "version":              "0.0.1",
+        "version":              "0.0.2",
         "title":                "lifx adapter",
         "desc":                 "ioBroker lifx Adapter",
         "platform":             "Javascript/Node.js",
