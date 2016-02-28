@@ -24,8 +24,8 @@ TODO:
 Changelog:
 
 0.0.2 
-change to node-lifx
-successful tested with 2 lamps and firmware 2.1
+- change to node-lifx
+- successful tested with 2 lamps and firmware 2.1
 
 0.0.1 
 - initial setup with lifx
