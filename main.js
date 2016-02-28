@@ -1,8 +1,9 @@
 /* jshint -W097 */// jshint strict:false
 /*jslint node: true */
 
-var lifx=require('lifx');
+var LifxClient=require('node-lifx').Client;
 var util = require('util');
+var client = new LifxClient();
 
 "use strict";
 
@@ -37,13 +38,108 @@ adapter.on('stateChange', function (id, state) {
 
     // you can use the ack flag to detect if it is status (true) or command (false)
     if (state && !state.ack) {
-        adapter.log.info('ack is not set!');
+        adapter.log.info('ack is not set! -> command');
+
+        var tmp = id.split('.');
+        var dp = tmp.pop();
+        var idx = tmp.pop();
+        id = idx.replace(/Bulb_/g,''); //Bulb
+        adapter.log.debug('ID: '+ id + 'identified');
+
+        if (dp == 'state') {
+            if (state.val == 0) {
+                client.light(id).off(0, function(err) {
+                    if (err) {
+                        adapter.log.debug('Turning light ' + id  + ' off failed');
+                    }
+                    adapter.log.debug('Turned light ' + id + ' off');
+                });
+            }
+            else if (state.val == 1) {
+                client.light(id).on(0, function(err) {
+                    if (err) {
+                        adapter.log.debug('Turning light ' + id  + ' on failed');
+                    }
+                    adapter.log.debug('Turned light ' + id + ' on');
+                });
+
+            }
+        }
+        if (dp == 'temp') {
+            adapter.getState('Bulb_'+id+'.bright', function(err,obj){
+                client.light(id).color(0, 0, obj.val, state.val, function(err) { //hue, sat, bright, kelvin
+                    if (err) {
+                        adapter.log.debug('White light adjust' + id  + ' failed');
+                    }
+                    adapter.log.debug('White light adjust ' + id + ' to: ' + state.val + ' Kelvin');
+                });
+
+            });
+
+        }
+
+        if (dp == 'bright') {
+            adapter.getState('Bulb_' + id + '.colormode', function (err, mode) {
+                if (mode.val === 'white') {
+                    adapter.getState('Bulb_' + id + '.temp', function (err, obj) {
+                        client.light(id).color(0, 0, state.val, obj.val, 0, function (err) { //hue, sat, bright, kelvin
+                            if (err) {
+                                adapter.log.debug('Brightness White adjust ' + id + ' failed');
+                            }
+                            adapter.log.debug('Brightness White adjust ' + id + ' to' + state.val + ' %');
+                        });
+
+                    });
+                }
+                else {
+
+                    adapter.getState('Bulb_' + id + '.hue', function (err, obj) {
+                        client.light(id).color(obj.val, 80, state.val, 80, 0, function (err) { //hue, sat, bright, kelvin
+                            if (err) {
+                                adapter.log.debug('Brightness Color adjust ' + id + ' failed');
+                            }
+                            adapter.log.debug('Brightness Color adjust ' + id + ' to' + state.val + ' %');
+                        });
+                    });
+
+                }
+            });
+        }
+
+        if (dp == 'hue') {
+            adapter.getState('Bulb_' + id + '.sat', function (err, obj) {
+                client.light(id).color(state.val, obj.val, 80, function (err) { //hue, sat, bright, kelvin
+                    if (err) {
+                        adapter.log.debug('Coloring light ' + id + ' failed');
+                    }
+                    adapter.log.debug('Coloring light ' + id + ' to: ' + state.val + ' °');
+                });
+
+            });
+        }
+
+
+
+        if (dp == 'sat') {
+                adapter.getState('Bulb_'+id+'.hue', function(err,obj){
+                    client.light(id).color(obj.val, state.val, 80, function(err) { //hue, sat, bright, kelvin
+                        if (err) {
+                            adapter.log.debug('Saturation light ' + id  + ' failed');
+                        }
+                        adapter.log.debug('Saturation light ' + id + ' to: '+ state.val+' %');
+                    });
+
+                });
+
+        }
+
     }
 });
 
 // is called when databases are connected and adapter received configuration.
 // start here!
 adapter.on('ready', function () {
+    adapter.log.debug('entered ready ');
     main();
 });
 
@@ -52,37 +148,38 @@ function main() {
     // The adapters config (in the instance object everything under the attribute "native") is accessible via
     // adapter.config:
     
-    var lx = lifx.init();
-    
-    
-    
-    lx.on('bulbstate', function(b) {
-        adapter.log.info('Bulb state: ' + util.inspect(b));
-        adapter.log.info('Bulb state nur adresse1: ' + util.inspect(b.addr));
-        adapter.log.info('Bulb state nur adresse2: ' + b.addr);
-        var inst = b.addr.toString("hex");
-        adapter.setState('Bulb_'+ inst +'.hue', {val: b.hue, ack: true});
-        adapter.setState('Bulb_'+ inst +'.sat', {val: b.saturation, ack: true});
-    });
-
-    lx.on('bulbonoff', function(b) {
-        adapter.log.info('Bulb on/off: ' + util.inspect(b));
-    });
-
-    lx.on('bulb', function(b) {
-        adapter.log.info('New bulb found: ' + b.name + " : " + b.addr.toString("hex"));
-        var inst = b.addr.toString("hex");
-        adapter.setObject('Bulb_' + inst, {
+    // in this template all states changes inside the adapters namespace are subscribed
+    adapter.subscribeStates('*');
+    client.on('light-new', function(light) {
+        console.log('New light found.');
+        console.log('ID: ' + light.id);
+        console.log('IP: ' + light.address + ':' + light.port);
+        adapter.setObject('Bulb_' + light.id, {
             type: 'channel',
             common: {
-                name: 'LifxBulb ' + b.address,
+                name: 'LifxBulb ' + light.id,
                 role: 'light.color.rgbw'
             },
             native: {
-                "add": b.address
+                "add": light.address
             }
         });
-        adapter.setObject('Bulb_' + inst + '.hue',
+        adapter.setObject('Bulb_' + light.id + '.state',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Ein/Aus",
+                    "type":  "boolean",
+                    "role":  "light.switch",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Ein/Aus",
+                },
+                "native": {
+
+                }
+            });
+        adapter.setObject('Bulb_' + light.id + '.hue',
             {
                 "type": "state",
                 "common": {
@@ -93,11 +190,11 @@ function main() {
                     "write": true,
                     "desc":  "Licht Farbe",
                     "min":   "0",
-                    "max":   "65535",
+                    "max":   "360",
                 },
                 "native": {}
             });
-        adapter.setObject('Bulb_' + inst + '.sat',
+        adapter.setObject('Bulb_' + light.id + '.sat',
             {
                 "type": "state",
                 "common": {
@@ -108,11 +205,11 @@ function main() {
                     "write": true,
                     "desc":  "Licht Sättigung",
                     "min":   "0",
-                    "max":   "65535",
+                    "max":   "100",
                 },
                 "native": {}
             });
-        adapter.setObject('Bulb_' + inst + '.bright',
+        adapter.setObject('Bulb_' + light.id + '.bright',
             {
                 "type": "state",
                 "common": {
@@ -123,26 +220,12 @@ function main() {
                     "write": true,
                     "desc":  "Licht Helligkeit",
                     "min":   "0",
-                    "max":   "65535",
+                    "max":   "100",
                 },
                 "native": {}
             });
-        adapter.setObject('Bulb_' + inst + '.dim',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "Licht Dim",
-                    "type":  "number",
-                    "role":  "level.color.dim",
-                    "read":  true,
-                    "write": true,
-                    "desc":  "Licht Dim",
-                    "min":   "0",
-                    "max":   "65535",
-                },
-                "native": {}
-            });
-        adapter.setObject('Bulb_' + inst + '.temp',
+
+        adapter.setObject('Bulb_' + light.id + '.temp',
             {
                 "type": "state",
                 "common": {
@@ -152,91 +235,73 @@ function main() {
                     "read":  true,
                     "write": true,
                     "desc":  "Licht Farbtemp",
-                    "min":   "0",
-                    "max":   "65535",
+                    "min":   "2500",
+                    "max":   "9000",
                     "unit":  "Kelvin"
                 },
                 "native": {}
             });
-        adapter.setObject('Bulb_' + inst + '.power',
+        adapter.setObject('Bulb_' + light.id + '.online',
             {
                 "type": "state",
                 "common": {
-                    "name":  "Licht Power",
-                    "type":  "number",
-                    "role":  "level.color.power",
+                    "name":  "Licht Erreichbar",
+                    "type":  "boolean",
+                    "role":  "indicator.reachable",
                     "read":  true,
                     "write": true,
-                    "desc":  "Licht Power",
-                    "min":   "0",
-                    "max":   "65535",
+                    "desc":  "Licht erreichbar",
                 },
                 "native": {}
             });
-    });
-
-    lx.on('gateway', function(g) {
-        adapter.log.info('New gateway found: ' + g.ip);
-        adapter.setObject('Gateway_' + g.ip, {
-            type: 'channel',
-            common: {
-                name: 'LifxGateway ' + g.ip,
-                role: 'light.color.rgbw'
-            },
-            native: {
-                "ip": g.ip
+        adapter.setObject('Bulb_' + light.id + '.colormode',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Colormode",
+                    "type":  "text",
+                    "role":  "indicator.colormode",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Colormode",
+                },
+                "native": {}
+            });
+        light.getState(function(err, info) {
+            if (err) {
+                console.log(err);
             }
+            console.log('Label: ' + info.label);
+            console.log('Power:', (info.power === 1) ? 'on' : 'off');
+            console.log('Color:', info.color, '\n');
+            adapter.setState('Bulb_'+ light.id +'.state', {val: info.power, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.hue', {val: info.color.hue, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.sat', {val: info.color.saturation, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.bright', {val: info.color.brightness, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.temp', {val: info.color.kelvin, ack: true});
+            adapter.setState('Bulb_'+ light.id  +'.online', {val: true, ack: true});
+            adapter.setState('Bulb_'+ light.id  +'.colormode', {val: 'white', ack: true});
         });
+
     });
 
-    lx.on('packet', function(p) {
-        // Show informational packets
-        switch (p.packetTypeShortName) {
-            case 'powerState':
-            case 'wifiInfo':
-            case 'wifiFirmwareState':
-            case 'wifiState':
-            case 'accessPoint':
-            case 'bulbLabel':
-            case 'tags':
-            case 'tagLabels':
-            //case 'lightStatus':
-            case 'timeState':
-            case 'resetSwitchState':
-            case 'meshInfo':
-            case 'meshFirmware':
-            case 'versionState':
-            case 'infoState':
-            case 'mcuRailVoltage':
-                adapter.log.info(p.packetTypeName + " - " + p.preamble.bulbAddress.toString('hex') + " - " + util.inspect(p.payload));
-                break;
-            default:
-                break;
-        }
+    client.on('light-online', function(light) {
+        console.log('Light back online. ID:' + light.id + ', IP:' + light.address + ':' + light.port + '\n');
+        adapter.setState('Bulb_'+ light.id  +'.online', {val: true, ack: true});
     });
 
+    client.on('light-offline', function(light) {
+        console.log('Light offline. ID:' + light.id + ', IP:' + light.address + ':' + light.port + '\n');
+        adapter.setState('Bulb_'+ light.id  +'.online', {val: false, ack: true});
+    });
 
-
-    // in this template all states changes inside the adapters namespace are subscribed
-    adapter.subscribeStates('*');
-
-
-    /**
-     *   setState examples
-     *
-     *   you will notice that each setState will cause the stateChange event to fire (because of above subscribeStates cmd)
-     *
-     */
-
-    // the variable testVariable is set to true as command (ack=false)
-    adapter.setState('testVariable', true);
-
-    // same thing, but the value is flagged "ack"
-    // ack should be always set to true if the value is received from or acknowledged from the target system
-    adapter.setState('testVariable', {val: true, ack: true});
-
-    // same thing, but the state is deleted after 30s (getState will return null afterwards)
-    adapter.setState('testVariable', {val: true, ack: true, expire: 30});
-
+    client.on('listening', function() {
+        var address = client.address();
+        console.log(
+            'Started LIFX listening on ' +
+            address.address + ':' + address.port + '\n'
+        );
+    });
+    client.init();
 
 }
