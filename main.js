@@ -28,7 +28,7 @@ adapter.on('unload', function (callback) {
 // is called if a subscribed object changes
 adapter.on('objectChange', function (id, obj) {
     // Warning, obj can be null if it was deleted
-    adapter.log.info('objectChange ' + id + ' ' + JSON.stringify(obj));
+     adapter.log.info('objectChange ' + id + ' ' + JSON.stringify(obj));
 });
 
 // is called if a subscribed state changes
@@ -39,7 +39,6 @@ adapter.on('stateChange', function (id, state) {
     // you can use the ack flag to detect if it is status (true) or command (false)
     if (state && !state.ack) {
         adapter.log.info('ack is not set! -> command');
-
         var tmp = id.split('.');
         var dp = tmp.pop();
         var idx = tmp.pop();
@@ -67,7 +66,7 @@ adapter.on('stateChange', function (id, state) {
         }
         if (dp == 'temp') {
             adapter.getState('Bulb_'+id+'.bright', function(err,obj){
-                client.light(id).color(0, 0, obj.val, state.val, function(err) { //hue, sat, bright, kelvin
+                client.light(id).color(0, 0, obj.val, state.val,0, function(err) { //hue, sat, bright, kelvin,duration
                     if (err) {
                         adapter.log.debug('White light adjust' + id  + ' failed');
                     }
