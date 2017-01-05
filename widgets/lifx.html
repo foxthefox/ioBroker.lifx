@@ -1,10 +1,10 @@
 <!--
-    ioBroker.vis JQuery widgets with MFD icons
+    ioBroker.vis LIFX JQuery widgets with MFD icons
 
-    version: "1.0.5"
+    version: "0.0.1"
+    Copyright foxthtefox
 
-    Copyright 6'2014-2016 bluefox<dogafox@gmail.com>, hobbyquaker<hobbyquaker@ccu.io>
-
+    based on iobroker.vis-jqui, jqui-mfd
     extended for lifx
 -->
 
@@ -19,20 +19,8 @@
      background-size: 100%;
  }
 </style>
+<script type="text/javascript" src="widgets/lifx/js/lifx.js"></script>
 
-<script type="text/javascript">
-    'use strict';
-
-    if (vis.editMode) {
-          $.extend(systemDictionary, {
-        "oid-bright":       {"en": "brightness", "de": "Helligkeit"},
-        "oid-temp":         {"en": "light temperature", "de": "Lichttemperatur"},
-        "oid-colormode":    {"en": "mode",  "de": "Modus"},
-        "oid-sat":          {"en": "saturation",    "de": "Sättigung"},
-        "oid-color":          {"en": "color",      "de": "Farbe"}
-    });
-
-</script>
 
 <script id="tplMfdLifxDialog"
         type="text/ejs"
