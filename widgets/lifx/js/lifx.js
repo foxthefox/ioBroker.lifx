@@ -23,7 +23,7 @@ if (vis.editMode) {
     });
 
 
-vis.binds.lifx = {
+vis.binds.lifxui = {
 
     version: "0.0.1",
 
