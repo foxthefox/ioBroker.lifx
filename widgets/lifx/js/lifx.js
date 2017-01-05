@@ -29,11 +29,11 @@ vis.binds.lifxui = {
 
     showVersion: function() {
 
-        if (vis.binds.deepcore.version) {
+        if (vis.binds.lifxui.version) {
 
-            console.log('Deepcore widget version: ' + vis.binds.deepcore.version);
+            console.log('Lifx widget version: ' + vis.binds.lifxui.version);
 
-            vis.binds.deepcore.version = null;
+            vis.binds.lifxui.version = null;
 
         }
 
@@ -63,4 +63,4 @@ vis.binds.lifxui = {
         },
     };
 
-vis.binds.lifx.showVersion();
+vis.binds.lifxui.showVersion();
