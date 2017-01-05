@@ -82,8 +82,8 @@
         </span>
 
         <span style="padding-left: 25px" id="<%= this.data.attr('wid') %>_radio_cm"  class="<%= this.data.attr('wid') %>_radio" style="text-align: center" data-oid="<%= this.data.attr('oid-colormode') %>" <%= (el) -> vis.binds.jqueryui.radio(el); %> >
-            <input type="radio" id="<%= this.data.attr('wid') %>_radio_cm_ct" name="<%= this.data.attr('wid') %>_radio_cm" value="ct" checked="checked"/><label for="<%= this.data.attr('wid') %>_radio_cm_ct">weiß</label>
-            <input type="radio" id="<%= this.data.attr('wid') %>_radio_cm_hs" name="<%= this.data.attr('wid') %>_radio_cm" value="hs"/><label for="<%= this.data.attr('wid') %>_radio_cm_hs">farbe</label>
+            <input type="radio" id="<%= this.data.attr('wid') %>_radio_cm_ct" name="<%= this.data.attr('wid') %>_radio_cm" value="white" checked="checked"/><label for="<%= this.data.attr('wid') %>_radio_cm_ct">weiß</label>
+            <input type="radio" id="<%= this.data.attr('wid') %>_radio_cm_hs" name="<%= this.data.attr('wid') %>_radio_cm" value="color"/><label for="<%= this.data.attr('wid') %>_radio_cm_hs">farbe</label>
         </span>
 
         <br/><br/>
@@ -103,7 +103,7 @@
         </div>
 
     </div>
-    <div class="pupup-helper" <%= (el) -> vis.binds.jqueryui.hueColormode(el, this.data.attr('oid-colormode')) %> />
+    <div class="pupup-helper" <%= (el) -> vis.binds.lifxui.lifxColormode(el, this.data.attr('oid-colormode')) %> />
     <div class="popup-helper" <%= (el) -> vis.binds.jqueryui.dialog(el,{width:440,height:320,modal:data.attr('modal')},true) %> />
     <div class="popup-helper" <%= (el) -> if (data.attr("autoclose") === 'true' || data.attr("autoclose") === true) { vis.binds.jqueryui.dialogAutoClose(el) }  %> />
     </div>
