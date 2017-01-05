@@ -12,7 +12,8 @@
         "icon":                 "lifx_logo.png",
 	"extIcon":          	"https://raw.githubusercontent.com/foxthefox/ioBroker.lifx/master/admin/lifx_logo.png",
 	"readme":           	"https://github.com/foxthefox/ioBroker.lifx/master/README.md",
-	"loglevel":		"debug"
+	"loglevel":		"debug",
+    	"restartAdapters":          ["vis"]	    
 
     },
       "native": {
