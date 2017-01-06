@@ -60,7 +60,7 @@ vis.binds.lifxui = {
                     $hue.show();
                 }
             });
-        },
+        }
     };
 
 vis.binds.lifxui.showVersion();
