@@ -21,7 +21,7 @@ if (vis.editMode) {
         "oid-sat":          {"en": "saturation",    "de": "Sättigung"},
         "oid-color":          {"en": "color",      "de": "Farbe"}
     });
-
+};
 
 vis.binds.lifxui = {
 
