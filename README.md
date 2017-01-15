@@ -11,7 +11,7 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 - no settings or configuration required, adapter automatically detects the lamps
 
 ##Visualization:
-- for change of colormode the toggle-switch has to have the settings "white" and "color"
+- use lifx widget
 
 ##TODO:
 - getting adjustment of color values with all existing settings (brighness adjust has fixed 80% saturation and keeps the previous hue setting; saturation adjust and hue adjust has fixed 80% brightness)
