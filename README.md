@@ -23,6 +23,9 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 
 ##Changelog:
 
+###intermediate
+- jqui widget
+
 ###0.0.2 
 - change to node-lifx
 - successful tested with 2 lamps and firmware 2.1
