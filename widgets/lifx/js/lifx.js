@@ -42,8 +42,7 @@ vis.binds.lifxui = {
     lifxColormode: function (el, oid) {
             var $hue = $(el).parent().find('.hue-mode-hue');
             var $ct  = $(el).parent().find('.hue-mode-ct');
-            var $ct  = $(el).parent().find('.hue-mode-ct');
-            if (vis.states.attr(oid + '.val') == 'color') {
+            if (vis.states.attr(oid + '.val') == 'white') {
                 $hue.hide();
                 $ct.show();
             } else {
@@ -52,7 +51,7 @@ vis.binds.lifxui = {
             }
 
             vis.states.bind(oid + '.val', function (e, newVal, oldVal) {
-                if (newVal == 'color') {
+                if (newVal == 'white') {
                     $hue.hide();
                     $ct.show();
                 } else {
