@@ -17,6 +17,8 @@
 
     },
       "native": {
+      "lifx-ip": "192.168.xx.xx",
+      "lifx-port": "8899"
     },
     "objects": [
 
