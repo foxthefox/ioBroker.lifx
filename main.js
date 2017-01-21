@@ -38,7 +38,7 @@ adapter.on('stateChange', function (id, state) {
 
     // you can use the ack flag to detect if it is status (true) or command (false)
     if (state && !state.ack) {
-        adapter.log.info('ack is not set! -> command');
+        adapter.log.debug('ack is not set! -> command');
         var tmp = id.split('.');
         var dp = tmp.pop();
         var idx = tmp.pop();
@@ -150,9 +150,9 @@ function main() {
     // in this template all states changes inside the adapters namespace are subscribed
     adapter.subscribeStates('*');
     client.on('light-new', function(light) {
-        console.log('New light found.');
-        console.log('ID: ' + light.id);
-        console.log('IP: ' + light.address + ':' + light.port);
+        adapter.log.info('New light found.');
+        adapter.log.info('ID: ' + light.id);
+        adapter.log.info('IP: ' + light.address + ':' + light.port);
         adapter.setObject('Bulb_' + light.id, {
             type: 'channel',
             common: {
@@ -268,11 +268,11 @@ function main() {
             });
         light.getState(function(err, info) {
             if (err) {
-                console.log(err);
+                adapter.log.debug(err);
             }
-            console.log('Label: ' + info.label);
-            console.log('Power:', (info.power === 1) ? 'on' : 'off');
-            console.log('Color:', info.color, '\n');
+            adapter.log.info('Label: ' + info.label);
+            adapter.log.info('Power:', (info.power === 1) ? 'on' : 'off');
+            adapter.log.info('Color:', info.color, '\n');
             adapter.setState('Bulb_'+ light.id +'.state', {val: info.power, ack: true});
             adapter.setState('Bulb_'+ light.id +'.hue', {val: info.color.hue, ack: true});
             adapter.setState('Bulb_'+ light.id +'.sat', {val: info.color.saturation, ack: true});
@@ -285,18 +285,18 @@ function main() {
     });
 
     client.on('light-online', function(light) {
-        console.log('Light back online. ID:' + light.id + ', IP:' + light.address + ':' + light.port + '\n');
+        adapter.log.info('Light back online. ID:' + light.id + ', IP:' + light.address + ':' + light.port + '\n');
         adapter.setState('Bulb_'+ light.id  +'.online', {val: true, ack: true});
     });
 
     client.on('light-offline', function(light) {
-        console.log('Light offline. ID:' + light.id + ', IP:' + light.address + ':' + light.port + '\n');
+        adapter.log.info('Light offline. ID:' + light.id + ', IP:' + light.address + ':' + light.port + '\n');
         adapter.setState('Bulb_'+ light.id  +'.online', {val: false, ack: true});
     });
 
     client.on('listening', function() {
         var address = client.address();
-        console.log(
+        adapter.log.info(
             'Started LIFX listening on ' +
             address.address + ':' + address.port + '\n'
         );
