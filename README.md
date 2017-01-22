@@ -9,7 +9,12 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 
 ##Settings/Configuration:
 - no settings or configuration required, adapter automatically detects the lamps
-- small icon for unreachable status in metro-widget is the first object, the icon should be wifiColorRed.png and an left value of 6 should work fine
+###metro widget unreachable status
+- small icon for unreachable status in metro-widget is the first object of notification
+- object_id[0] is the indicator.unreachable
+- instead of presetting "true", "false" shall be written
+- the icon should be wifiColorRed.png 
+- horizontal offset of 6 should work fine
 
 ##Visualization:
 - use lifx widgets
@@ -21,6 +26,10 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 - waveforms
 - usage of meta.roles
 - objects for white lamp
+
+##known issues
+- max setting is 360 in vis dialog, does not take over the presetting of 100
+- color images for slider to be mapped to lifx
 
 ##Changelog:
 
