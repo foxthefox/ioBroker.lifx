@@ -4,7 +4,7 @@
 [![NPM version](http://img.shields.io/npm/v/iobroker.lifx.svg)](https://www.npmjs.com/package/iobroker.lifx)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.lifx.svg)](https://www.npmjs.com/package/iobroker.lifx)
 [![Build Status](https://travis-ci.org/foxthefox/ioBroker.lifx.svg?branch=master)](https://travis-ci.org/foxthefox/ioBroker.lifx)
-[![Build Status](https://ci.appveyor.com/api/projects/status/github/ioBroker.lifx?branch=master&svg=true)](https://ci.appveyor.com/api/projects/status/github/ioBroker.lifx)
+[![Build Status](https://ci.appveyor.com/api/projects/status/github/ioBroker-lifx?branch=master&svg=true)](https://ci.appveyor.com/project/foxthefox/iobroker-lifx)
 
 [![NPM](https://nodei.co/npm/iobroker.lifx.png?downloads=true)](https://nodei.co/npm/iobroker.lifx/)
 
