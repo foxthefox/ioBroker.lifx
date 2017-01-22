@@ -4,8 +4,11 @@
 Lifx adapter for ioBroker
 
 ##Installation:
+the official released version
+- npm install iobroker.lifx
 
-npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --production
+the actual version from github:
+- npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --production
 
 ##Settings/Configuration:
 - no settings or configuration required, adapter automatically detects the lamps
