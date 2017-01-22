@@ -1,6 +1,11 @@
 ![Logo](admin/lifx_logo.png)
 # ioBroker.lifx
 =================
+[![NPM version](http://img.shields.io/npm/v/iobroker.lifx.svg)](https://www.npmjs.com/package/iobroker.lifx)
+[![Downloads](https://img.shields.io/npm/dm/iobroker.lifx.svg)](https://www.npmjs.com/package/iobroker.lifx)
+
+[![NPM](https://nodei.co/npm/iobroker.lifx.png?downloads=true)](https://nodei.co/npm/iobroker.lifx/)
+
 Lifx adapter for ioBroker
 
 ##Installation:
