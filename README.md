@@ -1,4 +1,4 @@
-![Logo](admin/lifx_logo.png)
+Red![Logo](admin/lifx_logo.png)
 # ioBroker.lifx
 =================
 Lifx adapter for ioBroker
@@ -9,21 +9,23 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 
 ##Settings/Configuration:
 - no settings or configuration required, adapter automatically detects the lamps
+- small icon for unreachable status in metro-widget is the first object, the icon should be wifiColorRed.png and an left value of 6 should work fine
 
 ##Visualization:
-- use lifx widget
+- use lifx widgets
 
 ##TODO:
+- cyclical getState from lamp, if adjusted outside ioBroker
 - getting adjustment of color values with all existing settings (brighness adjust has fixed 80% saturation and keeps the previous hue setting; saturation adjust and hue adjust has fixed 80% brightness)
 - transition times
 - waveforms
-- cyclical getState from lamp, if adjusted outside ioBroker
-- usage of meta.rols
+- usage of meta.roles
 - objects for white lamp
 
 ##Changelog:
 
-###intermediate
+###0.0.3
+- metro widget
 - jqui widget
 
 ###0.0.2 
