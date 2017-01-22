@@ -1,4 +1,4 @@
-Red![Logo](admin/lifx_logo.png)
+![Logo](admin/lifx_logo.png)
 # ioBroker.lifx
 =================
 Lifx adapter for ioBroker
