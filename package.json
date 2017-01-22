@@ -1,6 +1,6 @@
 {
   "name": "iobroker.lifx",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "ioBroker lifx Adapter",
   "author": {
     "name": "@@foxthefox@@",
