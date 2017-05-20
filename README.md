@@ -29,6 +29,17 @@ the actual version from github:
 ## Visualization:
 - use lifx widgets
 
+## objects
+|Object|Value|settable|Description|
+|--------|-------|:-:|--------|
+|Bulb.state|boolean|x|true/false -> ON/OFF|
+|Bulb.colormode|boolean|x|color, white|
+|Bulb.temp|value|x|color temperature 2500...9000 K|
+|Bulb.hue|value|x|color 0...360|
+|Bulb.sat|value|x|saturation 0...100 %|
+|Bulb.bright|value|x|brightness 0...100 %|
+|Bulb.online|boolean|-|true/false|
+
 ## TODO:
 - cyclical getState from lamp, if adjusted outside ioBroker
 - getting adjustment of color values with all existing settings (brighness adjust has fixed 80% saturation and keeps the previous hue setting; saturation adjust and hue adjust has fixed 80% brightness)
