@@ -2,6 +2,9 @@
     "common": {
         "name":                 "lifx",
         "version":              "0.0.3",
+	"authors": [
+            "foxthefox <foxthefox@wysiwis.net>"
+        ],
         "title":                "lifx adapter",
         "desc":                 "ioBroker lifx Adapter",
         "platform":             "Javascript/Node.js",
