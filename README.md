@@ -53,7 +53,7 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 - objects for white lamp
 
 ## known issues
-- max setting is 360 in vis dialog, does not take over the presetting of 100
+??
 
 ## Changelog:
 ### 0.0.4
