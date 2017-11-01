@@ -12,10 +12,14 @@ Lifx adapter for ioBroker
 
 ## Installation:
 the official released version
-- npm install iobroker.lifx
+'''
+npm install iobroker.lifx
+'''
 
 the actual version from github:
-- npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --production
+'''
+npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --production
+'''
 
 ## Settings/Configuration:
 - no settings or configuration required, adapter automatically detects the lamps
@@ -50,9 +54,10 @@ the actual version from github:
 
 ## known issues
 - max setting is 360 in vis dialog, does not take over the presetting of 100
-- color images for slider to be mapped to lifx
 
 ## Changelog:
+### 0.0.4
+- jqui widget with interactive colored slider
 
 ### 0.0.3
 - metro widget
