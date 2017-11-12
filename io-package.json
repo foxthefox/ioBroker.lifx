@@ -11,7 +11,7 @@
         "mode":                 "daemon",
         "license": 	   	"MIT",
         "keywords":		["lifx", "light"],
-        "type":			"hardware",
+        "type":			"lighting",
         "icon":                 "lifx_logo.png",
 	"extIcon":          	"https://raw.githubusercontent.com/foxthefox/ioBroker.lifx/master/admin/lifx_logo.png",
 	"readme":           	"https://github.com/foxthefox/ioBroker.lifx/blob/master/README.md",
