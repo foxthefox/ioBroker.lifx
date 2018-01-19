@@ -47,24 +47,21 @@
 
 <!-- you have to put your config page in a div with id adapter-container -->
 <div class="m adapter-container">
+	
+    <div class="row">
+        <div class="col s12 m4 l2">
+            <img src="lifx_logo.png" class="logo">
+        </div>
+    </div>
 
-    <table><tr>
-        <td><img src="lifx_logo.png"/></td>
-        <td><h3 class="translate">lifx adapter settings</h3></td>
-    </tr></table>
-    	
+    <div class="row">
+        <div class="col s12">
+            <span class="translate">Lifx lamp(s)></span><span class="translate">will be found automatically</span>
 
-    <table>
-        <tr>
-            <td class="translate">Lifx lamp(s)</td>
-            <td class="translate"> will be found automatically</td>
-        </tr>
-
-    </table>
-    
-
-    <p class="translate">on save adapter restarts with new config immediately</p>
-
+            <!-- Important: span must come directly after checkbox input (only by checkbox the span will be used!) -->
+        </div>
+    </div>
+	
 </div>
 
 </html>
