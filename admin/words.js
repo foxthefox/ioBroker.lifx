@@ -9,3 +9,4 @@
 		"en": "on save adapter restarts with new config immediately",
             "ru": "Сразу после сохранения настроек драйвер перезапуститься с новыми значениями"
         }
+}
