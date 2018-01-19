@@ -16,6 +16,7 @@
 	"extIcon":          	"https://raw.githubusercontent.com/foxthefox/ioBroker.lifx/master/admin/lifx_logo.png",
 	"readme":           	"https://github.com/foxthefox/ioBroker.lifx/blob/master/README.md",
 	"loglevel":		"info",
+	"materialize": 	         true,
     	"restartAdapters":          ["vis"]	    
 
     },
