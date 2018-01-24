@@ -56,6 +56,10 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 ??
 
 ## Changelog:
+### 0.0.5
+- adminv3
+- noConfig -> no admin page anymore
+
 ### 0.0.4
 - jqui widget with interactive colored slider
 
