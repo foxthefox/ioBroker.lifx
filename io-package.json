@@ -2,6 +2,19 @@
     "common": {
         "name":                 "lifx",
         "version":              "0.0.5",
+	 "news": {
+		"0.0.5": {
+		    "en": "adminv3 implemented",
+		    "de": "adminv3 implementiert",
+		    "ru": "adminv3 реализовано",
+		    "pt": "adminv3 implementado",
+		    "nl": "adminv3 geïmplementeerd",
+		    "fr": "adminv3 implémenté",
+		    "it": "adminv3 implementato",
+		    "es": "adminv3 implementado",
+		    "pl": "Zaimplementowano adminv3"
+		  }
+		},
 	"authors": [
             "foxthefox <foxthefox@wysiwis.net>"
         ],
