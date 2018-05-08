@@ -18,7 +18,18 @@
 	"authors": [
             "foxthefox <foxthefox@wysiwis.net>"
         ],
-        "title":                "lifx adapter",
+        "title":                "lifx",
+	"titleLang": {
+		    "en": "lifx adapter",
+		    "de": "lifx Adapter",
+		    "ru": "адаптер lifx",
+		    "pt": "adaptador lifx",
+		    "nl": "lifx-adapter",
+		    "fr": "adaptateur lifx",
+		    "it": "adattatore lifx",
+		    "es": "adaptador lifx",
+		    "pl": "Adapter lifx"
+	},   
         "desc":                 "ioBroker lifx Adapter",
         "platform":             "Javascript/Node.js",
         "mode":                 "daemon",
