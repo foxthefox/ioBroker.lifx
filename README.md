@@ -73,3 +73,9 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 
 ### 0.0.1 
 - initial setup with lifx
+
+## License
+
+The MIT License (MIT)
+
+Copyright (c) 2018 foxthefox <foxthefox@wysiwis.net>
