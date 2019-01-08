@@ -1,6 +1,6 @@
 {
   "name": "iobroker.lifx",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "ioBroker lifx Adapter",
   "author": {
     "name": "@@foxthefox@@",
@@ -20,7 +20,8 @@
     "url": "https://github.com/foxthefox/ioBroker.lifx"
   },
   "dependencies": {
-    "node-lifx": "^0.4.0"
+    "node-lifx": "^0.4.0",
+    "@iobroker/adapter-core": "^1.0.3"
   },
   "devDependencies": {
       "gulp": "^3.9.1",
