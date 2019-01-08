@@ -8,139 +8,143 @@ var client = new LifxClient();
 "use strict";
 
 // you have to require the utils module and call adapter function
-var utils =    require(__dirname + '/lib/utils'); // Get common adapter utils
+var utils =  require('@iobroker/adapter-core'); // Get common adapter utils
 
 // you have to call the adapter function and pass a options object
 // name has to be set and has to be equal to adapters folder name and main file name excluding extension
 // adapter will be restarted automatically every time as the configuration changed, e.g system.adapter.template.0
-var adapter = utils.adapter('lifx');
+let adapter;
 
-// is called when adapter shuts down - callback has to be called under any circumstances!
-adapter.on('unload', function (callback) {
-    try {
-        adapter.log.info('cleaned everything up...');
-        callback();
-    } catch (e) {
-        callback();
-    }
-});
-
-// is called if a subscribed object changes
-adapter.on('objectChange', function (id, obj) {
-    // Warning, obj can be null if it was deleted
-     adapter.log.info('objectChange ' + id + ' ' + JSON.stringify(obj));
-});
-
-// is called if a subscribed state changes
-adapter.on('stateChange', function (id, state) {
-    // Warning, state can be null if it was deleted
-    adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
-
-    // you can use the ack flag to detect if it is status (true) or command (false)
-    if (state && !state.ack) {
-        adapter.log.debug('ack is not set! -> command');
-        var tmp = id.split('.');
-        var dp = tmp.pop();
-        var idx = tmp.pop();
-        id = idx.replace(/Bulb_/g,''); //Bulb
-        adapter.log.debug('ID: '+ id + 'identified');
-
-        if (dp == 'state') {
-            if (state.val == 0) {
-                client.light(id).off(0, function(err) {
-                    if (err) {
-                        adapter.log.debug('Turning light ' + id  + ' off failed');
-                    }
-                    adapter.log.debug('Turned light ' + id + ' off');
-                });
+function startAdapter(options) {
+    options = options || {};
+    Object.assign(options, {
+        name: 'lifx',
+        // is called when adapter shuts down - callback has to be called under any circumstances!
+        unload: function (callback) {
+            try {
+                adapter.log.info('cleaned everything up...');
+                callback();
+            } catch (e) {
+                callback();
             }
-            else if (state.val == 1) {
-                client.light(id).on(0, function(err) {
-                    if (err) {
-                        adapter.log.debug('Turning light ' + id  + ' on failed');
-                    }
-                    adapter.log.debug('Turned light ' + id + ' on');
-                });
-
-            }
-        }
-        if (dp == 'temp') {
-            adapter.getState('Bulb_'+id+'.bright', function(err,obj){
-                client.light(id).color(0, 0, obj.val, state.val,0, function(err) { //hue, sat, bright, kelvin,duration
-                    if (err) {
-                        adapter.log.debug('White light adjust' + id  + ' failed');
-                    }
-                    adapter.log.debug('White light adjust ' + id + ' to: ' + state.val + ' Kelvin');
-                });
-
-            });
-
-        }
-
-        if (dp == 'bright') {
-            adapter.getState('Bulb_' + id + '.colormode', function (err, mode) {
-                if (mode.val === 'white') {
-                    adapter.getState('Bulb_' + id + '.temp', function (err, obj) {
-                        client.light(id).color(0, 0, state.val, obj.val, 0, function (err) { //hue, sat, bright, kelvin
+        },
+        // is called if a subscribed object changes
+        objectChange: function (id, obj) {
+            // Warning, obj can be null if it was deleted
+             adapter.log.info('objectChange ' + id + ' ' + JSON.stringify(obj));
+        },
+        // is called if a subscribed state changes
+        stateChange: function (id, state) {
+            // Warning, state can be null if it was deleted
+            adapter.log.info('stateChange ' + id + ' ' + JSON.stringify(state));
+        
+            // you can use the ack flag to detect if it is status (true) or command (false)
+            if (state && !state.ack) {
+                adapter.log.debug('ack is not set! -> command');
+                var tmp = id.split('.');
+                var dp = tmp.pop();
+                var idx = tmp.pop();
+                id = idx.replace(/Bulb_/g,''); //Bulb
+                adapter.log.debug('ID: '+ id + 'identified');
+        
+                if (dp == 'state') {
+                    if (state.val == 0) {
+                        client.light(id).off(0, function(err) {
                             if (err) {
-                                adapter.log.debug('Brightness White adjust ' + id + ' failed');
+                                adapter.log.debug('Turning light ' + id  + ' off failed');
                             }
-                            adapter.log.debug('Brightness White adjust ' + id + ' to' + state.val + ' %');
+                            adapter.log.debug('Turned light ' + id + ' off');
                         });
-
-                    });
-                }
-                else {
-
-                    adapter.getState('Bulb_' + id + '.hue', function (err, obj) {
-                        client.light(id).color(obj.val, 80, state.val, 80, 0, function (err) { //hue, sat, bright, kelvin
-                            if (err) {
-                                adapter.log.debug('Brightness Color adjust ' + id + ' failed');
-                            }
-                            adapter.log.debug('Brightness Color adjust ' + id + ' to' + state.val + ' %');
-                        });
-                    });
-
-                }
-            });
-        }
-
-        if (dp == 'hue') {
-            adapter.getState('Bulb_' + id + '.sat', function (err, obj) {
-                client.light(id).color(state.val, obj.val, 80, function (err) { //hue, sat, bright, kelvin
-                    if (err) {
-                        adapter.log.debug('Coloring light ' + id + ' failed');
                     }
-                    adapter.log.debug('Coloring light ' + id + ' to: ' + state.val + ' °');
-                });
-
-            });
-        }
-
-
-
-        if (dp == 'sat') {
-                adapter.getState('Bulb_'+id+'.hue', function(err,obj){
-                    client.light(id).color(obj.val, state.val, 80, function(err) { //hue, sat, bright, kelvin
-                        if (err) {
-                            adapter.log.debug('Saturation light ' + id  + ' failed');
+                    else if (state.val == 1) {
+                        client.light(id).on(0, function(err) {
+                            if (err) {
+                                adapter.log.debug('Turning light ' + id  + ' on failed');
+                            }
+                            adapter.log.debug('Turned light ' + id + ' on');
+                        });
+        
+                    }
+                }
+                if (dp == 'temp') {
+                    adapter.getState('Bulb_'+id+'.bright', function(err,obj){
+                        client.light(id).color(0, 0, obj.val, state.val,0, function(err) { //hue, sat, bright, kelvin,duration
+                            if (err) {
+                                adapter.log.debug('White light adjust' + id  + ' failed');
+                            }
+                            adapter.log.debug('White light adjust ' + id + ' to: ' + state.val + ' Kelvin');
+                        });
+        
+                    });
+        
+                }
+        
+                if (dp == 'bright') {
+                    adapter.getState('Bulb_' + id + '.colormode', function (err, mode) {
+                        if (mode.val === 'white') {
+                            adapter.getState('Bulb_' + id + '.temp', function (err, obj) {
+                                client.light(id).color(0, 0, state.val, obj.val, 0, function (err) { //hue, sat, bright, kelvin
+                                    if (err) {
+                                        adapter.log.debug('Brightness White adjust ' + id + ' failed');
+                                    }
+                                    adapter.log.debug('Brightness White adjust ' + id + ' to' + state.val + ' %');
+                                });
+        
+                            });
                         }
-                        adapter.log.debug('Saturation light ' + id + ' to: '+ state.val+' %');
+                        else {
+        
+                            adapter.getState('Bulb_' + id + '.hue', function (err, obj) {
+                                client.light(id).color(obj.val, 80, state.val, 80, 0, function (err) { //hue, sat, bright, kelvin
+                                    if (err) {
+                                        adapter.log.debug('Brightness Color adjust ' + id + ' failed');
+                                    }
+                                    adapter.log.debug('Brightness Color adjust ' + id + ' to' + state.val + ' %');
+                                });
+                            });
+        
+                        }
                     });
+                }
+        
+                if (dp == 'hue') {
+                    adapter.getState('Bulb_' + id + '.sat', function (err, obj) {
+                        client.light(id).color(state.val, obj.val, 80, function (err) { //hue, sat, bright, kelvin
+                            if (err) {
+                                adapter.log.debug('Coloring light ' + id + ' failed');
+                            }
+                            adapter.log.debug('Coloring light ' + id + ' to: ' + state.val + ' °');
+                        });
+        
+                    });
+                }
+        
+        
+        
+                if (dp == 'sat') {
+                        adapter.getState('Bulb_'+id+'.hue', function(err,obj){
+                            client.light(id).color(obj.val, state.val, 80, function(err) { //hue, sat, bright, kelvin
+                                if (err) {
+                                    adapter.log.debug('Saturation light ' + id  + ' failed');
+                                }
+                                adapter.log.debug('Saturation light ' + id + ' to: '+ state.val+' %');
+                            });
+        
+                        });
+        
+                }
+        
+            }
+        },
+        // is called when databases are connected and adapter received configuration.
+        // start here!
+        ready: main()
 
-                });
-
-        }
-
-    }
-});
-
-// is called when databases are connected and adapter received configuration.
-// start here!
-adapter.on('ready', function () {
-    adapter.log.debug('entered ready ');
-    main();
-});
+    });
+    adapter = new utils.Adapter(options);
+    
+    return adapter;
+};
 
 function main() {
 
@@ -304,3 +308,11 @@ function main() {
     client.init();
 
 }
+
+// If started as allInOne/compact mode => return function to create instance
+if (module && module.parent) {
+    module.exports = startAdapter;
+} else {
+    // or start the instance directly
+    startAdapter();
+} 
