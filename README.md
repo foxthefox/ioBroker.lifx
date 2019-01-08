@@ -56,6 +56,8 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 ??
 
 ## Changelog:
+### 0.1.0
+- compact mode
 ### 0.0.5
 - adminv3
 - noConfig -> no admin page anymore
