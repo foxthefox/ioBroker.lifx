@@ -1,7 +1,7 @@
 ![Logo](admin/lifx_logo.png)
 # ioBroker.lifx
 
-[![NPM version](http://img.shields.io/npm/v/iobroker.lifx.svg)](https://www.npmjs.com/package/iobroker.lifx)
+![Number of Installations](http://iobroker.live/badges/lifx-installed.svg) ![Number of Installations](http://iobroker.live/badges/lifx-stable.svg) [![NPM version](http://img.shields.io/npm/v/iobroker.lifx.svg)](https://www.npmjs.com/package/iobroker.lifx)
 [![Downloads](https://img.shields.io/npm/dm/iobroker.lifx.svg)](https://www.npmjs.com/package/iobroker.lifx)
 [![Build Status](https://travis-ci.org/foxthefox/ioBroker.lifx.svg?branch=master)](https://travis-ci.org/foxthefox/ioBroker.lifx)
 
