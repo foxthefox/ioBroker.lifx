@@ -1,8 +1,12 @@
 {
     "common": {
         "name":                 "lifx",
-        "version":              "0.1.0",
+        "version":              "0.1.1",
 	 "news": {
+		"0.1.1": {
+		    "en": "fade duration setting added, colormode Datatype changed from "Text" to "String"",
+		    "de": "Aenderungsgeschwindigkeit hinzugefügt, colormode Datentyp von "Text" auf "String" geändert"
+		  },
 		"0.1.0": {
 		    "en": "compact mode added",
 		    "de": "Kompaktmodus hinzugefügt",

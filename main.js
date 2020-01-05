@@ -45,11 +45,11 @@ function startAdapter(options) {
                 var dp = tmp.pop();
                 var idx = tmp.pop();
                 id = idx.replace(/Bulb_/g,''); //Bulb
-                adapter.log.debug('ID: '+ id + 'identified');
-        
+                adapter.log.debug('ID: '+ id + ' identified');
+                adapter.getState('Bulb_'+id+'.duration', function(err,dur){
                 if (dp == 'state') {
                     if (state.val == 0) {
-                        client.light(id).off(0, function(err) {
+                        client.light(id).off(dur.val, function(err) {
                             if (err) {
                                 adapter.log.debug('Turning light ' + id  + ' off failed');
                             }
@@ -57,18 +57,17 @@ function startAdapter(options) {
                         });
                     }
                     else if (state.val == 1) {
-                        client.light(id).on(0, function(err) {
+                        client.light(id).on(dur.val, function(err) {
                             if (err) {
                                 adapter.log.debug('Turning light ' + id  + ' on failed');
                             }
                             adapter.log.debug('Turned light ' + id + ' on');
                         });
-        
                     }
-                }
+                  }
                 if (dp == 'temp') {
                     adapter.getState('Bulb_'+id+'.bright', function(err,obj){
-                        client.light(id).color(0, 0, obj.val, state.val,0, function(err) { //hue, sat, bright, kelvin,duration
+                        client.light(id).color(0, 0, obj.val, state.val, dur.val, function(err) { //hue, sat, bright, kelvin,duration
                             if (err) {
                                 adapter.log.debug('White light adjust' + id  + ' failed');
                             }
@@ -83,7 +82,7 @@ function startAdapter(options) {
                     adapter.getState('Bulb_' + id + '.colormode', function (err, mode) {
                         if (mode.val === 'white') {
                             adapter.getState('Bulb_' + id + '.temp', function (err, obj) {
-                                client.light(id).color(0, 0, state.val, obj.val, 0, function (err) { //hue, sat, bright, kelvin
+                                client.light(id).color(0, 0, state.val, obj.val, dur.val, function (err) { //hue, sat, bright, kelvin
                                     if (err) {
                                         adapter.log.debug('Brightness White adjust ' + id + ' failed');
                                     }
@@ -95,26 +94,33 @@ function startAdapter(options) {
                         else {
         
                             adapter.getState('Bulb_' + id + '.hue', function (err, obj) {
-                                client.light(id).color(obj.val, 80, state.val, 80, 0, function (err) { //hue, sat, bright, kelvin
+                             adapter.getState('Bulb_' + id + '.sat', function (err, sat) {
+                              adapter.getState('Bulb_' + id + '.temp', function (err, tmp) {
+                                client.light(id).color(obj.val, sat.val, state.val, tmp.val, dur.val, function (err) { //hue, sat, bright, kelvin
                                     if (err) {
                                         adapter.log.debug('Brightness Color adjust ' + id + ' failed');
                                     }
                                     adapter.log.debug('Brightness Color adjust ' + id + ' to' + state.val + ' %');
                                 });
+                               });
+                              });
                             });
-        
                         }
                     });
                 }
         
                 if (dp == 'hue') {
-                    adapter.getState('Bulb_' + id + '.sat', function (err, obj) {
-                        client.light(id).color(state.val, obj.val, 80, function (err) { //hue, sat, bright, kelvin
+                    adapter.getState('Bulb_' + id + '.sat', function (err, sat) {
+                     adapter.getState('Bulb_' + id + '.bright', function (err, bri) {
+                      adapter.getState('Bulb_' + id + '.temp', function (err, tmp) {
+                        client.light(id).color(state.val, sat.val, bri.val, tmp.val, dur.val, function (err) { //hue, sat, bright, kelvin
                             if (err) {
                                 adapter.log.debug('Coloring light ' + id + ' failed');
                             }
                             adapter.log.debug('Coloring light ' + id + ' to: ' + state.val + ' °');
                         });
+                       });
+                      });
         
                     });
                 }
@@ -122,18 +128,22 @@ function startAdapter(options) {
         
         
                 if (dp == 'sat') {
-                        adapter.getState('Bulb_'+id+'.hue', function(err,obj){
-                            client.light(id).color(obj.val, state.val, 80, function(err) { //hue, sat, bright, kelvin
+                        adapter.getState('Bulb_'+id+'.hue', function(err,hue){
+                         adapter.getState('Bulb_'+id+'.bright', function(err,bri){
+                          adapter.getState('Bulb_'+id+'.temp', function(err,tmp){
+                            client.light(id).color(hue.val, state.val, bri.val, tmp.val, dur.val, function(err) { //hue, sat, bright, kelvin
                                 if (err) {
                                     adapter.log.debug('Saturation light ' + id  + ' failed');
                                 }
                                 adapter.log.debug('Saturation light ' + id + ' to: '+ state.val+' %');
                             });
+                           });
+                          });
         
                         });
         
                 }
-        
+                });
             }
         },
         // is called when databases are connected and adapter received configuration.
@@ -229,7 +239,22 @@ function main() {
                 },
                 "native": {}
             });
-
+        adapter.setObject('Bulb_' + light.id + '.duration',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Aenderungsgeschwindigkeit ms",
+                    "type":  "number",
+                    "role":  "level.color.dur",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Aenderungsgeschwindigkeit ms",
+                    "min":   "0",
+                    "max":   "100000",
+                    "unit":   "ms",
+                },
+                "native": {}
+            });
         adapter.setObject('Bulb_' + light.id + '.temp',
             {
                 "type": "state",
@@ -264,7 +289,7 @@ function main() {
                 "type": "state",
                 "common": {
                     "name":  "Licht Colormode",
-                    "type":  "text",
+                    "type":  "string",
                     "role":  "indicator.colormode",
                     "read":  true,
                     "write": true,
@@ -283,6 +308,7 @@ function main() {
             adapter.setState('Bulb_'+ light.id +'.hue', {val: info.color.hue, ack: true});
             adapter.setState('Bulb_'+ light.id +'.sat', {val: info.color.saturation, ack: true});
             adapter.setState('Bulb_'+ light.id +'.bright', {val: info.color.brightness, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.duration', {val: 500, ack: true});
             adapter.setState('Bulb_'+ light.id +'.temp', {val: info.color.kelvin, ack: true});
             adapter.setState('Bulb_'+ light.id  +'.online', {val: true, ack: true});
             adapter.setState('Bulb_'+ light.id  +'.colormode', {val: 'white', ack: true});
