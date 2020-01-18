@@ -1,8 +1,20 @@
 {
     "common": {
         "name":                 "lifx",
-        "version":              "0.1.0",
+        "version":              "0.1.1",
 	 "news": {
+		"0.1.1": {
+		    "en": "logo quadratic",
+		    "de": "Logo quadratisch",
+		    "ru": "логотип квадратичный",
+		    "pt": "logotipo quadrático",
+		    "nl": "logo kwadratisch",
+		    "fr": "logo quadratique",
+		    "it": "logo quadratico",
+		    "es": "logo cuadrático",
+		    "pl": "logo kwadratowe",
+		    "zh-cn": "二次方徽标"
+		   },
 		"0.1.0": {
 		    "en": "compact mode added",
 		    "de": "Kompaktmodus hinzugefügt",
