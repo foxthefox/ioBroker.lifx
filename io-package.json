@@ -4,8 +4,8 @@
         "version":              "0.1.2",
 	 "news": {
 	    "0.1.2": {
-		    "en": "fade duration setting added, colormode Datatype changed from "Text" to "String"",
-		    "de": "Aenderungsgeschwindigkeit hinzugefügt, colormode Datentyp von "Text" auf "String" geändert"
+		    "en": "fade duration setting added, colormode Datatype changed from Text to String",
+		    "de": "Aenderungsgeschwindigkeit hinzugefügt, colormode Datentyp von Text auf String geändert"
 		  },
 		"0.1.1": {
 		    "en": "logo quadratic",
