@@ -407,6 +407,7 @@ function main() {
             adapter.setState('Bulb_'+ light.id +'.infraredLamp', {val: info.productFeature.infrared, ack: true});
             adapter.setState('Bulb_'+ light.id +'.multizoneLamp', {val: info.productFeatures.multizone, ack: true});
         });
+        // if multzone the create zones and their colors, and start/end zone index
     });
 
     client.on('light-online', function(light) {
