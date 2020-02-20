@@ -169,6 +169,66 @@ function main() {
                 "add": light.address
             }
         });
+        adapter.setObject('Bulb_' + light.id + '.label',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Label",
+                    "type":  "string",
+                    "role":  "info.name",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "Label",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + light.id + '.vendor',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Vendor",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "Vendor",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + light.id + '.product',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Product",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "product",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + light.id + '.version',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Version",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "Version",
+                },
+                "native": {
+
+                }
+            });
         adapter.setObject('Bulb_' + light.id + '.state',
             {
                 "type": "state",
@@ -279,6 +339,7 @@ function main() {
             adapter.log.info('Label: ' + info.label);
             adapter.log.info('Power:', (info.power === 1) ? 'on' : 'off');
             adapter.log.info('Color:', info.color, '\n');
+            adapter.setState('Bulb_'+ light.id +'.label', {val: info.label, ack: true});
             adapter.setState('Bulb_'+ light.id +'.state', {val: info.power, ack: true});
             adapter.setState('Bulb_'+ light.id +'.hue', {val: info.color.hue, ack: true});
             adapter.setState('Bulb_'+ light.id +'.sat', {val: info.color.saturation, ack: true});
@@ -287,7 +348,17 @@ function main() {
             adapter.setState('Bulb_'+ light.id  +'.online', {val: true, ack: true});
             adapter.setState('Bulb_'+ light.id  +'.colormode', {val: 'white', ack: true});
         });
-
+        light.getHardwareVersion(function(err, info) {
+            if (err) {
+                adapter.log.debug(err);
+            }
+            adapter.log.info('Vendor: ' + info.vendor);
+            adapter.log.info('Product:'+ info.product);
+            adapter.log.info('Version:' + info.version, '\n');
+            adapter.setState('Bulb_'+ light.id +'.vendor', {val: info.vendor, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.product', {val: info.product, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.version', {val: info.version, ack: true});
+        });
     });
 
     client.on('light-online', function(light) {
