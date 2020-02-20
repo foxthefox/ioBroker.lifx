@@ -352,12 +352,11 @@ function main() {
             if (err) {
                 adapter.log.debug(err);
             }
-            adapter.log.info('Vendor: ' + info.vendor);
-            adapter.log.info('Product:'+ info.product);
-            adapter.log.info('Version:' + info.version, '\n');
-            adapter.setState('Bulb_'+ light.id +'.vendor', {val: info.vendor, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.product', {val: info.product, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.version', {val: info.version, ack: true});
+            adapter.log.info('Vendor: ' + info.vendorName);
+            adapter.log.info('Product:'+ info.productName);
+            adapter.log.info('Features:' + info.productFeatures, '\n');
+            adapter.setState('Bulb_'+ light.id +'.vendor', {val: info.vendorName, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.product', {val: info.productName, ack: true});
         });
     });
 
