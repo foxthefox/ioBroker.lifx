@@ -1,8 +1,20 @@
 {
     "common": {
         "name":                 "lifx",
-        "version":              "0.1.1",
+        "version":              "0.2.0",
 	 "news": {
+		"0.2.0":{
+		    "en": "changed library, multizone support",
+		    "de": "geänderte Bibliothek, Multizone-Unterstützung",
+		    "ru": "измененная библиотека, поддержка нескольких зон",
+		    "pt": "biblioteca alterada, suporte a várias zonas",
+		    "nl": "veranderde bibliotheek, ondersteuning voor meerdere zones",
+		    "fr": "bibliothèque modifiée, prise en charge multizone",
+		    "it": "libreria modificata, supporto multizona",
+		    "es": "biblioteca modificada, soporte multizona",
+		    "pl": "zmieniona biblioteka, obsługa wielu stref",
+		    "zh-cn": "更改库，多区域支持"
+		  },
 		"0.1.1": {
 		    "en": "logo quadratic",
 		    "de": "Logo quadratisch",
