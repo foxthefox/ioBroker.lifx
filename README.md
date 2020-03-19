@@ -56,6 +56,10 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 ??
 
 ## Changelog:
+### 0.2.0
+- lifx-lan-client library instead node-lifx
+- states for vendor, product, version, product features
+- multizone support
 ### 0.1.1
 - logo quadratic
 ### 0.1.0
