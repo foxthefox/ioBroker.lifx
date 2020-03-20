@@ -43,6 +43,10 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 |Bulb.sat|value|x|saturation 0...100 %|
 |Bulb.bright|value|x|brightness 0...100 %|
 |Bulb.online|boolean|-|true/false|
+|Bulb.vendor|value|-|vendor info|
+|Bulb.product|value|-|product info|
+|Bulb.version|value|-|version info|
+|Bulb.features|value|-|feature info|
 
 ## TODO:
 - cyclical getState from lamp, if adjusted outside ioBroker
