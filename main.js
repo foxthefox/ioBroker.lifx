@@ -148,6 +148,71 @@ function startAdapter(options) {
     return adapter;
 };
 
+function createZone(id, zone) {
+        adapter.setObject('Bulb_' + id + '.zone_'+ zone + '.hue',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Farbe",
+                    "type":  "number",
+                    "role":  "level.color.hue",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Farbe",
+                    "min":   "0",
+                    "max":   "360",
+                },
+                "native": {}
+            });
+        adapter.setObject('Bulb_' + id + '.zone_'+ zone + '.sat',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Sättigung",
+                    "type":  "number",
+                    "role":  "level.color.sat",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Sättigung",
+                    "min":   "0",
+                    "max":   "100",
+                },
+                "native": {}
+            });
+        adapter.setObject('Bulb_' + id + '.zone_'+ zone + '.bright',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Helligkeit",
+                    "type":  "number",
+                    "role":  "level.color.bri",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Helligkeit",
+                    "min":   "0",
+                    "max":   "100",
+                },
+                "native": {}
+            });
+
+        adapter.setObject('Bulb_' + id + '.zone_'+ zone + '.temp',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Farbtemp",
+                    "type":  "number",
+                    "role":  "level.color.temp",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Farbtemp",
+                    "min":   "2500",
+                    "max":   "9000",
+                    "unit":  "Kelvin"
+                },
+                "native": {}
+        });
+}
+
 function main() {
 
     // The adapters config (in the instance object everything under the attribute "native") is accessible via
@@ -407,11 +472,28 @@ function main() {
             adapter.setState('Bulb_'+ light.id +'.infraredLamp', {val: info.productFeatures.infrared, ack: true});
             adapter.setState('Bulb_'+ light.id +'.multizoneLamp', {val: info.productFeatures.multizone, ack: true});
             if (info.productFeatures.multizone){
-                light.getColorZones(0, 255, function(err, multiz) {
+                light.getColorZones(0, 255, function(err, mz) {
                     if (err) {
                         adapter.log.debug(err);
                     }
-                    adapter.log.info('Multizzone: '+JSON.stringify(multiz));
+                    var mquery = mz.count/8; //je Antwort sind 8 Zonen übermittelt mz.count enthält die Anzahl der Zonen
+                    for (z=0; z<mz.count;z++){
+                        createZone(light.id, z);
+                    }
+                    for (i = 0; i<mquery; i++){
+                        light.getColorZones(i*8, 7+(i*8), function(err, multiz) {
+                            if (err) {
+                                adapter.log.debug(err);
+                            }
+                            adapter.log.info('Multizzone: '+JSON.stringify(multiz));
+                            for (j=0; j<8; j++){
+                                adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.hue', {val: multiz.color[j].hue, ack: true});
+                                adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.sat', {val: multiz.color[j].saturation, ack: true});
+                                adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.bright', {val: multiz.color[j].brightness, ack: true});
+                                adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.temp', {val: multiz.color[j].kelvin, ack: true});            
+                            }
+                        });
+                    }
                 });
             }
         });
