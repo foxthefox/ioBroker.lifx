@@ -50,13 +50,11 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 |Bulb.infraredLamp|value|-|infraredLamp info|
 |Bulb.multizoneLamp|value|-|multizoneLamp info|
 
-
 ## TODO:
 - cyclical getState from lamp, if adjusted outside ioBroker
 - getting adjustment of color values with all existing settings (brighness adjust has fixed 80% saturation and keeps the previous hue setting; saturation adjust and hue adjust has fixed 80% brightness)
 - transition times
 - waveforms
-- usage of meta.roles
 - objects for white lamp
 
 ## known issues
