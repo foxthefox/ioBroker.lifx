@@ -404,7 +404,7 @@ function main() {
             adapter.setState('Bulb_'+ light.id +'.product', {val: info.productName, ack: true});
             adapter.setState('Bulb_'+ light.id +'.version', {val: info.version, ack: true});
             adapter.setState('Bulb_'+ light.id +'.colorLamp', {val: info.productFeatures.color, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.infraredLamp', {val: info.productFeature.infrared, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.infraredLamp', {val: info.productFeatures.infrared, ack: true});
             adapter.setState('Bulb_'+ light.id +'.multizoneLamp', {val: info.productFeatures.multizone, ack: true});
         });
         // if multzone the create zones and their colors, and start/end zone index
