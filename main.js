@@ -169,6 +169,111 @@ function main() {
                 "add": light.address
             }
         });
+        adapter.setObject('Bulb_' + light.id + '.label',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Label",
+                    "type":  "string",
+                    "role":  "info.name",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "Label",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + light.id + '.vendor',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Vendor",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "Vendor",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + light.id + '.product',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Product",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "product",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + light.id + '.version',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Version",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "Version",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + light.id + '.colorLamp',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "color lamp",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "color Lamp",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + light.id + '.infraredLamp',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "infrared lamp",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "infrared lamp",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + light.id + '.multizoneLamp',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "multizoneLamp",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "multizoneLamp",
+                },
+                "native": {
+
+                }
+            });
         adapter.setObject('Bulb_' + light.id + '.state',
             {
                 "type": "state",
@@ -279,15 +384,30 @@ function main() {
             adapter.log.info('Label: ' + info.label);
             adapter.log.info('Power:', (info.power === 1) ? 'on' : 'off');
             adapter.log.info('Color:', info.color, '\n');
+            adapter.setState('Bulb_'+ light.id +'.label', {val: info.label, ack: true});
             adapter.setState('Bulb_'+ light.id +'.state', {val: info.power, ack: true});
             adapter.setState('Bulb_'+ light.id +'.hue', {val: info.color.hue, ack: true});
             adapter.setState('Bulb_'+ light.id +'.sat', {val: info.color.saturation, ack: true});
             adapter.setState('Bulb_'+ light.id +'.bright', {val: info.color.brightness, ack: true});
             adapter.setState('Bulb_'+ light.id +'.temp', {val: info.color.kelvin, ack: true});
-            adapter.setState('Bulb_'+ light.id  +'.online', {val: true, ack: true});
-            adapter.setState('Bulb_'+ light.id  +'.colormode', {val: 'white', ack: true});
+            adapter.setState('Bulb_'+ light.id  +'.online', {val: true, ack: true}); // because we found the lamp
+            adapter.setState('Bulb_'+ light.id  +'.colormode', {val: 'white', ack: true}); // initial setting to white
         });
-
+        light.getHardwareVersion(function(err, info) {
+            if (err) {
+                adapter.log.debug(err);
+            }
+            adapter.log.info('Vendor: ' + info.vendorName);
+            adapter.log.info('Product:'+ info.productName);
+            adapter.log.info('Features:' + info.productFeatures, '\n');
+            adapter.setState('Bulb_'+ light.id +'.vendor', {val: info.vendorName, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.product', {val: info.productName, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.version', {val: info.version, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.colorLamp', {val: info.productFeatures.color, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.infraredLamp', {val: info.productFeature.infrared, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.multizoneLamp', {val: info.productFeatures.multizone, ack: true});
+        });
+        // if multzone the create zones and their colors, and start/end zone index
     });
 
     client.on('light-online', function(light) {
@@ -308,6 +428,23 @@ function main() {
         );
     });
     client.init();
+    
+    /**
+    cyclic update
+    timout
+    client.lights().forEach(function(light) {
+      light.getState(function(err, info) {
+        if (err) {
+          adapter.log.error('Failed cyclic update for ' + light.id);
+        }
+            adapter.setState('Bulb_'+ light.id +'.label', {val: info.label, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.state', {val: info.power, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.hue', {val: info.color.hue, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.sat', {val: info.color.saturation, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.bright', {val: info.color.brightness, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.temp', {val: info.color.kelvin, ack: true});
+      });
+      */
 
 }
 

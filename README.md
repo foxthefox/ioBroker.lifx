@@ -43,13 +43,12 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 |Bulb.sat|value|x|saturation 0...100 %|
 |Bulb.bright|value|x|brightness 0...100 %|
 |Bulb.online|boolean|-|true/false|
-|Bulb.vendor|string|-|vendor|
-|Bulb.product|string|-|product|
-|Bulb.version|string|-|version|
-|Bulb.label|string|-|label|
-|Bulb.colorLamp|boolean|-|true/false|
-|Bulb.infraredLamp|boolean|-|true/false|
-|Bulb.multizoneLamp|boolean|-|true/false|
+|Bulb.label|value|-|name/label|
+|Bulb.vendor|value|-|vendor info|
+|Bulb.product|value|-|product info|
+|Bulb.colorLamp|value|-|colorLamp info|
+|Bulb.infraredLamp|value|-|infraredLamp info|
+|Bulb.multizoneLamp|value|-|multizoneLamp info|
 
 ## TODO:
 - cyclical getState from lamp, if adjusted outside ioBroker
@@ -62,10 +61,17 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 ??
 
 ## Changelog:
+### 0.2.0
+- lifx-lan-client library instead node-lifx
+- states for vendor, product, version, product features
+- multizone support
+
 ### 0.1.1
 - logo quadratic
+
 ### 0.1.0
 - compact mode
+
 ### 0.0.5
 - adminv3
 - noConfig -> no admin page anymore
