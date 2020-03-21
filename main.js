@@ -466,7 +466,7 @@ function main() {
                 },
                 "native": {}
             });
-
+        //min, max anhand von getFeatures "temperature_range":[1500,4000] einstellen
         adapter.setObject('Bulb_' + light.id + '.temp',
             {
                 "type": "state",
@@ -477,7 +477,7 @@ function main() {
                     "read":  true,
                     "write": true,
                     "desc":  "Licht Farbtemp",
-                    "min":   "2500",
+                    "min":   "1500",
                     "max":   "9000",
                     "unit":  "Kelvin"
                 },
@@ -516,7 +516,8 @@ function main() {
             adapter.log.info('Label: ' + info.label);
             adapter.log.info('Power: ' + (info.power == 1) ? 'on' : 'off');
             adapter.setState('Bulb_'+ light.id +'.label', {val: info.label, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.state', {val: info.power, ack: true});
+            let convertPower = info.power == 1 ? true: false
+            adapter.setState('Bulb_'+ light.id +'.state', {val: convertPower , ack: true});
             adapter.setState('Bulb_'+ light.id +'.hue', {val: info.color.hue, ack: true});
             adapter.setState('Bulb_'+ light.id +'.sat', {val: info.color.saturation, ack: true});
             adapter.setState('Bulb_'+ light.id +'.bright', {val: info.color.brightness, ack: true});
@@ -593,8 +594,9 @@ function main() {
             if (err) {
               adapter.log.error('Failed cyclic update for ' + light.id);
             }
-            adapter.setState('Bulb_'+ light.id +'.label', {val: info.label, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.state', {val: info.power, ack: true});
+            adapter.setState('Bulb_'+ light.id +'.label', {val: info.label, ack: true})
+            let convertPower = info.power == 1 ? true: false;
+            adapter.setState('Bulb_'+ light.id +'.state', {val: convertPower, ack: true});
             adapter.setState('Bulb_'+ light.id +'.hue', {val: info.color.hue, ack: true});
             adapter.setState('Bulb_'+ light.id +'.sat', {val: info.color.saturation, ack: true});
             adapter.setState('Bulb_'+ light.id +'.bright', {val: info.color.brightness, ack: true});
