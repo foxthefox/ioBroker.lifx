@@ -109,7 +109,7 @@ function startAdapter(options) {
         
                 if (dp == 'hue') {
                     adapter.getState('Bulb_' + id + '.sat', function (err, obj) {
-                        client.light(id).color(state.val, obj.val, 80, function (err) { //hue, sat, bright, kelvin
+                        client.light(id).color(state.val, obj.val, 80, 3500, 0, function (err) { //hue, sat, bright, kelvin
                             if (err) {
                                 adapter.log.debug('Coloring light ' + id + ' failed');
                             }
@@ -123,7 +123,7 @@ function startAdapter(options) {
         
                 if (dp == 'sat') {
                         adapter.getState('Bulb_'+id+'.hue', function(err,obj){
-                            client.light(id).color(obj.val, state.val, 80, function(err) { //hue, sat, bright, kelvin
+                            client.light(id).color(obj.val, state.val, 80, 3500, 0, function(err) { //hue, sat, bright, kelvin
                                 if (err) {
                                     adapter.log.debug('Saturation light ' + id  + ' failed');
                                 }
@@ -399,13 +399,21 @@ function main() {
             }
             adapter.log.info('Vendor: ' + info.vendorName);
             adapter.log.info('Product:'+ info.productName);
-            adapter.log.info('Features:' + info.productFeatures, '\n');
+            adapter.log.info('Features:' + JSON.stringify(info.productFeatures), '\n');
             adapter.setState('Bulb_'+ light.id +'.vendor', {val: info.vendorName, ack: true});
             adapter.setState('Bulb_'+ light.id +'.product', {val: info.productName, ack: true});
             adapter.setState('Bulb_'+ light.id +'.version', {val: info.version, ack: true});
             adapter.setState('Bulb_'+ light.id +'.colorLamp', {val: info.productFeatures.color, ack: true});
             adapter.setState('Bulb_'+ light.id +'.infraredLamp', {val: info.productFeatures.infrared, ack: true});
             adapter.setState('Bulb_'+ light.id +'.multizoneLamp', {val: info.productFeatures.multizone, ack: true});
+            if (info.productFeatures.multizone){
+                light.getColorZones(0, 255, function(err, multiz) {
+                    if (err) {
+                        adapter.log.debug(err);
+                    }
+                    adapter.log.info('Multizzone: '+JSON.stringify(multiz));
+                });
+            }
         });
         // if multzone the create zones and their colors, and start/end zone index
     });
