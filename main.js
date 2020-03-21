@@ -1,7 +1,7 @@
 /* jshint -W097 */// jshint strict:false
 /*jslint node: true */
 
-var LifxClient=require('node-lifx').Client;
+var LifxClient=require('lifx-lan-client').Client;
 var util = require('util');
 var client = new LifxClient();
 
