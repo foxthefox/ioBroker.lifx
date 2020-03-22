@@ -214,6 +214,228 @@ function startAdapter(options) {
     
     return adapter;
 };
+function createBasic(id,label, minK, maxK){
+        adapter.setObject('Bulb_' + id, {
+            type: 'channel',
+            common: {
+                name: 'LifxBulb ' + label,
+                role: 'light.color.rgbw' //andere Rolle?
+            },
+            native: {
+            }
+        });
+        adapter.setObject('Bulb_' + id + '.label',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Label",
+                    "type":  "string",
+                    "role":  "info.name",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "Label",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + id + '.vendor',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Vendor",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "Vendor",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + id + '.product',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Product",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "product",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + id + '.version',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Version",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "Version",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + id + '.colorLamp',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "color lamp",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "color Lamp",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + id + '.infraredLamp',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "infrared lamp",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "infrared lamp",
+                },
+                "native": {
+
+                }
+            });
+         adapter.setObject('Bulb_' + id + '.multizoneLamp',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "multizoneLamp",
+                    "type":  "string",
+                    "role":  "text",
+                    "read":  true,
+                    "write": false,
+                    "desc":  "multizoneLamp",
+                },
+                "native": {
+
+                }
+            });
+        adapter.setObject('Bulb_' + id + '.state',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Ein/Aus",
+                    "type":  "boolean",
+                    "role":  "light.switch",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Ein/Aus",
+                },
+                "native": {
+
+                }
+            });
+            adapter.setObject('Bulb_' + id + '.bright',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Helligkeit",
+                    "type":  "number",
+                    "role":  "level.color.bri",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Helligkeit",
+                    "min":   "0",
+                    "max":   "100",
+                },
+                "native": {}
+            });
+            //min, max anhand von getFeatures "temperature_range":[1500,4000] einstellen
+        adapter.setObject('Bulb_' + id + '.temp',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Farbtemp",
+                    "type":  "number",
+                    "role":  "level.color.temp",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Farbtemp",
+                    "min":   minK,
+                    "max":   maxK,
+                    "unit":  "Kelvin"
+                },
+                "native": {}
+            });
+        adapter.setObject('Bulb_' + id + '.online',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Erreichbar",
+                    "type":  "boolean",
+                    "role":  "indicator.reachable",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht erreichbar",
+                },
+                "native": {}
+            });
+}
+
+function createColor(id){
+        adapter.setObject('Bulb_' + id + '.hue',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Farbe",
+                    "type":  "number",
+                    "role":  "level.color.hue",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Farbe",
+                    "min":   "0",
+                    "max":   "360",
+                },
+                "native": {}
+            });
+        adapter.setObject('Bulb_' + id + '.sat',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Sättigung",
+                    "type":  "number",
+                    "role":  "level.color.sat",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Sättigung",
+                    "min":   "0",
+                    "max":   "100",
+                },
+                "native": {}
+            });
+        adapter.setObject('Bulb_' + id + '.colormode',
+            {
+                "type": "state",
+                "common": {
+                    "name":  "Licht Colormode",
+                    "type":  "text",
+                    "role":  "indicator.colormode",
+                    "read":  true,
+                    "write": true,
+                    "desc":  "Licht Colormode",
+                },
+                "native": {}
+            });
+}
 
 function createZone(id, zone) {
         adapter.setObject('Bulb_' + id + '.zone_'+ zone + '.hue',
@@ -291,253 +513,46 @@ function main() {
         adapter.log.info('New light found.');
         adapter.log.info('ID: ' + light.id);
         adapter.log.info('IP: ' + light.address + ':' + light.port);
-        adapter.setObject('Bulb_' + light.id, {
-            type: 'channel',
-            common: {
-                name: 'LifxBulb ' + light.id,
-                role: 'light.color.rgbw'
-            },
-            native: {
-                "add": light.address
-            }
-        });
-        adapter.setObject('Bulb_' + light.id + '.label',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "Label",
-                    "type":  "string",
-                    "role":  "info.name",
-                    "read":  true,
-                    "write": false,
-                    "desc":  "Label",
-                },
-                "native": {
-
-                }
-            });
-         adapter.setObject('Bulb_' + light.id + '.vendor',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "Vendor",
-                    "type":  "string",
-                    "role":  "text",
-                    "read":  true,
-                    "write": false,
-                    "desc":  "Vendor",
-                },
-                "native": {
-
-                }
-            });
-         adapter.setObject('Bulb_' + light.id + '.product',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "Product",
-                    "type":  "string",
-                    "role":  "text",
-                    "read":  true,
-                    "write": false,
-                    "desc":  "product",
-                },
-                "native": {
-
-                }
-            });
-         adapter.setObject('Bulb_' + light.id + '.version',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "Version",
-                    "type":  "string",
-                    "role":  "text",
-                    "read":  true,
-                    "write": false,
-                    "desc":  "Version",
-                },
-                "native": {
-
-                }
-            });
-         adapter.setObject('Bulb_' + light.id + '.colorLamp',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "color lamp",
-                    "type":  "string",
-                    "role":  "text",
-                    "read":  true,
-                    "write": false,
-                    "desc":  "color Lamp",
-                },
-                "native": {
-
-                }
-            });
-         adapter.setObject('Bulb_' + light.id + '.infraredLamp',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "infrared lamp",
-                    "type":  "string",
-                    "role":  "text",
-                    "read":  true,
-                    "write": false,
-                    "desc":  "infrared lamp",
-                },
-                "native": {
-
-                }
-            });
-         adapter.setObject('Bulb_' + light.id + '.multizoneLamp',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "multizoneLamp",
-                    "type":  "string",
-                    "role":  "text",
-                    "read":  true,
-                    "write": false,
-                    "desc":  "multizoneLamp",
-                },
-                "native": {
-
-                }
-            });
-        adapter.setObject('Bulb_' + light.id + '.state',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "Licht Ein/Aus",
-                    "type":  "boolean",
-                    "role":  "light.switch",
-                    "read":  true,
-                    "write": true,
-                    "desc":  "Licht Ein/Aus",
-                },
-                "native": {
-
-                }
-            });
-        adapter.setObject('Bulb_' + light.id + '.hue',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "Licht Farbe",
-                    "type":  "number",
-                    "role":  "level.color.hue",
-                    "read":  true,
-                    "write": true,
-                    "desc":  "Licht Farbe",
-                    "min":   "0",
-                    "max":   "360",
-                },
-                "native": {}
-            });
-        adapter.setObject('Bulb_' + light.id + '.sat',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "Licht Sättigung",
-                    "type":  "number",
-                    "role":  "level.color.sat",
-                    "read":  true,
-                    "write": true,
-                    "desc":  "Licht Sättigung",
-                    "min":   "0",
-                    "max":   "100",
-                },
-                "native": {}
-            });
-        adapter.setObject('Bulb_' + light.id + '.bright',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "Licht Helligkeit",
-                    "type":  "number",
-                    "role":  "level.color.bri",
-                    "read":  true,
-                    "write": true,
-                    "desc":  "Licht Helligkeit",
-                    "min":   "0",
-                    "max":   "100",
-                },
-                "native": {}
-            });
-        //min, max anhand von getFeatures "temperature_range":[1500,4000] einstellen
-        adapter.setObject('Bulb_' + light.id + '.temp',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "Licht Farbtemp",
-                    "type":  "number",
-                    "role":  "level.color.temp",
-                    "read":  true,
-                    "write": true,
-                    "desc":  "Licht Farbtemp",
-                    "min":   "1500",
-                    "max":   "9000",
-                    "unit":  "Kelvin"
-                },
-                "native": {}
-            });
-        adapter.setObject('Bulb_' + light.id + '.online',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "Licht Erreichbar",
-                    "type":  "boolean",
-                    "role":  "indicator.reachable",
-                    "read":  true,
-                    "write": true,
-                    "desc":  "Licht erreichbar",
-                },
-                "native": {}
-            });
-        adapter.setObject('Bulb_' + light.id + '.colormode',
-            {
-                "type": "state",
-                "common": {
-                    "name":  "Licht Colormode",
-                    "type":  "text",
-                    "role":  "indicator.colormode",
-                    "read":  true,
-                    "write": true,
-                    "desc":  "Licht Colormode",
-                },
-                "native": {}
-            });
-        light.getState(function(err, info) {
-            if (err) {
-                adapter.log.debug(err);
-            }
-            adapter.log.info('Label: ' + info.label);
-            adapter.log.info('Power: ' + (info.power == 1) ? 'on' : 'off');
-            adapter.setState('Bulb_'+ light.id +'.label', {val: info.label, ack: true});
-            let convertPower = info.power == 1 ? true: false
-            adapter.setState('Bulb_'+ light.id +'.state', {val: convertPower , ack: true});
-            adapter.setState('Bulb_'+ light.id +'.hue', {val: info.color.hue, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.sat', {val: info.color.saturation, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.bright', {val: info.color.brightness, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.temp', {val: info.color.kelvin, ack: true});
-            adapter.setState('Bulb_'+ light.id  +'.online', {val: true, ack: true}); // because we found the lamp
-            adapter.setState('Bulb_'+ light.id  +'.colormode', {val: 'white', ack: true}); // initial setting to white
-        });
         light.getHardwareVersion(function(err, info) {
             if (err) {
                 adapter.log.debug(err);
             }
-            adapter.log.info('Vendor: ' + info.vendorName);
-            adapter.log.info('Product: ' + info.productName);
-            adapter.log.info('Features:' + JSON.stringify(info.productFeatures), '\n');
-            adapter.setState('Bulb_'+ light.id +'.vendor', {val: info.vendorName, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.product', {val: info.productName, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.version', {val: info.version, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.colorLamp', {val: info.productFeatures.color, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.infraredLamp', {val: info.productFeatures.infrared, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.multizoneLamp', {val: info.productFeatures.multizone, ack: true});
+
+            
+            light.getState(function(err, state) {
+                if (err) {
+                    adapter.log.debug(err);
+                }
+                createBasic(light.id, state.label, info.productFeatures.temperature_range[0],info.productFeatures.temperature_range[1]);
+                
+                adapter.log.info('Vendor: ' + info.vendorName);
+                adapter.log.info('Product: ' + info.productName);
+                adapter.log.info('Features:' + JSON.stringify(info.productFeatures), '\n');
+                adapter.log.info('Label: ' + state.label);
+                adapter.log.info('Power: ' + (state.power == 1) ? 'on' : 'off');
+                
+                adapter.setState('Bulb_'+ light.id +'.vendor', {val: info.vendorName, ack: true});
+                adapter.setState('Bulb_'+ light.id +'.product', {val: info.productName, ack: true});
+                adapter.setState('Bulb_'+ light.id +'.version', {val: info.version, ack: true});
+                adapter.setState('Bulb_'+ light.id +'.colorLamp', {val: info.productFeatures.color, ack: true});
+                adapter.setState('Bulb_'+ light.id +'.infraredLamp', {val: info.productFeatures.infrared, ack: true});
+                adapter.setState('Bulb_'+ light.id +'.multizoneLamp', {val: info.productFeatures.multizone, ack: true});
+                
+                adapter.setState('Bulb_'+ light.id +'.label', {val: state.label, ack: true});
+                let convertPower = state.power == 1 ? true: false
+                adapter.setState('Bulb_'+ light.id +'.state', {val: convertPower , ack: true});
+                adapter.setState('Bulb_'+ light.id +'.bright', {val: state.color.brightness, ack: true});
+                adapter.setState('Bulb_'+ light.id +'.temp', {val: state.color.kelvin, ack: true});
+                adapter.setState('Bulb_'+ light.id  +'.online', {val: true, ack: true}); // because we found the lamp
+                adapter.setState('Bulb_'+ light.id  +'.colormode', {val: 'white', ack: true}); // initial setting to white
+                
+                if (info.productFeatures.colorLamp){
+                    createColor(light.id);
+                    adapter.setState('Bulb_'+ light.id +'.hue', {val: state.color.hue, ack: true});
+                    adapter.setState('Bulb_'+ light.id +'.sat', {val: state.color.saturation, ack: true});
+                }
+            });
+            
             if (info.productFeatures.multizone){
                 light.getColorZones(0, 255, function(err, mz) {
                     if (err) {
