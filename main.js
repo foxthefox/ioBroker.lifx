@@ -86,6 +86,7 @@ function startAdapter(options) {
                                     adapter.log.debug('White light adjust' + id  + ' failed');
                                 }
                                 adapter.log.debug('White light adjust ' + id + ' to: ' + state.val + ' Kelvin');
+                                adapter.setState('Bulb_'+ id  +'.colormode', {val: 'white', ack: true});
                             });
 
                         });
@@ -162,6 +163,7 @@ function startAdapter(options) {
                                     adapter.log.debug('Coloring light ' + id + ' failed');
                                 }
                                 adapter.log.debug('Coloring light ' + id + ' to: ' + state.val + ' °');
+                                adapter.setState('Bulb_'+ id  +'.colormode', {val: 'color', ack: true});
                             });
                         });
                     }
@@ -187,6 +189,7 @@ function startAdapter(options) {
                                     adapter.log.debug('Saturation light ' + id  + ' failed');
                                 }
                                 adapter.log.debug('Saturation light ' + id + ' to: '+ state.val+' %');
+                                adapter.setState('Bulb_'+ id  +'.colormode', {val: 'color', ack: true});
                             });
                         });
                     }
@@ -216,7 +219,7 @@ function startAdapter(options) {
     
     return adapter;
 };
-function createBasic(id,label, minK, maxK){
+function createBasic(id, label, minK, maxK){
         adapter.setObject('Bulb_' + id, {
             type: 'channel',
             common: {
