@@ -4,6 +4,7 @@
 var LifxClient=require('lifx-lan-client').Client;
 var util = require('util');
 var client = new LifxClient();
+var lifxTimeout;
 
 "use strict";
 
@@ -21,6 +22,7 @@ function startAdapter(options) {
         name: 'lifx',
         // is called when adapter shuts down - callback has to be called under any circumstances!
         unload: function (callback) {
+            if (lifxTimeout) clearTimeout(lifxTimeout);
             try {
                 adapter.log.info('cleaned everything up...');
                 callback();
