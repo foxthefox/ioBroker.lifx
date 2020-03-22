@@ -543,16 +543,20 @@ function main() {
                 adapter.setState('Bulb_'+ light.id +'.state', {val: convertPower , ack: true});
                 adapter.setState('Bulb_'+ light.id +'.bright', {val: state.color.brightness, ack: true});
                 adapter.setState('Bulb_'+ light.id +'.temp', {val: state.color.kelvin, ack: true});
-                adapter.setState('Bulb_'+ light.id  +'.online', {val: true, ack: true}); // because we found the lamp
-                adapter.setState('Bulb_'+ light.id  +'.colormode', {val: 'white', ack: true}); // initial setting to white
-                
-                if (info.productFeatures.colorLamp){
-                    createColor(light.id);
-                    adapter.setState('Bulb_'+ light.id +'.hue', {val: state.color.hue, ack: true});
-                    adapter.setState('Bulb_'+ light.id +'.sat', {val: state.color.saturation, ack: true});
-                }
+                adapter.setState('Bulb_'+ light.id  +'.online', {val: true, ack: true}); // because we found the lamp                
             });
-            
+ 
+            if (info.productFeatures.colorLamp){
+                createColor(light.id);
+                    light.getState(function(err, state) {
+                        if (err) {
+                            adapter.log.debug(err);
+                        }
+                        adapter.setState('Bulb_'+ light.id +'.hue', {val: state.color.hue, ack: true});
+                        adapter.setState('Bulb_'+ light.id +'.sat', {val: state.color.saturation, ack: true});
+                        adapter.setState('Bulb_'+ light.id  +'.colormode', {val: 'white', ack: true}); // initial setting to white
+                    });
+            }
             if (info.productFeatures.multizone){
                 light.getColorZones(0, 255, function(err, mz) {
                     if (err) {
