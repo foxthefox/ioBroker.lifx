@@ -93,6 +93,7 @@
 
     },
       "native": {
+	      "lifx_interval": 30
     },
     "objects": [
 
