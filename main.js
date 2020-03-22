@@ -606,16 +606,14 @@ function main() {
         );
     });
     client.init();
-    
-    /**
-    cyclic update
+
     function pollLifxData() {
         var lifx_interval = parseInt(adapter.config.lifx_interval,10) || 30;
         updateDevices();
-        adapter.log.debug("polling! fritzdect is alive");
+        adapter.log.debug("polling! lifx is alive");
         lifxTimeout = setTimeout(pollLifxData, lifx_interval*1000);
     }
-    updateDevices(){
+    function updateDevices(){
         client.lights().forEach(function(light) {
             light.getState(function(err, info) {
                 if (err) {
@@ -659,7 +657,6 @@ function main() {
          });
      }
      pollLifxData();
-      */
 
 }
 
