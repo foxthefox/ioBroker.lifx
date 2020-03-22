@@ -607,55 +607,56 @@ function main() {
     
     /**
     cyclic update
-    timout
-    client.lights().forEach(function(light) {
-        light.getState(function(err, info) {
-            if (err) {
-              adapter.log.error('Failed cyclic update for ' + light.id);
-            }
-            adapter.setState('Bulb_'+ light.id +'.label', {val: info.label, ack: true})
-            let convertPower = info.power == 1 ? true: false;
-            adapter.setState('Bulb_'+ light.id +'.state', {val: convertPower, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.bright', {val: info.color.brightness, ack: true});
-            adapter.setState('Bulb_'+ light.id +'.temp', {val: info.color.kelvin, ack: true});
-        });
-        light.getHardwareVersion(function(err, info) {
-            if (err) {
-                adapter.log.debug(err);
-            }
-            if (info.productFeatures.color){
-                light.getState(function(err, state) {
-                    if (err) {
-                        adapter.log.debug(err);
-                    }           
-                    adapter.setState('Bulb_'+ light.id +'.hue', {val: state.color.hue, ack: true});
-                    adapter.setState('Bulb_'+ light.id +'.sat', {val: state.color.saturation, ack: true});
-                    //colormode?
-                });
-            if (info.productFeatures.multizone){
-                light.getColorZones(0, 255, function(err, mz) {
-                    if (err) {
-                        adapter.log.debug(err);
-                    }
-                    var mquery = mz.count/8; //je Antwort sind 8 Zonen übermittelt mz.count enthält die Anzahl der Zonen
-                    for (i = 0; i<mquery; i++){
-                        light.getColorZones(i*8, 7+(i*8), function(err, multiz) {
-                            if (err) {
-                                adapter.log.debug(err);
-                            }
-                            adapter.log.info('Multizzone: '+JSON.stringify(multiz));
-                            for (j=0; j<8; j++){
-                                adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.hue', {val: multiz.color[j].hue, ack: true});
-                                adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.sat', {val: multiz.color[j].saturation, ack: true});
-                                adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.bright', {val: multiz.color[j].brightness, ack: true});
-                                adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.temp', {val: multiz.color[j].kelvin, ack: true});            
-                            }
-                        });
-                    }
-                });
-            }
-        });
-     });
+    function pollLifxData() {
+        var lifx_interval = parseInt(adapter.config.lifx_interval,10) || 30;
+        updateDevices();
+        adapter.log.debug("polling! fritzdect is alive");
+        lifxTimeout = setTimeout(pollLifxData, lifx_interval*1000);
+    }
+    updateDevices(){
+        client.lights().forEach(function(light) {
+            light.getState(function(err, info) {
+                if (err) {
+                  adapter.log.error('Failed cyclic update for ' + light.id);
+                }
+                adapter.setState('Bulb_'+ light.id +'.label', {val: info.label, ack: true})
+                let convertPower = info.power == 1 ? true: false;
+                adapter.setState('Bulb_'+ light.id +'.state', {val: convertPower, ack: true});
+                adapter.setState('Bulb_'+ light.id +'.hue', {val: info.color.hue, ack: true});
+                adapter.setState('Bulb_'+ light.id +'.sat', {val: info.color.saturation, ack: true});
+                adapter.setState('Bulb_'+ light.id +'.bright', {val: info.color.brightness, ack: true});
+                adapter.setState('Bulb_'+ light.id +'.temp', {val: info.color.kelvin, ack: true});
+            });
+            light.getHardwareVersion(function(err, info) {
+                if (err) {
+                    adapter.log.debug(err);
+                }
+                if (info.productFeatures.multizone){
+                    light.getColorZones(0, 255, function(err, mz) {
+                        if (err) {
+                            adapter.log.debug(err);
+                        }
+                        var mquery = mz.count/8; //je Antwort sind 8 Zonen übermittelt mz.count enthält die Anzahl der Zonen
+                        for (i = 0; i<mquery; i++){
+                            light.getColorZones(i*8, 7+(i*8), function(err, multiz) {
+                                if (err) {
+                                    adapter.log.debug(err);
+                                }
+                                adapter.log.info('Multizzone: '+JSON.stringify(multiz));
+                                for (j=0; j<8; j++){
+                                    adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.hue', {val: multiz.color[j].hue, ack: true});
+                                    adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.sat', {val: multiz.color[j].saturation, ack: true});
+                                    adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.bright', {val: multiz.color[j].brightness, ack: true});
+                                    adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.temp', {val: multiz.color[j].kelvin, ack: true});            
+                                }
+                            });
+                        }
+                    });
+                }
+            });
+         });
+     }
+     pollLifxData();
       */
 
 }
