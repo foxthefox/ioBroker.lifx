@@ -59,10 +59,9 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 - getting adjustment of color values with all existing settings (brighness adjust has fixed 80% saturation and keeps the previous hue setting; saturation adjust and hue adjust has fixed 80% brightness)
 - transition times
 - waveforms
-- objects for white lamp
 
 ## known issues
-??
+- values outside of range cause crash of adapter
 
 ## Changelog:
 ### 0.2.0
