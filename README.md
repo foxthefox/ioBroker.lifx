@@ -55,7 +55,6 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 |Bulb.Zone.bright|value|x|brightness 0...100 %|
 
 ## TODO:
-- cyclical getState from lamp, if adjusted outside ioBroker
 - getting adjustment of color values with all existing settings (brighness adjust has fixed 80% saturation and keeps the previous hue setting; saturation adjust and hue adjust has fixed 80% brightness)
 - transition times
 - waveforms
@@ -68,6 +67,7 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 - lifx-lan-client library instead node-lifx
 - states for vendor, product, version, product features
 - multizone support
+- cyclic polling
 
 ### 0.1.1
 - logo quadratic
