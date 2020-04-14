@@ -2,59 +2,58 @@
     "common": {
         "name":                 "lifx",
         "version":              "0.2.1",
-	 "news": {
-	    "0.2.1": {
-		    "en": "fade duration setting added, colormode Datatype changed from Text to String",
-		    "de": "Aenderungsgeschwindigkeit hinzugefügt, colormode Datentyp von Text auf String geändert"
-        "version":              "0.2.0",
-	 "news": {
-		"0.2.0":{
-		    "en": "changed library, multizone support",
-		    "de": "geänderte Bibliothek, Multizone-Unterstützung",
-		    "ru": "измененная библиотека, поддержка нескольких зон",
-		    "pt": "biblioteca alterada, suporte a várias zonas",
-		    "nl": "veranderde bibliotheek, ondersteuning voor meerdere zones",
-		    "fr": "bibliothèque modifiée, prise en charge multizone",
-		    "it": "libreria modificata, supporto multizona",
-		    "es": "biblioteca modificada, soporte multizona",
-		    "pl": "zmieniona biblioteka, obsługa wielu stref",
-		    "zh-cn": "更改库，多区域支持"
-		  },
-		"0.1.1": {
-		    "en": "logo quadratic",
-		    "de": "Logo quadratisch",
-		    "ru": "логотип квадратичный",
-		    "pt": "logotipo quadrático",
-		    "nl": "logo kwadratisch",
-		    "fr": "logo quadratique",
-		    "it": "logo quadratico",
-		    "es": "logo cuadrático",
-		    "pl": "logo kwadratowe",
-		    "zh-cn": "二次方徽标"
-		   },
-		"0.1.0": {
-		    "en": "compact mode added",
-		    "de": "Kompaktmodus hinzugefügt",
-		    "ru": "добавлен компактный режим",
-		    "pt": "modo compacto adicionado",
-		    "nl": "compacte modus toegevoegd",
-		    "fr": "mode compact ajouté",
-		    "it": "modalità compatta aggiunta",
-		    "es": "modo compacto agregado",
-		    "pl": "dodano tryb kompaktowy"
-		  },
-		"0.0.5": {
-		    "en": "adminv3 implemented",
-		    "de": "adminv3 implementiert",
-		    "ru": "adminv3 реализовано",
-		    "pt": "adminv3 implementado",
-		    "nl": "adminv3 geïmplementeerd",
-		    "fr": "adminv3 implémenté",
-		    "it": "adminv3 implementato",
-		    "es": "adminv3 implementado",
-		    "pl": "Zaimplementowano adminv3"
-		  }
-		},
+		 "news": {
+				"0.2.1": {
+					"en": "fade duration setting added, colormode Datatype changed from Text to String",
+					"de": "Aenderungsgeschwindigkeit hinzugefügt, colormode Datentyp von Text auf String geändert"
+				},
+				"0.2.0":{
+					"en": "changed library, multizone support",
+					"de": "geänderte Bibliothek, Multizone-Unterstützung",
+					"ru": "измененная библиотека, поддержка нескольких зон",
+					"pt": "biblioteca alterada, suporte a várias zonas",
+					"nl": "veranderde bibliotheek, ondersteuning voor meerdere zones",
+					"fr": "bibliothèque modifiée, prise en charge multizone",
+					"it": "libreria modificata, supporto multizona",
+					"es": "biblioteca modificada, soporte multizona",
+					"pl": "zmieniona biblioteka, obsługa wielu stref",
+					"zh-cn": "更改库，多区域支持"
+				},
+				"0.1.1": {
+					"en": "logo quadratic",
+					"de": "Logo quadratisch",
+					"ru": "логотип квадратичный",
+					"pt": "logotipo quadrático",
+					"nl": "logo kwadratisch",
+					"fr": "logo quadratique",
+					"it": "logo quadratico",
+					"es": "logo cuadrático",
+					"pl": "logo kwadratowe",
+					"zh-cn": "二次方徽标"
+				},
+				"0.1.0": {
+					"en": "compact mode added",
+					"de": "Kompaktmodus hinzugefügt",
+					"ru": "добавлен компактный режим",
+					"pt": "modo compacto adicionado",
+					"nl": "compacte modus toegevoegd",
+					"fr": "mode compact ajouté",
+					"it": "modalità compatta aggiunta",
+					"es": "modo compacto agregado",
+					"pl": "dodano tryb kompaktowy"
+				},
+				"0.0.5": {
+					"en": "adminv3 implemented",
+					"de": "adminv3 implementiert",
+					"ru": "adminv3 реализовано",
+					"pt": "adminv3 implementado",
+					"nl": "adminv3 geïmplementeerd",
+					"fr": "adminv3 implémenté",
+					"it": "adminv3 implementato",
+					"es": "adminv3 implementado",
+					"pl": "Zaimplementowano adminv3"
+				}
+			},
 	"authors": [
             "foxthefox <foxthefox@wysiwis.net>"
         ],
