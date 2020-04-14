@@ -4,8 +4,8 @@
         "version":              "0.2.1",
 		 "news": {
 				"0.2.1": {
-					"en": "fade duration setting added, colormode Datatype changed from Text to String",
-					"de": "Aenderungsgeschwindigkeit hinzugefügt, colormode Datentyp von Text auf String geändert"
+					"en": "fade duration setting added, colormode Datatype changed from Text to String, optimized Light Settings when changing Colormode",
+					"de": "Aenderungsgeschwindigkeit hinzugefügt, colormode Datentyp von Text auf String geändert, Lichteinstellungen bei Wechsel Colormode optimiert"
 				},
 				"0.2.0":{
 					"en": "changed library, multizone support",

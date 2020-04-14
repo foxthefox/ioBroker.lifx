@@ -133,22 +133,30 @@ function startAdapter(options) {
                         else {
                            if (zone === null){        
                                 adapter.getState('Bulb_' + id + '.hue', function (err, obj) {
-                                    client.light(id).color(obj.val, 80, state.val, 3500, dur.val, function (err) { //hue, sat, bright, kelvin, duration
-                                        if (err) {
-                                            adapter.log.debug('Brightness Color adjust ' + id + ' failed');
-                                        }
-                                        adapter.log.debug('Brightness Color adjust ' + id + ' to' + state.val + ' %');
-                                    });
+									adapter.getState('Bulb_' + id + '.sat', function (err, sat) {
+										adapter.getState('Bulb_' + id + '.temp', function (err, tmp) {
+											client.light(id).color(obj.val, sat.val, state.val, tmp.val, dur.val, function (err) { //hue, sat, bright, kelvin, duration
+												if (err) {
+													adapter.log.debug('Brightness Color adjust ' + id + ' failed');
+												}
+												adapter.log.debug('Brightness Color adjust ' + id + ' to' + state.val + ' %');
+											});
+										});
+									});
                                 });
                            }
                            else {
                                  adapter.getState('Bulb_' + id + '.zone_'+zone+'.hue', function (err, obj) {
-                                    client.light(id).colorZones(zone, zone, obj.val, 80, state.val, 3500, dur.val, true, function (err) { //hue, sat, bright, kelvin
-                                        if (err) {
-                                            adapter.log.debug('Brightness Color adjust ' + id + ' in zone ' + zone + ' failed');
-                                        }
-                                        adapter.log.debug('Brightness Color adjust ' + id + ' zone ' + zone + ' to' + state.val + ' %');
-                                    });
+									 adapter.getState('Bulb_' + id + '.zone_'+zone+'.sat', function (err, sat) {
+										adapter.getState('Bulb_' + id + '.zone_'+zone+'.temp', function (err, tmp) {
+											client.light(id).colorZones(zone, zone, obj.val, sat.val, state.val, tmp.val, dur.val, true, function (err) { //hue, sat, bright, kelvin
+												if (err) {
+													adapter.log.debug('Brightness Color adjust ' + id + ' in zone ' + zone + ' failed');
+												}
+												adapter.log.debug('Brightness Color adjust ' + id + ' zone ' + zone + ' to' + state.val + ' %');
+											});
+										});
+									 });
                                 });                              
                            }
                         }
@@ -158,22 +166,30 @@ function startAdapter(options) {
                 if (dp == 'hue') {
                     if (zone === null){
                         adapter.getState('Bulb_' + id + '.sat', function (err, obj) {
-                            client.light(id).color(state.val, obj.val, 80, 3500, dur.val, function (err) { //hue, sat, bright, kelvin
-                                if (err) {
-                                    adapter.log.debug('Coloring light ' + id + ' failed');
-                                }
-                                adapter.log.debug('Coloring light ' + id + ' to: ' + state.val + ' °');
-                                adapter.setState('Bulb_'+ id  +'.colormode', {val: 'color', ack: true});
+							adapter.getState('Bulb_' + id + '.bright', function (err, bri) {
+								adapter.getState('Bulb_' + id + '.temp', function (err, tmp) {
+									client.light(id).color(state.val, obj.val, bri.val, tmp.val, dur.val, function (err) { //hue, sat, bright, kelvin
+										if (err) {
+											adapter.log.debug('Coloring light ' + id + ' failed');
+										}
+										adapter.log.debug('Coloring light ' + id + ' to: ' + state.val + ' °');
+										adapter.setState('Bulb_'+ id  +'.colormode', {val: 'color', ack: true});
+									});
+								});
                             });
                         });
                     }
                     else {
                           adapter.getState('Bulb_' + id + '.zone_'+zone+'.sat', function (err, obj) {
-                            client.light(id).colorZones(zone, zone, state.val, obj.val, 80, 3500, dur.val, true, function (err) { //hue, sat, bright, kelvin
-                                if (err) {
-                                    adapter.log.debug('Coloring light ' + id + ' in zone ' + zone + ' failed');
-                                }
-                                adapter.log.debug('Coloring light ' + id + ' zone ' + zone + ' to: ' + state.val + ' °');
+							  adapter.getState('Bulb_' + id + '.zone_'+zone+'.bright', function (err, bri) {
+								  adapter.getState('Bulb_' + id + '.zone_'+zone+'.temp', function (err, tmp) {
+									client.light(id).colorZones(zone, zone, state.val, obj.val, bri.val, tmp.val, dur.val, true, function (err) { //hue, sat, bright, kelvin
+										if (err) {
+											adapter.log.debug('Coloring light ' + id + ' in zone ' + zone + ' failed');
+										}
+										adapter.log.debug('Coloring light ' + id + ' zone ' + zone + ' to: ' + state.val + ' °');
+									});
+								});
                             });
                         });                      
                     }
@@ -184,22 +200,30 @@ function startAdapter(options) {
                 if (dp == 'sat') {
                     if(zone === null){
                         adapter.getState('Bulb_'+id+'.hue', function(err,obj){
-                            client.light(id).color(obj.val, state.val, 80, 3500, dur.val, function(err) { //hue, sat, bright, kelvin
-                                if (err) {
-                                    adapter.log.debug('Saturation light ' + id  + ' failed');
-                                }
-                                adapter.log.debug('Saturation light ' + id + ' to: '+ state.val+' %');
-                                adapter.setState('Bulb_'+ id  +'.colormode', {val: 'color', ack: true});
+							adapter.getState('Bulb_'+id+'.bright', function(err,bri){
+								adapter.getState('Bulb_'+id+'.temp', function(err,tmp){
+									client.light(id).color(obj.val, state.val, bri.val, tmp.val, dur.val, function(err) { //hue, sat, bright, kelvin
+										if (err) {
+											adapter.log.debug('Saturation light ' + id  + ' failed');
+										}
+										adapter.log.debug('Saturation light ' + id + ' to: '+ state.val+' %');
+										adapter.setState('Bulb_'+ id  +'.colormode', {val: 'color', ack: true});
+									});
+								});
                             });
                         });
                     }
                     else{
                         adapter.getState('Bulb_'+id+'.zone_'+zone+'.hue', function(err,obj){
-                            client.light(id).colorZones(zone, zone, obj.val, state.val, 80, 3500, dur.val, true, function(err) { //hue, sat, bright, kelvin
-                                if (err) {
-                                    adapter.log.debug('Saturation light ' + id  + ' in zone ' + zone + ' failed');
-                                }
-                                adapter.log.debug('Saturation light ' + id + ' zone ' + zone + ' to: '+ state.val+' %');
+							adapter.getState('Bulb_' + id + '.zone_'+zone+'.bright', function (err, bri) {
+								  adapter.getState('Bulb_' + id + '.zone_'+zone+'.temp', function (err, tmp) {
+									client.light(id).colorZones(zone, zone, obj.val, state.val, bri.val, tmp.val, dur.val, true, function(err) { //hue, sat, bright, kelvin
+										if (err) {
+											adapter.log.debug('Saturation light ' + id  + ' in zone ' + zone + ' failed');
+										}
+										adapter.log.debug('Saturation light ' + id + ' zone ' + zone + ' to: '+ state.val+' %');
+									});
+								});
                             });
                         });
                     }
