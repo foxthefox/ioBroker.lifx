@@ -349,7 +349,7 @@ function createBasic(id, label, minK, maxK){
 
                 }
             });
-		adapter.setObject('Bulb_' + light.id + '.duration',
+		adapter.setObject('Bulb_' + id + '.duration',
             {
                 "type": "state",
                 "common": {
