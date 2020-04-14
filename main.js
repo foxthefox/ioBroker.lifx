@@ -191,7 +191,6 @@ function startAdapter(options) {
                                 adapter.log.debug('Saturation light ' + id + ' to: '+ state.val+' %');
                                 adapter.setState('Bulb_'+ id  +'.colormode', {val: 'color', ack: true});
                             });
-
                         });
                     }
                     else{
@@ -206,7 +205,7 @@ function startAdapter(options) {
                     }
         
                 }
-                });
+            
             }
         },
         // is called when databases are connected and adapter received configuration.
