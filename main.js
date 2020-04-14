@@ -58,7 +58,7 @@ function startAdapter(options) {
                         adapter.log.debug('ID: '+ id + 'identified');
                     }
 
-        
+				adapter.getState('Bulb_'+id+'.bright', function(err,dur){
                 if (dp == 'state') {
                     if (state.val == 0) {
                         client.light(id).off(dur.val, function(err) {
@@ -205,7 +205,7 @@ function startAdapter(options) {
                     }
         
                 }
-            
+				});
             }
         },
         // is called when databases are connected and adapter received configuration.
