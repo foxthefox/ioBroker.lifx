@@ -448,7 +448,7 @@ function createColor(id){
                 "type": "state",
                 "common": {
                     "name":  "Licht Colormode",
-                    "type":  "text",
+                    "type":  "string",
                     "role":  "indicator.colormode",
                     "read":  true,
                     "write": true,
