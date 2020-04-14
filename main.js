@@ -133,7 +133,7 @@ function startAdapter(options) {
                         else {
                            if (zone === null){        
                                 adapter.getState('Bulb_' + id + '.hue', function (err, obj) {
-                                    client.light(id).color(obj.val, 80, state.val, 80, dur.val, function (err) { //hue, sat, bright, kelvin, duration
+                                    client.light(id).color(obj.val, 80, state.val, 3500, dur.val, function (err) { //hue, sat, bright, kelvin, duration
                                         if (err) {
                                             adapter.log.debug('Brightness Color adjust ' + id + ' failed');
                                         }
@@ -143,7 +143,7 @@ function startAdapter(options) {
                            }
                            else {
                                  adapter.getState('Bulb_' + id + '.zone_'+zone+'.hue', function (err, obj) {
-                                    client.light(id).colorZones(zone, zone, obj.val, 80, state.val, 80, dur.val, true, function (err) { //hue, sat, bright, kelvin
+                                    client.light(id).colorZones(zone, zone, obj.val, 80, state.val, 3500, dur.val, true, function (err) { //hue, sat, bright, kelvin
                                         if (err) {
                                             adapter.log.debug('Brightness Color adjust ' + id + ' in zone ' + zone + ' failed');
                                         }
