@@ -55,7 +55,7 @@ function startAdapter(options) {
                     }
                 else{
                         id = idy.replace(/Bulb_/g,''); //Bulb 
-                        adapter.log.debug('ID: '+ id + 'identified');
+                        adapter.log.debug('ID: '+ id + ' identified');
                     }
 
 				adapter.getState('Bulb_'+id+'.duration', function(err,dur){
