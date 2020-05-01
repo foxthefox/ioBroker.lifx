@@ -38,7 +38,7 @@ function startAdapter(options) {
         // is called if a subscribed state changes
         stateChange: function (id, state) {
             // Warning, state can be null if it was deleted
-            adapter.log.debug('stateChange ' + id + ' ' + JSON.stringify(state));
+            adapter.log.silly('stateChange ' + id + ' ' + JSON.stringify(state));
         
             // you can use the ack flag to detect if it is status (true) or command (false)
             if (state && !state.ack) {
@@ -562,74 +562,75 @@ function main() {
             if (err) {
                 adapter.log.debug(err);
             }
-
-            
-            light.getState(function(err, state) {
-                if (err) {
-                    adapter.log.debug(err);
-                }
-                createBasic(light.id, state.label, info.productFeatures.temperature_range[0],info.productFeatures.temperature_range[1]);
-                
-                adapter.log.info('Vendor: ' + info.vendorName);
-                adapter.log.info('Product: ' + info.productName);
-                adapter.log.info('Features:' + JSON.stringify(info.productFeatures), '\n');
-                adapter.log.info('Label: ' + state.label);
-                adapter.log.info('Power: ' + (state.power == 1) ? 'on' : 'off');
-                
-                adapter.setState('Bulb_'+ light.id +'.vendor', {val: info.vendorName, ack: true});
-                adapter.setState('Bulb_'+ light.id +'.product', {val: info.productName, ack: true});
-                adapter.setState('Bulb_'+ light.id +'.version', {val: info.version, ack: true});
-                adapter.setState('Bulb_'+ light.id +'.colorLamp', {val: info.productFeatures.color, ack: true});
-                adapter.setState('Bulb_'+ light.id +'.infraredLamp', {val: info.productFeatures.infrared, ack: true});
-                adapter.setState('Bulb_'+ light.id +'.multizoneLamp', {val: info.productFeatures.multizone, ack: true});
-                
-                adapter.setState('Bulb_'+ light.id +'.label', {val: state.label, ack: true});
-                let convertPower = state.power == 1 ? true: false
-                adapter.setState('Bulb_'+ light.id +'.state', {val: convertPower , ack: true});
-				adapter.setState('Bulb_'+ light.id +'.duration', {val: 500, ack: true});
-                adapter.setState('Bulb_'+ light.id +'.bright', {val: state.color.brightness, ack: true});
-                adapter.setState('Bulb_'+ light.id +'.temp', {val: state.color.kelvin, ack: true});
-                adapter.setState('Bulb_'+ light.id  +'.online', {val: true, ack: true}); // because we found the lamp                
-            });
- 
-            if (info.productFeatures.color){
-                createColor(light.id);
-                    light.getState(function(err, state) {
-                        if (err) {
-                            adapter.log.debug(err);
-                        }
-                        else {
-                            adapter.setState('Bulb_'+ light.id +'.hue', {val: state.color.hue, ack: true});
-                            adapter.setState('Bulb_'+ light.id +'.sat', {val: state.color.saturation, ack: true});
-                            adapter.setState('Bulb_'+ light.id  +'.colormode', {val: 'white', ack: true}); // initial setting to white
-                        }
-                    });
-            }
-            if (info.productFeatures.multizone){
-                light.getColorZones(0, 255, function(err, mz) {
-                    if (err) {
-                        adapter.log.debug(err);
-                    }
-                    var mquery = mz.count/8; //je Antwort sind 8 Zonen übermittelt mz.count enthält die Anzahl der Zonen
-                    for (z=0; z<mz.count;z++){
-                        createZone(light.id, z);
-                    }
-                    for (i = 0; i<mquery; i++){
-                        light.getColorZones(i*8, 7+(i*8), function(err, multiz) {
-                            if (err) {
-                                adapter.log.debug(err);
-                            }
-                            adapter.log.info('Multizzone: '+JSON.stringify(multiz));
-                            for (j=0; j<8; j++){
-                                adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.hue', {val: multiz.color[j].hue, ack: true});
-                                adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.sat', {val: multiz.color[j].saturation, ack: true});
-                                adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.bright', {val: multiz.color[j].brightness, ack: true});
-                                adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.temp', {val: multiz.color[j].kelvin, ack: true});            
-                            }
-                        });
-                    }
-                });
-            }
+			else {            
+				light.getState(function(err, state) {
+					if (err) {
+						adapter.log.debug(err);
+					}
+					else {
+						createBasic(light.id, state.label, info.productFeatures.temperature_range[0],info.productFeatures.temperature_range[1]);
+						
+						adapter.log.info('Vendor: ' + info.vendorName);
+						adapter.log.info('Product: ' + info.productName);
+						adapter.log.info('Features:' + JSON.stringify(info.productFeatures), '\n');
+						adapter.log.info('Label: ' + state.label);
+						adapter.log.info('Power: ' + (state.power == 1) ? 'on' : 'off');
+						
+						adapter.setState('Bulb_'+ light.id +'.vendor', {val: info.vendorName, ack: true});
+						adapter.setState('Bulb_'+ light.id +'.product', {val: info.productName, ack: true});
+						adapter.setState('Bulb_'+ light.id +'.version', {val: info.version, ack: true});
+						adapter.setState('Bulb_'+ light.id +'.colorLamp', {val: info.productFeatures.color, ack: true});
+						adapter.setState('Bulb_'+ light.id +'.infraredLamp', {val: info.productFeatures.infrared, ack: true});
+						adapter.setState('Bulb_'+ light.id +'.multizoneLamp', {val: info.productFeatures.multizone, ack: true});
+						
+						adapter.setState('Bulb_'+ light.id +'.label', {val: state.label, ack: true});
+						let convertPower = state.power == 1 ? true: false
+						adapter.setState('Bulb_'+ light.id +'.state', {val: convertPower , ack: true});
+						adapter.setState('Bulb_'+ light.id +'.duration', {val: 500, ack: true});
+						adapter.setState('Bulb_'+ light.id +'.bright', {val: state.color.brightness, ack: true});
+						adapter.setState('Bulb_'+ light.id +'.temp', {val: state.color.kelvin, ack: true});
+						adapter.setState('Bulb_'+ light.id  +'.online', {val: true, ack: true}); // because we found the lamp     
+					}
+					if (info.productFeatures.color){
+						createColor(light.id);
+							light.getState(function(err, state) {
+								if (err) {
+									adapter.log.debug(err);
+								}
+								else {
+									adapter.setState('Bulb_'+ light.id +'.hue', {val: state.color.hue, ack: true});
+									adapter.setState('Bulb_'+ light.id +'.sat', {val: state.color.saturation, ack: true});
+									adapter.setState('Bulb_'+ light.id  +'.colormode', {val: 'white', ack: true}); // initial setting to white
+								}
+							});
+					}
+					if (info.productFeatures.multizone){
+						light.getColorZones(0, 255, function(err, mz) {
+							if (err) {
+								adapter.log.debug(err);
+							}
+							var mquery = mz.count/8; //je Antwort sind 8 Zonen übermittelt mz.count enthält die Anzahl der Zonen
+							for (z=0; z<mz.count;z++){
+								createZone(light.id, z);
+							}
+							for (i = 0; i<mquery; i++){
+								light.getColorZones(i*8, 7+(i*8), function(err, multiz) {
+									if (err) {
+										adapter.log.debug(err);
+									}
+									adapter.log.info('Multizzone: '+JSON.stringify(multiz));
+									for (j=0; j<8; j++){
+										adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.hue', {val: multiz.color[j].hue, ack: true});
+										adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.sat', {val: multiz.color[j].saturation, ack: true});
+										adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.bright', {val: multiz.color[j].brightness, ack: true});
+										adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.temp', {val: multiz.color[j].kelvin, ack: true});            
+									}
+								});
+							}
+						});
+					}
+				});	
+			}
         });
         // if multzone the create zones and their colors, and start/end zone index
     });
@@ -677,20 +678,20 @@ function main() {
             });
             light.getHardwareVersion(function(err, info) {
                 if (err) {
-                    adapter.log.debug(err);
+                    adapter.log.error('Failed cyclic HW Ver. update for ' + light.id + ' : ' + err);
                 }
-                if (info.productFeatures.multizone){
+                else if (info.productFeatures.multizone){
                     light.getColorZones(0, 255, function(err, mz) {
                         if (err) {
-                            adapter.log.debug(err);
+                            adapter.log.error('Failed cyclic Color Zones update for ' + light.id + ' : ' + err);
                         }
                         var mquery = mz.count/8; //je Antwort sind 8 Zonen übermittelt mz.count enthält die Anzahl der Zonen
                         for (i = 0; i<mquery; i++){
                             light.getColorZones(i*8, 7+(i*8), function(err, multiz) {
                                 if (err) {
-                                    adapter.log.debug(err);
+                                    adapter.log.error('Failed cyclic Color Zones >8 update for ' + light.id + ' : ' + err);
                                 }
-                                adapter.log.debug('Multizzone: '+JSON.stringify(multiz));
+                                adapter.log.silly('Multizzone: '+JSON.stringify(multiz));
                                 for (j=0; j<8; j++){
                                     adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.hue', {val: multiz.color[j].hue, ack: true});
                                     adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.sat', {val: multiz.color[j].saturation, ack: true});
@@ -704,6 +705,7 @@ function main() {
             });
          });
      }
+	 
      pollLifxData();
 
 }
