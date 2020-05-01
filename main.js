@@ -574,7 +574,7 @@ function main() {
 						adapter.log.info('Product: ' + info.productName);
 						adapter.log.info('Features:' + JSON.stringify(info.productFeatures), '\n');
 						adapter.log.info('Label: ' + state.label);
-						adapter.log.info('Power: ' + (state.power == 1) ? 'on' : 'off');
+						adapter.log.info('Power: ' + ((state.power == 1) ? 'on' : 'off'));
 						
 						adapter.setState('Bulb_'+ light.id +'.vendor', {val: info.vendorName, ack: true});
 						adapter.setState('Bulb_'+ light.id +'.product', {val: info.productName, ack: true});
