@@ -690,7 +690,7 @@ function main() {
                                 if (err) {
                                     adapter.log.debug(err);
                                 }
-                                adapter.log.info('Multizzone: '+JSON.stringify(multiz));
+                                adapter.log.debug('Multizzone: '+JSON.stringify(multiz));
                                 for (j=0; j<8; j++){
                                     adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.hue', {val: multiz.color[j].hue, ack: true});
                                     adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.sat', {val: multiz.color[j].saturation, ack: true});
