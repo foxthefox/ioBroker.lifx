@@ -609,23 +609,27 @@ function main() {
 							if (err) {
 								adapter.log.debug(err);
 							}
-							var mquery = mz.count/8; //je Antwort sind 8 Zonen übermittelt mz.count enthält die Anzahl der Zonen
-							for (z=0; z<mz.count;z++){
-								createZone(light.id, z);
-							}
-							for (i = 0; i<mquery; i++){
-								light.getColorZones(i*8, 7+(i*8), function(err, multiz) {
-									if (err) {
-										adapter.log.debug(err);
-									}
-									adapter.log.info('Multizzone: '+JSON.stringify(multiz));
-									for (j=0; j<8; j++){
-										adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.hue', {val: multiz.color[j].hue, ack: true});
-										adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.sat', {val: multiz.color[j].saturation, ack: true});
-										adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.bright', {val: multiz.color[j].brightness, ack: true});
-										adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.temp', {val: multiz.color[j].kelvin, ack: true});            
-									}
-								});
+							else {
+								var mquery = mz.count/8; //je Antwort sind 8 Zonen übermittelt mz.count enthält die Anzahl der Zonen
+								for (z=0; z<mz.count;z++){
+									createZone(light.id, z);
+								}
+								for (i = 0; i<mquery; i++){
+									light.getColorZones(i*8, 7+(i*8), function(err, multiz) {
+										if (err) {
+											adapter.log.debug(err);
+										}
+										else {
+											adapter.log.info('Multizzone: '+JSON.stringify(multiz));
+											for (j=0; j<8; j++){
+												adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.hue', {val: multiz.color[j].hue, ack: true});
+												adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.sat', {val: multiz.color[j].saturation, ack: true});
+												adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.bright', {val: multiz.color[j].brightness, ack: true});
+												adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.temp', {val: multiz.color[j].kelvin, ack: true});            
+											}
+										}	
+									});
+								}
 							}
 						});
 					}
@@ -685,21 +689,25 @@ function main() {
                         if (err) {
                             adapter.log.error('Failed cyclic Color Zones update for ' + light.id + ' : ' + err);
                         }
-                        var mquery = mz.count/8; //je Antwort sind 8 Zonen übermittelt mz.count enthält die Anzahl der Zonen
-                        for (i = 0; i<mquery; i++){
-                            light.getColorZones(i*8, 7+(i*8), function(err, multiz) {
-                                if (err) {
-                                    adapter.log.error('Failed cyclic Color Zones >8 update for ' + light.id + ' : ' + err);
-                                }
-                                adapter.log.silly('Multizzone: '+JSON.stringify(multiz));
-                                for (j=0; j<8; j++){
-                                    adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.hue', {val: multiz.color[j].hue, ack: true});
-                                    adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.sat', {val: multiz.color[j].saturation, ack: true});
-                                    adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.bright', {val: multiz.color[j].brightness, ack: true});
-                                    adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.temp', {val: multiz.color[j].kelvin, ack: true});            
-                                }
-                            });
-                        }
+						else {
+							var mquery = mz.count/8; //je Antwort sind 8 Zonen übermittelt mz.count enthält die Anzahl der Zonen
+							for (i = 0; i<mquery; i++){
+								light.getColorZones(i*8, 7+(i*8), function(err, multiz) {
+									if (err) {
+										adapter.log.error('Failed cyclic Color Zones >8 update for ' + light.id + ' : ' + err);
+									}
+									else {
+										adapter.log.silly('Multizzone: '+JSON.stringify(multiz));
+										for (j=0; j<8; j++){
+											adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.hue', {val: multiz.color[j].hue, ack: true});
+											adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.sat', {val: multiz.color[j].saturation, ack: true});
+											adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.bright', {val: multiz.color[j].brightness, ack: true});
+											adapter.setState('Bulb_'+ light.id +'.zone_'+parseInt(j+multiz.index)+'.temp', {val: multiz.color[j].kelvin, ack: true});            
+										}
+									}
+								});
+							}
+						}
                     });
                 }
             });
