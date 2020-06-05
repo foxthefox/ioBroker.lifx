@@ -64,8 +64,8 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 
 ## Changelog:
 ### 0.2.1 x
-- (Jarvis) errorhandling improvements
-- (Jarvis) fade time
+- (Jarvis020) errorhandling improvements
+- (Jarvis020) fade time
 
 ### 0.2.0
 - lifx-lan-client library instead node-lifx
