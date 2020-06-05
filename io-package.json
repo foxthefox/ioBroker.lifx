@@ -5,7 +5,16 @@
 		 "news": {
 				"0.2.1": {
 					"en": "fade duration setting added, colormode Datatype changed from Text to String, optimized Light Settings when changing Colormode",
-					"de": "Aenderungsgeschwindigkeit hinzugefügt, colormode Datentyp von Text auf String geändert, Lichteinstellungen bei Wechsel Colormode optimiert"
+				    "de": "Einstellung der Überblendungsdauer hinzugefügt, Datentyp des Farbmodus von Text in Zeichenfolge geändert, Lichteinstellungen beim Ändern des Farbmodus optimiert",
+				    "ru": "добавлена настройка длительности затухания, тип данных colormode изменен с Text на String, оптимизированы настройки освещения при изменении Colormode",
+				    "pt": "definição da duração do desbotamento adicionada, tipo de dados colormode alterado de Texto para String, configurações de luz otimizadas ao alterar o modo de cor",
+				    "nl": "fade duur instelling toegevoegd, colormode Datatype veranderd van Text naar String, geoptimaliseerde Light Settings bij het veranderen van Colormode",
+				    "fr": "le paramètre de durée de fondu a été ajouté, le type de données du colormode est passé de Text à String, les paramètres d'éclairage optimisés lors du changement de Colormode",
+				    "it": "aggiunta impostazione della durata della dissolvenza, tipo di dati Tipo di dati modificato da Testo a stringa, Impostazioni luce ottimizzate quando si cambia Colormode",
+				    "es": "Se agregó la configuración de duración de desvanecimiento, el modo de datos de colormode cambió de texto a cadena, la configuración de luz optimizada al cambiar el modo de color",
+				    "pl": "dodano ustawienie czasu trwania zanikania, zmieniono typ danych Typ koloru z Tekst na Ciąg, zoptymalizowano Ustawienia Światła przy zmianie Trybu Koloru",
+				    "zh-cn": "添加了淡入淡出时间设置，将颜色模式的数据类型从“文本”更改为“字符串”，更改了颜色模式时优化了“灯光设置”"
+					    
 				},
 				"0.2.0":{
 					"en": "changed library, multizone support",
