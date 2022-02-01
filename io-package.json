@@ -77,15 +77,16 @@
 		"authors": [ "foxthefox <foxthefox@wysiwis.net>" ],
 		"title": "lifx",
 		"titleLang": {
-			"en": "lifx adapter",
-			"de": "lifx Adapter",
-			"ru": "адаптер lifx",
-			"pt": "adaptador lifx",
-			"nl": "lifx-adapter",
-			"fr": "adaptateur lifx",
-			"it": "adattatore lifx",
-			"es": "adaptador lifx",
-			"pl": "Adapter lifx"
+			"en": "lifx lamps",
+			"de": "lifx-Lampen",
+			"ru": "лифкс лампы",
+			"pt": "lâmpadas lifx",
+			"nl": "lifx lampen",
+			"fr": "lampes lifx",
+			"it": "lampade a lume di candela",
+			"es": "lámparas lifx",
+			"pl": "lampy lifx",
+			"zh-cn": "升降灯"
 		},
 		"desc": {
 			"en": "lifx lamp adaptor",
