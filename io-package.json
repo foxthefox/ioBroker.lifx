@@ -1,119 +1,129 @@
 {
-    "common": {
-        "name":                 "lifx",
-        "version":              "0.2.1",
-		 "news": {
-				"0.2.1": {
-					"en": "fade duration setting added, colormode Datatype changed from Text to String, optimized Light Settings when changing Colormode",
-				    "de": "Einstellung der Überblendungsdauer hinzugefügt, Datentyp des Farbmodus von Text in Zeichenfolge geändert, Lichteinstellungen beim Ändern des Farbmodus optimiert",
-				    "ru": "добавлена настройка длительности затухания, тип данных colormode изменен с Text на String, оптимизированы настройки освещения при изменении Colormode",
-				    "pt": "definição da duração do desbotamento adicionada, tipo de dados colormode alterado de Texto para String, configurações de luz otimizadas ao alterar o modo de cor",
-				    "nl": "fade duur instelling toegevoegd, colormode Datatype veranderd van Text naar String, geoptimaliseerde Light Settings bij het veranderen van Colormode",
-				    "fr": "le paramètre de durée de fondu a été ajouté, le type de données du colormode est passé de Text à String, les paramètres d'éclairage optimisés lors du changement de Colormode",
-				    "it": "aggiunta impostazione della durata della dissolvenza, tipo di dati Tipo di dati modificato da Testo a stringa, Impostazioni luce ottimizzate quando si cambia Colormode",
-				    "es": "Se agregó la configuración de duración de desvanecimiento, el modo de datos de colormode cambió de texto a cadena, la configuración de luz optimizada al cambiar el modo de color",
-				    "pl": "dodano ustawienie czasu trwania zanikania, zmieniono typ danych Typ koloru z Tekst na Ciąg, zoptymalizowano Ustawienia Światła przy zmianie Trybu Koloru",
-				    "zh-cn": "添加了淡入淡出时间设置，将颜色模式的数据类型从“文本”更改为“字符串”，更改了颜色模式时优化了“灯光设置”"
-					    
-				},
-				"0.2.0":{
-					"en": "changed library, multizone support",
-					"de": "geänderte Bibliothek, Multizone-Unterstützung",
-					"ru": "измененная библиотека, поддержка нескольких зон",
-					"pt": "biblioteca alterada, suporte a várias zonas",
-					"nl": "veranderde bibliotheek, ondersteuning voor meerdere zones",
-					"fr": "bibliothèque modifiée, prise en charge multizone",
-					"it": "libreria modificata, supporto multizona",
-					"es": "biblioteca modificada, soporte multizona",
-					"pl": "zmieniona biblioteka, obsługa wielu stref",
-					"zh-cn": "更改库，多区域支持"
-				},
-				"0.1.1": {
-					"en": "logo quadratic",
-					"de": "Logo quadratisch",
-					"ru": "логотип квадратичный",
-					"pt": "logotipo quadrático",
-					"nl": "logo kwadratisch",
-					"fr": "logo quadratique",
-					"it": "logo quadratico",
-					"es": "logo cuadrático",
-					"pl": "logo kwadratowe",
-					"zh-cn": "二次方徽标"
-				},
-				"0.1.0": {
-					"en": "compact mode added",
-					"de": "Kompaktmodus hinzugefügt",
-					"ru": "добавлен компактный режим",
-					"pt": "modo compacto adicionado",
-					"nl": "compacte modus toegevoegd",
-					"fr": "mode compact ajouté",
-					"it": "modalità compatta aggiunta",
-					"es": "modo compacto agregado",
-					"pl": "dodano tryb kompaktowy"
-				},
-				"0.0.5": {
-					"en": "adminv3 implemented",
-					"de": "adminv3 implementiert",
-					"ru": "adminv3 реализовано",
-					"pt": "adminv3 implementado",
-					"nl": "adminv3 geïmplementeerd",
-					"fr": "adminv3 implémenté",
-					"it": "adminv3 implementato",
-					"es": "adminv3 implementado",
-					"pl": "Zaimplementowano adminv3"
-				}
+	"common": {
+		"name": "lifx",
+		"version": "1.0.0",
+		"news": {
+			"1.0.0": {
+				"en": "refactoring to classbased adapter, github actions",
+				"de": "Refactoring auf klassenbasierten Adapter, Github-Aktionen",
+				"ru": "рефакторинг для адаптера на основе классов, действия github",
+				"pt": "refatoração para adaptador baseado em classe, ações do github",
+				"nl": "refactoring naar klassegebaseerde adapter, github-acties",
+				"fr": "refactorisation vers un adaptateur basé sur les classes, actions github",
+				"it": "refactoring su adattatore basato su classi, azioni github",
+				"es": "refactorización a adaptador basado en clases, acciones de github",
+				"pl": "refaktoryzacja do adaptera klasowego, akcje github",
+				"zh-cn": "重构为基于类的适配器，github 操作"
 			},
-	"authors": [
-            "foxthefox <foxthefox@wysiwis.net>"
-        ],
-        "title":                "lifx",
-	"titleLang": {
-		    "en": "lifx adapter",
-		    "de": "lifx Adapter",
-		    "ru": "адаптер lifx",
-		    "pt": "adaptador lifx",
-		    "nl": "lifx-adapter",
-		    "fr": "adaptateur lifx",
-		    "it": "adattatore lifx",
-		    "es": "adaptador lifx",
-		    "pl": "Adapter lifx"
+			"0.2.1": {
+				"en": "fade duration setting added, colormode Datatype changed from Text to String, optimized Light Settings when changing Colormode",
+				"de": "Einstellung der Überblendungsdauer hinzugefügt, Datentyp des Farbmodus von Text in Zeichenfolge geändert, Lichteinstellungen beim Ändern des Farbmodus optimiert",
+				"ru": "добавлена настройка длительности затухания, тип данных colormode изменен с Text на String, оптимизированы настройки освещения при изменении Colormode",
+				"pt": "definição da duração do desbotamento adicionada, tipo de dados colormode alterado de Texto para String, configurações de luz otimizadas ao alterar o modo de cor",
+				"nl": "fade duur instelling toegevoegd, colormode Datatype veranderd van Text naar String, geoptimaliseerde Light Settings bij het veranderen van Colormode",
+				"fr": "le paramètre de durée de fondu a été ajouté, le type de données du colormode est passé de Text à String, les paramètres d'éclairage optimisés lors du changement de Colormode",
+				"it": "aggiunta impostazione della durata della dissolvenza, tipo di dati Tipo di dati modificato da Testo a stringa, Impostazioni luce ottimizzate quando si cambia Colormode",
+				"es": "Se agregó la configuración de duración de desvanecimiento, el modo de datos de colormode cambió de texto a cadena, la configuración de luz optimizada al cambiar el modo de color",
+				"pl": "dodano ustawienie czasu trwania zanikania, zmieniono typ danych Typ koloru z Tekst na Ciąg, zoptymalizowano Ustawienia Światła przy zmianie Trybu Koloru",
+				"zh-cn": "添加了淡入淡出时间设置，将颜色模式的数据类型从“文本”更改为“字符串”，更改了颜色模式时优化了“灯光设置”"
+			},
+			"0.2.0": {
+				"en": "changed library, multizone support",
+				"de": "geänderte Bibliothek, Multizone-Unterstützung",
+				"ru": "измененная библиотека, поддержка нескольких зон",
+				"pt": "biblioteca alterada, suporte a várias zonas",
+				"nl": "veranderde bibliotheek, ondersteuning voor meerdere zones",
+				"fr": "bibliothèque modifiée, prise en charge multizone",
+				"it": "libreria modificata, supporto multizona",
+				"es": "biblioteca modificada, soporte multizona",
+				"pl": "zmieniona biblioteka, obsługa wielu stref",
+				"zh-cn": "更改库，多区域支持"
+			},
+			"0.1.1": {
+				"en": "logo quadratic",
+				"de": "Logo quadratisch",
+				"ru": "логотип квадратичный",
+				"pt": "logotipo quadrático",
+				"nl": "logo kwadratisch",
+				"fr": "logo quadratique",
+				"it": "logo quadratico",
+				"es": "logo cuadrático",
+				"pl": "logo kwadratowe",
+				"zh-cn": "二次方徽标"
+			},
+			"0.1.0": {
+				"en": "compact mode added",
+				"de": "Kompaktmodus hinzugefügt",
+				"ru": "добавлен компактный режим",
+				"pt": "modo compacto adicionado",
+				"nl": "compacte modus toegevoegd",
+				"fr": "mode compact ajouté",
+				"it": "modalità compatta aggiunta",
+				"es": "modo compacto agregado",
+				"pl": "dodano tryb kompaktowy"
+			},
+			"0.0.5": {
+				"en": "adminv3 implemented",
+				"de": "adminv3 implementiert",
+				"ru": "adminv3 реализовано",
+				"pt": "adminv3 implementado",
+				"nl": "adminv3 geïmplementeerd",
+				"fr": "adminv3 implémenté",
+				"it": "adminv3 implementato",
+				"es": "adminv3 implementado",
+				"pl": "Zaimplementowano adminv3"
+			}
+		},
+		"authors": [ "foxthefox <foxthefox@wysiwis.net>" ],
+		"title": "lifx",
+		"titleLang": {
+			"en": "lifx adapter",
+			"de": "lifx Adapter",
+			"ru": "адаптер lifx",
+			"pt": "adaptador lifx",
+			"nl": "lifx-adapter",
+			"fr": "adaptateur lifx",
+			"it": "adattatore lifx",
+			"es": "adaptador lifx",
+			"pl": "Adapter lifx"
+		},
+		"desc": {
+			"en": "lifx lamp adaptor",
+			"de": "Lifx-Lampenadapter",
+			"ru": "адаптер светильника lifx",
+			"pt": "adaptador de lâmpada lifx",
+			"nl": "lifx-lampadapter",
+			"fr": "adaptateur de lampe lifx",
+			"it": "adattatore per lampada lifx",
+			"es": "adaptador de lámpara lifx",
+			"pl": "adapter lampy Lifx",
+			"zh-cn": "lifx灯适配器"
+		},
+		"platform": "Javascript/Node.js",
+		"main": "main.js",
+		"mode": "daemon",
+		"materialize": true,
+		"compact": true,
+		"license": "MIT",
+		"keywords": [ "lifx", "light" ],
+		"type": "lighting",
+		"icon": "lifx_logo.png",
+		"extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.lifx/master/admin/lifx_logo.png",
+		"readme": "https://github.com/foxthefox/ioBroker.lifx/blob/master/README.md",
+		"loglevel": "info",
+		"noConfig": false,
+		"connectionType": "local",
+		"dataSource": "poll",
+		"restartAdapters": [ "vis" ],
+		"dependencies": [
+			{
+				"js-controller": ">=2.0.0"
+			}
+		]
 	},
-	"desc": {
-	    "en": "lifx lamp adaptor",
-	    "de": "Lifx-Lampenadapter",
-	    "ru": "адаптер светильника lifx",
-	    "pt": "adaptador de lâmpada lifx",
-	    "nl": "lifx-lampadapter",
-	    "fr": "adaptateur de lampe lifx",
-	    "it": "adattatore per lampada lifx",
-	    "es": "adaptador de lámpara lifx",
-	    "pl": "adapter lampy Lifx",
-	    "zh-cn": "lifx灯适配器"
-	  },
-        "platform":             "Javascript/Node.js",
-        "mode":                 "daemon",
-	"materialize":		true,
-	"compact": 		true,
-        "license": 	   	"MIT",
-        "keywords":		["lifx", "light"],
-        "type":			"lighting",
-        "icon":                 "lifx_logo.png",
-	"extIcon":          	"https://raw.githubusercontent.com/foxthefox/ioBroker.lifx/master/admin/lifx_logo.png",
-	"readme":           	"https://github.com/foxthefox/ioBroker.lifx/blob/master/README.md",
-	"loglevel":		"info",
-	"noConfig": 		false,
-	"connectionType": "local",
-        "dataSource": "poll",
-    	"restartAdapters":          ["vis"]	    
-
-    },
-      "native": {
-	      "lifx_interval": 30
-    },
-    "objects": [
-
-    ],
-    "instanceObjects": [
-
-    ]
+	"native": {
+		"lifx_interval": 30
+	},
+	"objects": [],
+	"instanceObjects": []
 }
