@@ -193,7 +193,9 @@ class Lifx extends utils.Adapter {
 			const address = client.address();
 			this.log.info('Started LIFX listening on ' + address.address + ':' + address.port + '\n');
 		});
-		client.init();
+		client.init({ debug: true }, () => {
+			this.log.info('Client started');
+		});
 
 		this.pollLifxData();
 
@@ -208,13 +210,13 @@ class Lifx extends utils.Adapter {
 	}
 
 	async pollLifxData() {
-		const lifx_interval = parseInt(this.config.lifx_interval, 10) || 30;
+		const lifx_interval = 30; // this.config.lifx_interval || 30;
 		await this.updateDevices();
 		this.log.debug('polling! lifx is alive');
 		lifxTimeout = setTimeout(this.pollLifxData, lifx_interval * 1000);
 	}
 	async updateDevices() {
-		client.lights().forEach(async (light) => {
+		client.lights('').forEach(async (light) => {
 			light.getState(async (err, info) => {
 				if (err) {
 					this.log.error('Failed cyclic update for ' + light.id);
