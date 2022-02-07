@@ -216,7 +216,7 @@ class Lifx extends utils.Adapter {
 		lifxTimeout = setTimeout(this.pollLifxData, lifx_interval * 1000);
 	}
 	async updateDevices() {
-		client.lights('').forEach(async (light) => {
+		client.lights().forEach(async (light) => {
 			light.getState(async (err, info) => {
 				if (err) {
 					this.log.error('Failed cyclic update for ' + light.id);
