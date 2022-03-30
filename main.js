@@ -657,7 +657,7 @@ class Lifx extends utils.Adapter {
 
 					if (dp == 'bright') {
 						this.getState('Bulb_' + id + '.colormode', (err, mode) => {
-							if (mode.val === 'white') {
+							if (!mode || mode.val === 'white') {
 								if (zone === null) {
 									this.getState('Bulb_' + id + '.temp', (err, obj) => {
 										client.light(id).color(0, 0, state.val, obj.val, dur.val, (err) => {
