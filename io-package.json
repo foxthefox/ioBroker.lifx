@@ -1,8 +1,20 @@
 {
 	"common": {
 		"name": "lifx",
-		"version": "1.0.0",
+		"version": "1.0.1",
 		"news": {
+			"1.0.1": {
+				"en": "bugfix (context \"this\" in timeout)",
+				"de": "Bugfix (Kontext \"this\" im Timeout)",
+				"ru": "исправление (контекст \"это\" в тайм-ауте)",
+				"pt": "correção de bug (contexto \"isto\" no tempo limite)",
+				"nl": "bugfix (context \"dit\" in time-out)",
+				"fr": "correction de bug (contexte \"ceci\" dans le délai d'attente)",
+				"it": "bugfix (contesto \"questo\" in timeout)",
+				"es": "corrección de errores (contexto \"esto\" en el tiempo de espera)",
+				"pl": "poprawka błędu (kontekst „this” w czasie oczekiwania)",
+				"zh-cn": "错误修复（超时中的上下文“this”）"
+			},
 			"1.0.0": {
 				"en": "refactoring to classbased adapter, github actions",
 				"de": "Refactoring auf klassenbasierten Adapter, Github-Aktionen",

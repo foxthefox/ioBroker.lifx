@@ -213,7 +213,9 @@ class Lifx extends utils.Adapter {
 		const lifx_interval = 30; // this.config.lifx_interval || 30;
 		await this.updateDevices();
 		this.log.debug('polling! lifx is alive');
-		lifxTimeout = setTimeout(this.pollLifxData, lifx_interval * 1000);
+		lifxTimeout = setTimeout(() => {
+			this.pollLifxData;
+		}, lifx_interval * 1000);
 	}
 	async updateDevices() {
 		client.lights().forEach(async (light) => {
