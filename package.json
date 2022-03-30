@@ -1,6 +1,6 @@
 {
 	"name": "iobroker.lifx",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "ioBroker lifx Adapter",
 	"author": {
 		"name": "@@foxthefox@@",
@@ -14,11 +14,7 @@
 	],
 	"homepage": "https://github.com/foxthefox/ioBroker.lifx",
 	"license": "MIT",
-	"keywords": [
-		"ioBroker",
-		"light",
-		"lifx"
-	],
+	"keywords": [ "ioBroker", "light", "lifx" ],
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/foxthefox/ioBroker.lifx"
