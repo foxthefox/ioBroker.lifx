@@ -63,6 +63,7 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 ## Changelog:
 ### 1.0.1
 * bugfix, conext of 'this' in timeout
+* Null exception with B/W bulb issue#23
 
 ### 1.0.0
 * refactoring, change to class based structure of the adapter
