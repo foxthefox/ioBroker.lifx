@@ -21,7 +21,7 @@
 	},
 	"dependencies": {
 		"lifx-lan-client": "^1.1.0",
-		"@iobroker/adapter-core": "^2.6.0"
+		"@iobroker/adapter-core": "^2.6.6"
 	},
 	"devDependencies": {
     "@alcalzone/release-script": "^3.5.9",	
