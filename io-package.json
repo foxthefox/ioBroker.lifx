@@ -1,8 +1,12 @@
 {
 	"common": {
 		"name": "lifx",
-		"version": "1.0.1",
+		"version": "1.0.2",
 		"news": {
+			"1.0.2": {
+				"en": "bugfix no label caused crashing",
+				"de": "Bugfix no label führte zum Absturz"
+			},
 			"1.0.1": {
 				"en": "bugfix (context \"this\" in timeout)",
 				"de": "Bugfix (Kontext \"this\" im Timeout)",
