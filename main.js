@@ -28,7 +28,6 @@ class Lifx extends utils.Adapter {
 		// this.on('objectChange', this.onObjectChange.bind(this));
 		// this.on('message', this.onMessage.bind(this));
 		this.on('unload', this.onUnload.bind(this));
-		this.plc = null;
 	}
 
 	/**
@@ -42,15 +41,15 @@ class Lifx extends utils.Adapter {
 			this.log.info('IP: ' + light.address + ':' + light.port);
 			light.getHardwareVersion(async (err, info) => {
 				if (err) {
-					this.log.debug(err);
+					this.log.error('Failed calling getHardwareVersion :' + err);
 				} else {
 					light.getState(async (err, state) => {
 						if (err) {
-							this.log.debug(err);
+							this.log.debug('Failed calling getState :' + err);
 						} else {
 							await this.createBasic(
 								light.id,
-								state.label,
+								state.label || 'no label',
 								info.productFeatures.temperature_range[0],
 								info.productFeatures.temperature_range[1]
 							);
@@ -200,13 +199,6 @@ class Lifx extends utils.Adapter {
 		this.pollLifxData();
 
 		this.subscribeStates('*');
-
-		// examples for the checkPassword/checkGroup functions
-		let result = await this.checkPasswordAsync('admin', 'iobroker');
-		this.log.info('check user admin pw iobroker: ' + result);
-
-		result = await this.checkGroupAsync('admin', 'admin');
-		this.log.info('check group user admin group admin: ' + result);
 	}
 
 	async pollLifxData() {
@@ -585,7 +577,7 @@ class Lifx extends utils.Adapter {
 	async onStateChange(id, state) {
 		if (state) {
 			// The state was changed
-			this.log.info(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
+			this.log.debug(`state ${id} changed: ${state.val} (ack = ${state.ack})`);
 			if (state && !state.ack) {
 				this.log.debug('ack is not set! -> command');
 				const tmp = id.split('.');
