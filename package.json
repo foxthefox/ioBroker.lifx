@@ -20,7 +20,7 @@
 		"url": "https://github.com/foxthefox/ioBroker.lifx"
 	},
 	"dependencies": {
-		"lifx-lan-client": "^1.1.0",
+		"lifx-lan-client": "^2.1.0",
 		"@iobroker/adapter-core": "^2.6.8"
 	},
 	"devDependencies": {
