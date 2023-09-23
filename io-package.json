@@ -1,11 +1,23 @@
 {
 	"common": {
 		"name": "lifx",
-		"version": "1.0.2",
+		"version": "1.0.3",
 		"news": {
+			"1.0.3": {
+				"en": "translation with adapter-dev"
+			},
 			"1.0.2": {
 				"en": "bugfix no label caused crashing",
-				"de": "Bugfix no label führte zum Absturz"
+				"de": "Bugfix no label führte zum Absturz",
+				"ru": "исправление ошибки: отсутствие метки приводило к сбою",
+				"pt": "correção de bug nenhum rótulo causou travamento",
+				"nl": "bugfix geen label veroorzaakte een crash",
+				"fr": "correction d'un bug, aucune étiquette ne provoquait un crash",
+				"it": "bugfix: nessuna etichetta causava arresti anomali",
+				"es": "corrección de errores sin etiqueta provocó un bloqueo",
+				"pl": "poprawka błędu Brak etykiety spowodował awarię",
+				"uk": "виправлення помилки відсутність мітки викликало збій",
+				"zh-cn": "修复没有标签导致崩溃的bug"
 			},
 			"1.0.1": {
 				"en": "bugfix (context \"this\" in timeout)",
@@ -17,7 +29,8 @@
 				"it": "bugfix (contesto \"questo\" in timeout)",
 				"es": "corrección de errores (contexto \"esto\" en el tiempo de espera)",
 				"pl": "poprawka błędu (kontekst „this” w czasie oczekiwania)",
-				"zh-cn": "错误修复（超时中的上下文“this”）"
+				"zh-cn": "错误修复（超时中的上下文“this”）",
+				"uk": "виправлення помилки (контекст \"this\" під час очікування)"
 			},
 			"1.0.0": {
 				"en": "refactoring to classbased adapter, github actions",
@@ -29,7 +42,8 @@
 				"it": "refactoring su adattatore basato su classi, azioni github",
 				"es": "refactorización a adaptador basado en clases, acciones de github",
 				"pl": "refaktoryzacja do adaptera klasowego, akcje github",
-				"zh-cn": "重构为基于类的适配器，github 操作"
+				"zh-cn": "重构为基于类的适配器，github 操作",
+				"uk": "рефакторинг до адаптера на основі класів, дії github"
 			},
 			"0.2.1": {
 				"en": "fade duration setting added, colormode Datatype changed from Text to String, optimized Light Settings when changing Colormode",
@@ -41,7 +55,8 @@
 				"it": "aggiunta impostazione della durata della dissolvenza, tipo di dati Tipo di dati modificato da Testo a stringa, Impostazioni luce ottimizzate quando si cambia Colormode",
 				"es": "Se agregó la configuración de duración de desvanecimiento, el modo de datos de colormode cambió de texto a cadena, la configuración de luz optimizada al cambiar el modo de color",
 				"pl": "dodano ustawienie czasu trwania zanikania, zmieniono typ danych Typ koloru z Tekst na Ciąg, zoptymalizowano Ustawienia Światła przy zmianie Trybu Koloru",
-				"zh-cn": "添加了淡入淡出时间设置，将颜色模式的数据类型从“文本”更改为“字符串”，更改了颜色模式时优化了“灯光设置”"
+				"zh-cn": "添加了淡入淡出时间设置，将颜色模式的数据类型从“文本”更改为“字符串”，更改了颜色模式时优化了“灯光设置”",
+				"uk": "додано налаштування тривалості згасання, тип даних colormode змінено з Text на String, оптимізовані параметри Light під час зміни Colormode"
 			},
 			"0.2.0": {
 				"en": "changed library, multizone support",
@@ -53,7 +68,8 @@
 				"it": "libreria modificata, supporto multizona",
 				"es": "biblioteca modificada, soporte multizona",
 				"pl": "zmieniona biblioteka, obsługa wielu stref",
-				"zh-cn": "更改库，多区域支持"
+				"zh-cn": "更改库，多区域支持",
+				"uk": "змінена бібліотека, підтримка мультизон"
 			},
 			"0.1.1": {
 				"en": "logo quadratic",
@@ -65,7 +81,8 @@
 				"it": "logo quadratico",
 				"es": "logo cuadrático",
 				"pl": "logo kwadratowe",
-				"zh-cn": "二次方徽标"
+				"zh-cn": "二次方徽标",
+				"uk": "квадратний логотип"
 			},
 			"0.1.0": {
 				"en": "compact mode added",
@@ -76,7 +93,9 @@
 				"fr": "mode compact ajouté",
 				"it": "modalità compatta aggiunta",
 				"es": "modo compacto agregado",
-				"pl": "dodano tryb kompaktowy"
+				"pl": "dodano tryb kompaktowy",
+				"uk": "додано компактний режим",
+				"zh-cn": "添加了紧凑模式"
 			},
 			"0.0.5": {
 				"en": "adminv3 implemented",
@@ -87,7 +106,9 @@
 				"fr": "adminv3 implémenté",
 				"it": "adminv3 implementato",
 				"es": "adminv3 implementado",
-				"pl": "Zaimplementowano adminv3"
+				"pl": "Zaimplementowano adminv3",
+				"uk": "adminv3 реалізовано",
+				"zh-cn": "adminv3 已实施"
 			}
 		},
 		"authors": [ "foxthefox <foxthefox@wysiwis.net>" ],
@@ -102,7 +123,8 @@
 			"it": "lampade a lume di candela",
 			"es": "lámparas lifx",
 			"pl": "lampy lifx",
-			"zh-cn": "升降灯"
+			"zh-cn": "升降灯",
+			"uk": "лампи lifx"
 		},
 		"desc": {
 			"en": "lifx lamp adaptor",
@@ -114,7 +136,8 @@
 			"it": "adattatore per lampada lifx",
 			"es": "adaptador de lámpara lifx",
 			"pl": "adapter lampy Lifx",
-			"zh-cn": "lifx灯适配器"
+			"zh-cn": "lifx灯适配器",
+			"uk": "адаптер для лампи lifx"
 		},
 		"platform": "Javascript/Node.js",
 		"main": "main.js",
