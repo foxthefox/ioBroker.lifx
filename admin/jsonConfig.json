@@ -19,7 +19,6 @@
 		},
 		"_polling": {
 			"newLine": true,
-			"hidden": "true",
 			"text": "Lifx Adapter Special",
 			"sm": 12,
 			"md": 12,
