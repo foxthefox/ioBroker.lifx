@@ -3,11 +3,21 @@
 	"type": "panel",
 	"label": "iobroker.lifx",
 	"items": {
-		"_header": {
+		"_headlin": {
 			"type": "header",
 			"newLine": true,
 			"hidden": "true",
 			"text": "Lifx lamp(s)",
+			"sm": 12,
+			"md": 12,
+			"lg": 12,
+			"size": 3
+		},
+		"_headlin2": {
+			"type": "header",
+			"newLine": true,
+			"hidden": "true",
+			"text": "Lifx lamp(s) config",
 			"sm": 12,
 			"md": 12,
 			"lg": 12,
@@ -18,7 +28,7 @@
 			"text": "Lifx lamp(s) will be found automatically",
 			"newLine": true
 		},
-		"_header2": {
+		"_polling": {
 			"newLine": true,
 			"hidden": "true",
 			"type": "header",
