@@ -1,169 +1,207 @@
 {
-	"common": {
-		"name": "lifx",
-		"version": "1.0.3",
-		"news": {
-			"1.0.3": {
-				"en": "translation with adapter-dev"
-			},
-			"1.0.2": {
-				"en": "bugfix no label caused crashing",
-				"de": "Bugfix no label führte zum Absturz",
-				"ru": "исправление ошибки: отсутствие метки приводило к сбою",
-				"pt": "correção de bug nenhum rótulo causou travamento",
-				"nl": "bugfix geen label veroorzaakte een crash",
-				"fr": "correction d'un bug, aucune étiquette ne provoquait un crash",
-				"it": "bugfix: nessuna etichetta causava arresti anomali",
-				"es": "corrección de errores sin etiqueta provocó un bloqueo",
-				"pl": "poprawka błędu Brak etykiety spowodował awarię",
-				"uk": "виправлення помилки відсутність мітки викликало збій",
-				"zh-cn": "修复没有标签导致崩溃的bug"
-			},
-			"1.0.1": {
-				"en": "bugfix (context \"this\" in timeout)",
-				"de": "Bugfix (Kontext \"this\" im Timeout)",
-				"ru": "исправление (контекст \"это\" в тайм-ауте)",
-				"pt": "correção de bug (contexto \"isto\" no tempo limite)",
-				"nl": "bugfix (context \"dit\" in time-out)",
-				"fr": "correction de bug (contexte \"ceci\" dans le délai d'attente)",
-				"it": "bugfix (contesto \"questo\" in timeout)",
-				"es": "corrección de errores (contexto \"esto\" en el tiempo de espera)",
-				"pl": "poprawka błędu (kontekst „this” w czasie oczekiwania)",
-				"zh-cn": "错误修复（超时中的上下文“this”）",
-				"uk": "виправлення помилки (контекст \"this\" під час очікування)"
-			},
-			"1.0.0": {
-				"en": "refactoring to classbased adapter, github actions",
-				"de": "Refactoring auf klassenbasierten Adapter, Github-Aktionen",
-				"ru": "рефакторинг для адаптера на основе классов, действия github",
-				"pt": "refatoração para adaptador baseado em classe, ações do github",
-				"nl": "refactoring naar klassegebaseerde adapter, github-acties",
-				"fr": "refactorisation vers un adaptateur basé sur les classes, actions github",
-				"it": "refactoring su adattatore basato su classi, azioni github",
-				"es": "refactorización a adaptador basado en clases, acciones de github",
-				"pl": "refaktoryzacja do adaptera klasowego, akcje github",
-				"zh-cn": "重构为基于类的适配器，github 操作",
-				"uk": "рефакторинг до адаптера на основі класів, дії github"
-			},
-			"0.2.1": {
-				"en": "fade duration setting added, colormode Datatype changed from Text to String, optimized Light Settings when changing Colormode",
-				"de": "Einstellung der Überblendungsdauer hinzugefügt, Datentyp des Farbmodus von Text in Zeichenfolge geändert, Lichteinstellungen beim Ändern des Farbmodus optimiert",
-				"ru": "добавлена настройка длительности затухания, тип данных colormode изменен с Text на String, оптимизированы настройки освещения при изменении Colormode",
-				"pt": "definição da duração do desbotamento adicionada, tipo de dados colormode alterado de Texto para String, configurações de luz otimizadas ao alterar o modo de cor",
-				"nl": "fade duur instelling toegevoegd, colormode Datatype veranderd van Text naar String, geoptimaliseerde Light Settings bij het veranderen van Colormode",
-				"fr": "le paramètre de durée de fondu a été ajouté, le type de données du colormode est passé de Text à String, les paramètres d'éclairage optimisés lors du changement de Colormode",
-				"it": "aggiunta impostazione della durata della dissolvenza, tipo di dati Tipo di dati modificato da Testo a stringa, Impostazioni luce ottimizzate quando si cambia Colormode",
-				"es": "Se agregó la configuración de duración de desvanecimiento, el modo de datos de colormode cambió de texto a cadena, la configuración de luz optimizada al cambiar el modo de color",
-				"pl": "dodano ustawienie czasu trwania zanikania, zmieniono typ danych Typ koloru z Tekst na Ciąg, zoptymalizowano Ustawienia Światła przy zmianie Trybu Koloru",
-				"zh-cn": "添加了淡入淡出时间设置，将颜色模式的数据类型从“文本”更改为“字符串”，更改了颜色模式时优化了“灯光设置”",
-				"uk": "додано налаштування тривалості згасання, тип даних colormode змінено з Text на String, оптимізовані параметри Light під час зміни Colormode"
-			},
-			"0.2.0": {
-				"en": "changed library, multizone support",
-				"de": "geänderte Bibliothek, Multizone-Unterstützung",
-				"ru": "измененная библиотека, поддержка нескольких зон",
-				"pt": "biblioteca alterada, suporte a várias zonas",
-				"nl": "veranderde bibliotheek, ondersteuning voor meerdere zones",
-				"fr": "bibliothèque modifiée, prise en charge multizone",
-				"it": "libreria modificata, supporto multizona",
-				"es": "biblioteca modificada, soporte multizona",
-				"pl": "zmieniona biblioteka, obsługa wielu stref",
-				"zh-cn": "更改库，多区域支持",
-				"uk": "змінена бібліотека, підтримка мультизон"
-			},
-			"0.1.1": {
-				"en": "logo quadratic",
-				"de": "Logo quadratisch",
-				"ru": "логотип квадратичный",
-				"pt": "logotipo quadrático",
-				"nl": "logo kwadratisch",
-				"fr": "logo quadratique",
-				"it": "logo quadratico",
-				"es": "logo cuadrático",
-				"pl": "logo kwadratowe",
-				"zh-cn": "二次方徽标",
-				"uk": "квадратний логотип"
-			},
-			"0.1.0": {
-				"en": "compact mode added",
-				"de": "Kompaktmodus hinzugefügt",
-				"ru": "добавлен компактный режим",
-				"pt": "modo compacto adicionado",
-				"nl": "compacte modus toegevoegd",
-				"fr": "mode compact ajouté",
-				"it": "modalità compatta aggiunta",
-				"es": "modo compacto agregado",
-				"pl": "dodano tryb kompaktowy",
-				"uk": "додано компактний режим",
-				"zh-cn": "添加了紧凑模式"
-			},
-			"0.0.5": {
-				"en": "adminv3 implemented",
-				"de": "adminv3 implementiert",
-				"ru": "adminv3 реализовано",
-				"pt": "adminv3 implementado",
-				"nl": "adminv3 geïmplementeerd",
-				"fr": "adminv3 implémenté",
-				"it": "adminv3 implementato",
-				"es": "adminv3 implementado",
-				"pl": "Zaimplementowano adminv3",
-				"uk": "adminv3 реалізовано",
-				"zh-cn": "adminv3 已实施"
-			}
-		},
-		"authors": [ "foxthefox <foxthefox@wysiwis.net>" ],
-		"title": "lifx",
-		"titleLang": {
-			"en": "lifx lamps",
-			"de": "lifx-Lampen",
-			"ru": "лифкс лампы",
-			"pt": "lâmpadas lifx",
-			"nl": "lifx lampen",
-			"fr": "lampes lifx",
-			"it": "lampade a lume di candela",
-			"es": "lámparas lifx",
-			"pl": "lampy lifx",
-			"zh-cn": "升降灯",
-			"uk": "лампи lifx"
-		},
-		"desc": {
-			"en": "lifx lamp adaptor",
-			"de": "Lifx-Lampenadapter",
-			"ru": "адаптер светильника lifx",
-			"pt": "adaptador de lâmpada lifx",
-			"nl": "lifx-lampadapter",
-			"fr": "adaptateur de lampe lifx",
-			"it": "adattatore per lampada lifx",
-			"es": "adaptador de lámpara lifx",
-			"pl": "adapter lampy Lifx",
-			"zh-cn": "lifx灯适配器",
-			"uk": "адаптер для лампи lifx"
-		},
-		"platform": "Javascript/Node.js",
-		"main": "main.js",
-		"mode": "daemon",
-		"materialize": true,
-		"compact": true,
-		"license": "MIT",
-		"keywords": [ "lifx", "light" ],
-		"type": "lighting",
-		"icon": "lifx_logo.png",
-		"extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.lifx/master/admin/lifx_logo.png",
-		"readme": "https://github.com/foxthefox/ioBroker.lifx/blob/master/README.md",
-		"loglevel": "info",
-		"noConfig": false,
-		"connectionType": "local",
-		"dataSource": "poll",
-		"restartAdapters": [ "vis" ],
-		"dependencies": [
-			{
-				"js-controller": ">=2.0.0"
-			}
-		]
-	},
-	"native": {
-		"lifx_interval": 30
-	},
-	"objects": [],
-	"instanceObjects": []
+    "common": {
+        "name": "lifx",
+        "version": "1.0.4",
+        "news": {
+            "1.0.4": {
+                "en": "implementation jsonUI",
+                "de": "Implementierung jsonUI",
+                "ru": "реализация jsonUI",
+                "pt": "implementação jsonUI",
+                "nl": "implementatie jsonUI",
+                "fr": "implémentation jsonUI",
+                "it": "implementazione jsonUI",
+                "es": "implementación jsonUI",
+                "pl": "implementacja jsonUI",
+                "uk": "реалізація jsonUI",
+                "zh-cn": "实现 jsonUI"
+            },
+            "1.0.3": {
+                "en": "translation with adapter-dev",
+                "de": "Übersetzung mit Adapter-Dev",
+                "ru": "перевод с помощью адаптера-dev",
+                "pt": "tradução com adaptador-dev",
+                "nl": "vertaling met adapter-dev",
+                "fr": "traduction avec adapter-dev",
+                "it": "traduzione con adattatore-dev",
+                "es": "traducción con adaptador-dev",
+                "pl": "tłumaczenie za pomocą adapter-dev",
+                "uk": "переклад за допомогою adapter-dev",
+                "zh-cn": "使用适配器开发进行翻译"
+            },
+            "1.0.2": {
+                "en": "bugfix no label caused crashing",
+                "de": "Bugfix no label führte zum Absturz",
+                "ru": "исправление ошибки: отсутствие метки приводило к сбою",
+                "pt": "correção de bug nenhum rótulo causou travamento",
+                "nl": "bugfix geen label veroorzaakte een crash",
+                "fr": "correction d'un bug, aucune étiquette ne provoquait un crash",
+                "it": "bugfix: nessuna etichetta causava arresti anomali",
+                "es": "corrección de errores sin etiqueta provocó un bloqueo",
+                "pl": "poprawka błędu Brak etykiety spowodował awarię",
+                "uk": "виправлення помилки відсутність мітки викликало збій",
+                "zh-cn": "修复没有标签导致崩溃的bug"
+            },
+            "1.0.1": {
+                "en": "bugfix (context \"this\" in timeout)",
+                "de": "Bugfix (Kontext \"this\" im Timeout)",
+                "ru": "исправление (контекст \"это\" в тайм-ауте)",
+                "pt": "correção de bug (contexto \"isto\" no tempo limite)",
+                "nl": "bugfix (context \"dit\" in time-out)",
+                "fr": "correction de bug (contexte \"ceci\" dans le délai d'attente)",
+                "it": "bugfix (contesto \"questo\" in timeout)",
+                "es": "corrección de errores (contexto \"esto\" en el tiempo de espera)",
+                "pl": "poprawka błędu (kontekst „this” w czasie oczekiwania)",
+                "zh-cn": "错误修复（超时中的上下文“this”）",
+                "uk": "виправлення помилки (контекст \"this\" під час очікування)"
+            },
+            "1.0.0": {
+                "en": "refactoring to classbased adapter, github actions",
+                "de": "Refactoring auf klassenbasierten Adapter, Github-Aktionen",
+                "ru": "рефакторинг для адаптера на основе классов, действия github",
+                "pt": "refatoração para adaptador baseado em classe, ações do github",
+                "nl": "refactoring naar klassegebaseerde adapter, github-acties",
+                "fr": "refactorisation vers un adaptateur basé sur les classes, actions github",
+                "it": "refactoring su adattatore basato su classi, azioni github",
+                "es": "refactorización a adaptador basado en clases, acciones de github",
+                "pl": "refaktoryzacja do adaptera klasowego, akcje github",
+                "zh-cn": "重构为基于类的适配器，github 操作",
+                "uk": "рефакторинг до адаптера на основі класів, дії github"
+            },
+            "0.2.1": {
+                "en": "fade duration setting added, colormode Datatype changed from Text to String, optimized Light Settings when changing Colormode",
+                "de": "Einstellung der Überblendungsdauer hinzugefügt, Datentyp des Farbmodus von Text in Zeichenfolge geändert, Lichteinstellungen beim Ändern des Farbmodus optimiert",
+                "ru": "добавлена настройка длительности затухания, тип данных colormode изменен с Text на String, оптимизированы настройки освещения при изменении Colormode",
+                "pt": "definição da duração do desbotamento adicionada, tipo de dados colormode alterado de Texto para String, configurações de luz otimizadas ao alterar o modo de cor",
+                "nl": "fade duur instelling toegevoegd, colormode Datatype veranderd van Text naar String, geoptimaliseerde Light Settings bij het veranderen van Colormode",
+                "fr": "le paramètre de durée de fondu a été ajouté, le type de données du colormode est passé de Text à String, les paramètres d'éclairage optimisés lors du changement de Colormode",
+                "it": "aggiunta impostazione della durata della dissolvenza, tipo di dati Tipo di dati modificato da Testo a stringa, Impostazioni luce ottimizzate quando si cambia Colormode",
+                "es": "Se agregó la configuración de duración de desvanecimiento, el modo de datos de colormode cambió de texto a cadena, la configuración de luz optimizada al cambiar el modo de color",
+                "pl": "dodano ustawienie czasu trwania zanikania, zmieniono typ danych Typ koloru z Tekst na Ciąg, zoptymalizowano Ustawienia Światła przy zmianie Trybu Koloru",
+                "zh-cn": "添加了淡入淡出时间设置，将颜色模式的数据类型从“文本”更改为“字符串”，更改了颜色模式时优化了“灯光设置”",
+                "uk": "додано налаштування тривалості згасання, тип даних colormode змінено з Text на String, оптимізовані параметри Light під час зміни Colormode"
+            },
+            "0.2.0": {
+                "en": "changed library, multizone support",
+                "de": "geänderte Bibliothek, Multizone-Unterstützung",
+                "ru": "измененная библиотека, поддержка нескольких зон",
+                "pt": "biblioteca alterada, suporte a várias zonas",
+                "nl": "veranderde bibliotheek, ondersteuning voor meerdere zones",
+                "fr": "bibliothèque modifiée, prise en charge multizone",
+                "it": "libreria modificata, supporto multizona",
+                "es": "biblioteca modificada, soporte multizona",
+                "pl": "zmieniona biblioteka, obsługa wielu stref",
+                "zh-cn": "更改库，多区域支持",
+                "uk": "змінена бібліотека, підтримка мультизон"
+            },
+            "0.1.1": {
+                "en": "logo quadratic",
+                "de": "Logo quadratisch",
+                "ru": "логотип квадратичный",
+                "pt": "logotipo quadrático",
+                "nl": "logo kwadratisch",
+                "fr": "logo quadratique",
+                "it": "logo quadratico",
+                "es": "logo cuadrático",
+                "pl": "logo kwadratowe",
+                "zh-cn": "二次方徽标",
+                "uk": "квадратний логотип"
+            },
+            "0.1.0": {
+                "en": "compact mode added",
+                "de": "Kompaktmodus hinzugefügt",
+                "ru": "добавлен компактный режим",
+                "pt": "modo compacto adicionado",
+                "nl": "compacte modus toegevoegd",
+                "fr": "mode compact ajouté",
+                "it": "modalità compatta aggiunta",
+                "es": "modo compacto agregado",
+                "pl": "dodano tryb kompaktowy",
+                "uk": "додано компактний режим",
+                "zh-cn": "添加了紧凑模式"
+            },
+            "0.0.5": {
+                "en": "adminv3 implemented",
+                "de": "adminv3 implementiert",
+                "ru": "adminv3 реализовано",
+                "pt": "adminv3 implementado",
+                "nl": "adminv3 geïmplementeerd",
+                "fr": "adminv3 implémenté",
+                "it": "adminv3 implementato",
+                "es": "adminv3 implementado",
+                "pl": "Zaimplementowano adminv3",
+                "uk": "adminv3 реалізовано",
+                "zh-cn": "adminv3 已实施"
+            }
+        },
+        "authors": [
+            "foxthefox <foxthefox@wysiwis.net>"
+        ],
+        "title": "lifx",
+        "titleLang": {
+            "en": "lifx lamps",
+            "de": "lifx-Lampen",
+            "ru": "лифкс лампы",
+            "pt": "lâmpadas lifx",
+            "nl": "lifx lampen",
+            "fr": "lampes lifx",
+            "it": "lampade a lume di candela",
+            "es": "lámparas lifx",
+            "pl": "lampy lifx",
+            "zh-cn": "升降灯",
+            "uk": "лампи lifx"
+        },
+        "desc": {
+            "en": "lifx lamp adaptor",
+            "de": "Lifx-Lampenadapter",
+            "ru": "адаптер светильника lifx",
+            "pt": "adaptador de lâmpada lifx",
+            "nl": "lifx-lampadapter",
+            "fr": "adaptateur de lampe lifx",
+            "it": "adattatore per lampada lifx",
+            "es": "adaptador de lámpara lifx",
+            "pl": "adapter lampy Lifx",
+            "zh-cn": "lifx灯适配器",
+            "uk": "адаптер для лампи lifx"
+        },
+        "platform": "Javascript/Node.js",
+        "main": "main.js",
+        "mode": "daemon",
+        "adminUI": {
+            "config": "json"
+        },
+        "supportCustoms": false,
+        "compact": true,
+        "license": "MIT",
+        "keywords": [
+            "lifx",
+            "light"
+        ],
+        "type": "lighting",
+        "icon": "lifx_logo.png",
+        "extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.lifx/master/admin/lifx_logo.png",
+        "readme": "https://github.com/foxthefox/ioBroker.lifx/blob/master/README.md",
+        "loglevel": "info",
+        "noConfig": false,
+        "connectionType": "local",
+        "dataSource": "poll",
+        "restartAdapters": [
+            "vis"
+        ],
+        "dependencies": [
+            {
+                "js-controller": ">=3.3.22"
+            }
+        ],
+        "globalDependencies": [
+            {
+                "admin": ">=5.1.13"
+            }
+        ]
+    },
+    "native": {
+        "lifx_interval": 30
+    },
+    "objects": [],
+    "instanceObjects": []
 }

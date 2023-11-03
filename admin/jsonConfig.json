@@ -1,0 +1,36 @@
+{
+	"i18n": true,
+	"type": "panel",
+	"label": "iobroker.lifx",
+	"items": {
+		"_header": {
+			"type": "header",
+			"newLine": true,
+			"text": "Lifx lamp(s)",
+			"sm": 12,
+			"md": 12,
+			"lg": 12,
+			"size": 3
+		},
+		"_introTable1Txt2": {
+			"type": "staticText",
+			"text": "Lifx lamp(s) will be found automatically",
+			"newLine": true
+		},
+		"_polling": {
+			"type": "header",
+			"newLine": true,
+			"text": "Lifx Adapter Special",
+			"sm": 12,
+			"md": 12,
+			"lg": 12,
+			"size": 3
+		},
+		"lifx_interval": {
+			"type": "number",
+			"label": "Lifx Polling Interval (sek.)",
+			"newLine": false,
+			"default": 30
+		}
+	}
+}
