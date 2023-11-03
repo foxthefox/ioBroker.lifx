@@ -3,21 +3,10 @@
 	"type": "panel",
 	"label": "iobroker.lifx",
 	"items": {
-		"_headlin": {
+		"_header": {
 			"type": "header",
 			"newLine": true,
-			"hidden": "true",
 			"text": "Lifx lamp(s)",
-			"sm": 12,
-			"md": 12,
-			"lg": 12,
-			"size": 3
-		},
-		"_headlin2": {
-			"type": "header",
-			"newLine": true,
-			"hidden": "true",
-			"text": "Lifx lamp(s) config",
 			"sm": 12,
 			"md": 12,
 			"lg": 12,
@@ -31,7 +20,6 @@
 		"_polling": {
 			"newLine": true,
 			"hidden": "true",
-			"type": "header",
 			"text": "Lifx Adapter Special",
 			"sm": 12,
 			"md": 12,
