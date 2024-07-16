@@ -196,18 +196,31 @@ class Lifx extends utils.Adapter {
 			this.log.info('Client started');
 		});
 
-		this.pollLifxData();
+		this.log.debug('Test 7');
+		const lifx_interval = this.config.lifx_interval || 30;
+		this.log.debug('Timeout:' + lifx_interval);
+
+		await this.pollLifxData();
+
+		this.lifxTimeout = setInterval(async () => {
+			await this.pollLifxData();
+		}, lifx_interval * 1000);
+
+		this.log.debug('Status Timeout:' + lifxTimeout);
+		this.log.debug('Status Timeout2:' + lifxTimeout);
 
 		this.subscribeStates('*');
 	}
 
 	async pollLifxData() {
-		const lifx_interval = 30; // this.config.lifx_interval || 30;
+		// const lifx_interval = this.config.lifx_interval || 30;
 		await this.updateDevices();
+		//this.log.debug('Timeout:' + lifx_interval);
 		this.log.debug('polling! lifx is alive');
-		lifxTimeout = setTimeout(() => {
-			this.pollLifxData;
-		}, lifx_interval * 1000);
+		//lifxTimeout = setTimeout(async () => {
+		// 	await this.pollLifxData;
+		//}, lifx_interval * 1000);
+		//this.log.debug('Status Timeout:' + lifxTimeout);
 	}
 	async updateDevices() {
 		client.lights().forEach(async (light) => {
@@ -545,7 +558,7 @@ class Lifx extends utils.Adapter {
 			// clearTimeout(timeout2);
 			// ...
 			// clearInterval(interval1);
-			if (lifxTimeout) clearTimeout(lifxTimeout);
+			if (lifxTimeout) clearInterval(lifxTimeout);
 			callback();
 		} catch (e) {
 			callback();
