@@ -548,6 +548,7 @@ class Lifx extends utils.Adapter {
 			if (lifxTimeout) clearTimeout(lifxTimeout);
 			callback();
 		} catch (e) {
+			this.log.error(e);
 			callback();
 		}
 	}
