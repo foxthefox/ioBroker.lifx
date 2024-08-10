@@ -61,6 +61,9 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 - values outside of range cause crash of adapter
 
 ## Changelog:
+### 1.0.6
+* eslint upgrade and corrections
+
 ### 1.0.5
 * update devDeps
 * IOB checker corrections

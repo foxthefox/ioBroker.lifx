@@ -1,119 +1,125 @@
 {
-    "common": {
-        "name": "lifx",
-        "version": "1.0.5",
-        "news": {
-            "1.0.5": {
-                "en": "IOB checker corrections",
-                "de": "Korrekturen des IOB-Checkers",
-                "ru": "Исправления проверки IOB",
-                "pt": "Correções do verificador IOB",
-                "nl": "IOB-checkercorrecties",
-                "fr": "Corrections du vérificateur IOB",
-                "it": "Correzioni del controllo IOB",
-                "es": "Correcciones del verificador IOB",
-                "pl": "Poprawki sprawdzania IOB",
-                "uk": "Виправлення перевірки IOB",
-                "zh-cn": "IOB 检查器更正"
-            },
-            "1.0.4": {
-                "en": "implementation jsonUI",
-                "de": "Implementierung jsonUI",
-                "ru": "реализация jsonUI",
-                "pt": "implementação jsonUI",
-                "nl": "implementatie jsonUI",
-                "fr": "implémentation jsonUI",
-                "it": "implementazione jsonUI",
-                "es": "implementación jsonUI",
-                "pl": "implementacja jsonUI",
-                "uk": "реалізація jsonUI",
-                "zh-cn": "实现 jsonUI"
-            },
-            "1.0.3": {
-                "en": "translation with adapter-dev",
-                "de": "Übersetzung mit Adapter-Dev",
-                "ru": "перевод с помощью адаптера-dev",
-                "pt": "tradução com adaptador-dev",
-                "nl": "vertaling met adapter-dev",
-                "fr": "traduction avec adapter-dev",
-                "it": "traduzione con adattatore-dev",
-                "es": "traducción con adaptador-dev",
-                "pl": "tłumaczenie za pomocą adapter-dev",
-                "uk": "переклад за допомогою adapter-dev",
-                "zh-cn": "使用适配器开发进行翻译"
-            }
-        },
-        "authors": [
-            "foxthefox <foxthefox@wysiwis.net>"
-        ],
-        "titleLang": {
-            "en": "lifx lamps",
-            "de": "lifx-Lampen",
-            "ru": "лифкс лампы",
-            "pt": "lâmpadas lifx",
-            "nl": "lifx lampen",
-            "fr": "lampes lifx",
-            "it": "lampade a lume di candela",
-            "es": "lámparas lifx",
-            "pl": "lampy lifx",
-            "zh-cn": "升降灯",
-            "uk": "лампи lifx"
-        },
-        "desc": {
-            "en": "lifx lamp adaptor",
-            "de": "Lifx-Lampenadapter",
-            "ru": "адаптер светильника lifx",
-            "pt": "adaptador de lâmpada lifx",
-            "nl": "lifx-lampadapter",
-            "fr": "adaptateur de lampe lifx",
-            "it": "adattatore per lampada lifx",
-            "es": "adaptador de lámpara lifx",
-            "pl": "adapter lampy Lifx",
-            "zh-cn": "lifx灯适配器",
-            "uk": "адаптер для лампи lifx"
-        },
-        "platform": "Javascript/Node.js",
-        "mode": "daemon",
-        "adminUI": {
-            "config": "json"
-        },
-        "supportCustoms": false,
-        "compact": true,
-        "tier": 3,
-        "licenseInformation": {
-            "license": "MIT",
-            "link": "https://opensource.org/license/mit/",
-            "type": "free"
-        },
-        "keywords": [
-            "lifx",
-            "light"
-        ],
-        "type": "lighting",
-        "icon": "lifx_logo.png",
-        "extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.lifx/master/admin/lifx_logo.png",
-        "readme": "https://github.com/foxthefox/ioBroker.lifx/blob/master/README.md",
-        "loglevel": "info",
-        "noConfig": false,
-        "connectionType": "local",
-        "dataSource": "poll",
-        "restartAdapters": [
-            "vis"
-        ],
-        "dependencies": [
-            {
-                "js-controller": ">=4.0.24"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=5.1.13"
-            }
-        ]
-    },
-    "native": {
-        "lifx_interval": 30
-    },
-    "objects": [],
-    "instanceObjects": []
+	"common": {
+		"name": "lifx",
+		"version": "1.0.6",
+		"news": {
+			"1.0.6": {
+				"en": "eslint upgrade and corrections",
+				"de": "Eslint-Upgrade und Korrekturen",
+				"ru": "обновление и исправления eslint",
+				"pt": "atualização e correções do eslint",
+				"nl": "eslint-upgrade en correcties",
+				"fr": "mise à jour et corrections d'Eslint",
+				"it": "aggiornamento e correzioni di eslint",
+				"es": "actualización y correcciones de eslint",
+				"pl": "aktualizacja i poprawki eslint",
+				"uk": "оновлення та виправлення eslint",
+				"zh-cn": "eslint 升级和修正"
+			},
+			"1.0.5": {
+				"en": "IOB checker corrections",
+				"de": "Korrekturen des IOB-Checkers",
+				"ru": "Исправления проверки IOB",
+				"pt": "Correções do verificador IOB",
+				"nl": "IOB-checkercorrecties",
+				"fr": "Corrections du vérificateur IOB",
+				"it": "Correzioni del controllo IOB",
+				"es": "Correcciones del verificador IOB",
+				"pl": "Poprawki sprawdzania IOB",
+				"uk": "Виправлення перевірки IOB",
+				"zh-cn": "IOB 检查器更正"
+			},
+			"1.0.4": {
+				"en": "implementation jsonUI",
+				"de": "Implementierung jsonUI",
+				"ru": "реализация jsonUI",
+				"pt": "implementação jsonUI",
+				"nl": "implementatie jsonUI",
+				"fr": "implémentation jsonUI",
+				"it": "implementazione jsonUI",
+				"es": "implementación jsonUI",
+				"pl": "implementacja jsonUI",
+				"uk": "реалізація jsonUI",
+				"zh-cn": "实现 jsonUI"
+			},
+			"1.0.3": {
+				"en": "translation with adapter-dev",
+				"de": "Übersetzung mit Adapter-Dev",
+				"ru": "перевод с помощью адаптера-dev",
+				"pt": "tradução com adaptador-dev",
+				"nl": "vertaling met adapter-dev",
+				"fr": "traduction avec adapter-dev",
+				"it": "traduzione con adattatore-dev",
+				"es": "traducción con adaptador-dev",
+				"pl": "tłumaczenie za pomocą adapter-dev",
+				"uk": "переклад за допомогою adapter-dev",
+				"zh-cn": "使用适配器开发进行翻译"
+			}
+		},
+		"authors": [ "foxthefox <foxthefox@wysiwis.net>" ],
+		"titleLang": {
+			"en": "lifx lamps",
+			"de": "lifx-Lampen",
+			"ru": "лифкс лампы",
+			"pt": "lâmpadas lifx",
+			"nl": "lifx lampen",
+			"fr": "lampes lifx",
+			"it": "lampade a lume di candela",
+			"es": "lámparas lifx",
+			"pl": "lampy lifx",
+			"zh-cn": "升降灯",
+			"uk": "лампи lifx"
+		},
+		"desc": {
+			"en": "lifx lamp adaptor",
+			"de": "Lifx-Lampenadapter",
+			"ru": "адаптер светильника lifx",
+			"pt": "adaptador de lâmpada lifx",
+			"nl": "lifx-lampadapter",
+			"fr": "adaptateur de lampe lifx",
+			"it": "adattatore per lampada lifx",
+			"es": "adaptador de lámpara lifx",
+			"pl": "adapter lampy Lifx",
+			"zh-cn": "lifx灯适配器",
+			"uk": "адаптер для лампи lifx"
+		},
+		"platform": "Javascript/Node.js",
+		"mode": "daemon",
+		"adminUI": {
+			"config": "json"
+		},
+		"supportCustoms": false,
+		"compact": true,
+		"tier": 3,
+		"licenseInformation": {
+			"license": "MIT",
+			"link": "https://opensource.org/license/mit/",
+			"type": "free"
+		},
+		"keywords": [ "lifx", "light" ],
+		"type": "lighting",
+		"icon": "lifx_logo.png",
+		"extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.lifx/master/admin/lifx_logo.png",
+		"readme": "https://github.com/foxthefox/ioBroker.lifx/blob/master/README.md",
+		"loglevel": "info",
+		"noConfig": false,
+		"connectionType": "local",
+		"dataSource": "poll",
+		"restartAdapters": [ "vis" ],
+		"dependencies": [
+			{
+				"js-controller": ">=4.0.24"
+			}
+		],
+		"globalDependencies": [
+			{
+				"admin": ">=5.1.13"
+			}
+		]
+	},
+	"native": {
+		"lifx_interval": 30
+	},
+	"objects": [],
+	"instanceObjects": []
 }
