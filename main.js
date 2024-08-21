@@ -202,18 +202,18 @@ class Lifx extends utils.Adapter {
 	}
 
 	async pollLifxData() {
-		const lifx_interval = 30; // this.config.lifx_interval || 30;
+		const lifx_interval = this.config.lifx_interval || 30;
 		await this.updateDevices();
 		this.log.debug('polling! lifx is alive');
 		lifxTimeout = setTimeout(() => {
-			this.pollLifxData;
+			this.pollLifxData();
 		}, lifx_interval * 1000);
 	}
 	async updateDevices() {
 		client.lights().forEach(async (light) => {
 			light.getState(async (err, info) => {
 				if (err) {
-					this.log.error('Failed cyclic update for ' + light.id);
+					this.log.debug('Failed cyclic update for ' + light.id);
 				} else {
 					await this.setStateAsync('Bulb_' + light.id + '.label', { val: info.label, ack: true });
 					const convertPower = info.power == 1 ? true : false;
@@ -226,17 +226,17 @@ class Lifx extends utils.Adapter {
 			});
 			light.getHardwareVersion(async (err, info) => {
 				if (err) {
-					this.log.error('Failed cyclic HW Ver. update for ' + light.id + ' : ' + err);
+					this.log.debug('Failed cyclic HW Ver. update for ' + light.id + ' : ' + err);
 				} else if (info.productFeatures.multizone) {
 					light.getColorZones(0, 255, async (err, mz) => {
 						if (err) {
-							this.log.error('Failed cyclic Color Zones update for ' + light.id + ' : ' + err);
+							this.log.debug('Failed cyclic Color Zones update for ' + light.id + ' : ' + err);
 						} else {
 							const mquery = mz.count / 8; //je Antwort sind 8 Zonen übermittelt mz.count enthält die Anzahl der Zonen
 							for (let i = 0; i < mquery; i++) {
 								light.getColorZones(i * 8, 7 + i * 8, async (err, multiz) => {
 									if (err) {
-										this.log.error(
+										this.log.debug(
 											'Failed cyclic Color Zones >8 update for ' + light.id + ' : ' + err
 										);
 									} else {
