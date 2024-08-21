@@ -61,6 +61,13 @@ npm install https://github.com/foxthefox/ioBroker.lifx/tarball/master --producti
 - values outside of range cause crash of adapter
 
 ## Changelog:
+
+### 1.0.7
+* (Jarves020) Reactivated Cyclic Updates (brackets were missing at function call)
+* (Jarves020) reenabled Settings for lifx Cyclic Update Intervall
+* (Jarves020) Changed LogLevel for "Failed Cyclic Update...." from error to debug to avoid log spamming
+* (foxthefox) IOB checker corrections
+
 ### 1.0.6
 * eslint upgrade and corrections
 
