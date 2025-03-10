@@ -6,29 +6,43 @@
 			"type": "header",
 			"newLine": true,
 			"text": "Lifx lamp(s)",
+			"xs": 12,
 			"sm": 12,
 			"md": 12,
 			"lg": 12,
+			"xl": 12,
 			"size": 3
 		},
 		"_introTable1Txt2": {
 			"type": "staticText",
 			"text": "Lifx lamp(s) will be found automatically",
+			"xs": 12,
+			"sm": 12,
+			"md": 12,
+			"lg": 12,
+			"xl": 12,
 			"newLine": true
 		},
 		"_polling": {
 			"type": "header",
 			"newLine": true,
 			"text": "Lifx Adapter Special",
+			"xs": 12,
 			"sm": 12,
 			"md": 12,
 			"lg": 12,
+			"xl": 12,
 			"size": 3
 		},
 		"lifx_interval": {
 			"type": "number",
 			"label": "Lifx Polling Interval (sek.)",
 			"newLine": false,
+			"xs": 12,
+			"sm": 12,
+			"md": 12,
+			"lg": 12,
+			"xl": 12,
 			"default": 30
 		}
 	}

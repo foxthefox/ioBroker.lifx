@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "lifx",
-        "version": "1.0.7",
+        "version": "1.0.8",
         "news": {
+            "1.0.8": {
+                "en": "update dependencies",
+                "de": "Abhängigkeiten aktualisieren",
+                "ru": "обновить зависимости",
+                "pt": "Atualizar dependências",
+                "nl": "Update afhankelijkheden",
+                "fr": "Mettre à jour les dépendances",
+                "it": "Aggiorna dipendenze",
+                "es": "actualizar dependencias",
+                "pl": "Zaktualizuj zależności",
+                "uk": "Оновити залежності",
+                "zh-cn": "更新依赖项"
+            },
             "1.0.7": {
                 "en": "corrections and reenabled Settings for lifx Cyclic Update Intervall",
                 "de": "Korrekturen und wieder aktivierte Einstellungen für lifx Cyclic Update Intervall",
@@ -128,7 +141,7 @@
         ],
         "dependencies": [
             {
-                "js-controller": ">=4.0.24"
+                "js-controller": ">=5.0.19"
             }
         ],
         "globalDependencies": [
