@@ -1,9 +1,9 @@
 {
     "common": {
         "name": "lifx",
-        "version": "1.0.8",
+        "version": "1.0.9",
         "news": {
-            "1.0.8": {
+            "1.0.9": {
                 "en": "update dependencies",
                 "de": "Abhängigkeiten aktualisieren",
                 "ru": "обновить зависимости",
@@ -82,9 +82,7 @@
                 "zh-cn": "使用适配器开发进行翻译"
             }
         },
-        "authors": [
-            "foxthefox <foxthefox@wysiwis.net>"
-        ],
+        "authors": ["foxthefox <foxthefox@wysiwis.net>"],
         "titleLang": {
             "en": "lifx lamps",
             "de": "lifx-Lampen",
@@ -124,10 +122,7 @@
             "link": "https://opensource.org/license/mit/",
             "type": "free"
         },
-        "keywords": [
-            "lifx",
-            "light"
-        ],
+        "keywords": ["lifx", "light"],
         "type": "lighting",
         "icon": "lifx_logo.png",
         "extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.lifx/master/admin/lifx_logo.png",
@@ -136,17 +131,15 @@
         "noConfig": false,
         "connectionType": "local",
         "dataSource": "poll",
-        "restartAdapters": [
-            "vis"
-        ],
+        "restartAdapters": ["vis"],
         "dependencies": [
             {
-                "js-controller": ">=5.0.19"
+                "js-controller": ">=6.0.11"
             }
         ],
         "globalDependencies": [
             {
-                "admin": ">=6.17.14"
+                "admin": ">=7.6.17"
             }
         ]
     },
