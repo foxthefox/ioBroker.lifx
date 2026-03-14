@@ -56,9 +56,11 @@ class Lifx extends utils.Adapter {
 
                             this.log.info(`Vendor: ${info.vendorName}`);
                             this.log.info(`Product: ${info.productName}`);
-                            this.log.info(`Features:${JSON.stringify(info.productFeatures)}\n`);
                             this.log.info(`Label: ${state.label}`);
                             this.log.info(`Power: ${state.power == 1 ? 'on' : 'off'}`);
+                            this.log.info(`Features:${JSON.stringify(info.productFeatures)}\n`);
+                            this.log.info(`Infos: ${JSON.stringify(info)}`);
+                            this.log.info(`States: ${JSON.stringify(state)}`);
 
                             await this.setStateAsync(`Bulb_${light.id}.vendor`, {
                                 val: info.vendorName,
@@ -69,7 +71,7 @@ class Lifx extends utils.Adapter {
                                 ack: true,
                             });
                             await this.setStateAsync(`Bulb_${light.id}.version`, {
-                                val: info.version,
+                                val: String(info.version),
                                 ack: true,
                             });
                             await this.setStateAsync(`Bulb_${light.id}.colorLamp`, {
@@ -111,7 +113,7 @@ class Lifx extends utils.Adapter {
                                 ack: true,
                             }); // because we found the lamp
                         }
-                        if (info.productFeatures.color) {
+                        if (info.productFeatures.color === true) {
                             await this.createColor(light.id);
                             light.getState(async (err, state) => {
                                 if (err) {
@@ -132,7 +134,7 @@ class Lifx extends utils.Adapter {
                                 }
                             });
                         }
-                        if (info.productFeatures.multizone) {
+                        if (info.productFeatures.multizone === true) {
                             light.getColorZones(0, 255, async (err, mz) => {
                                 if (err) {
                                     this.log.debug(err);
@@ -215,7 +217,7 @@ class Lifx extends utils.Adapter {
         }, lifx_interval * 1000);
     }
     async updateDevices() {
-        client.lights().forEach(async light => {
+        client.lights('on').forEach(async light => {
             light.getState(async (err, info) => {
                 if (err) {
                     this.log.debug(`Failed cyclic update for ${light.id}`);
@@ -250,7 +252,7 @@ class Lifx extends utils.Adapter {
             light.getHardwareVersion(async (err, info) => {
                 if (err) {
                     this.log.debug(`Failed cyclic HW Ver. update for ${light.id} : ${err}`);
-                } else if (info.productFeatures.multizone) {
+                } else if (info.productFeatures.multizone === true) {
                     light.getColorZones(0, 255, async (err, mz) => {
                         if (err) {
                             this.log.debug(`Failed cyclic Color Zones update for ${light.id} : ${err}`);
@@ -350,7 +352,7 @@ class Lifx extends utils.Adapter {
             type: 'state',
             common: {
                 name: 'color lamp',
-                type: 'string',
+                type: 'string', //bool
                 role: 'text',
                 read: true,
                 write: false,
@@ -362,7 +364,7 @@ class Lifx extends utils.Adapter {
             type: 'state',
             common: {
                 name: 'infrared lamp',
-                type: 'string',
+                type: 'string', //bool
                 role: 'text',
                 read: true,
                 write: false,
@@ -374,7 +376,7 @@ class Lifx extends utils.Adapter {
             type: 'state',
             common: {
                 name: 'multizoneLamp',
-                type: 'string',
+                type: 'string', //bool
                 role: 'text',
                 read: true,
                 write: false,
