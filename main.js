@@ -453,8 +453,6 @@ class Lifx extends utils.Adapter {
             },
             native: {},
         });
-    }
-    async createColor(id) {
         await this.setObjectNotExistsAsync(`Bulb_${id}.hue`, {
             type: 'state',
             common: {
@@ -483,6 +481,8 @@ class Lifx extends utils.Adapter {
             },
             native: {},
         });
+    }
+    async createColor(id) {
         await this.setObjectNotExistsAsync(`Bulb_${id}.colormode`, {
             type: 'state',
             common: {
