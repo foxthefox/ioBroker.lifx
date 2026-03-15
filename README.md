@@ -59,6 +59,10 @@ Lifx adapter for ioBroker
 
 ## Changelog:
 
+### 2.0.0
+
+- update lifx-lan-client 2.1.2
+
 ### 1.0.10
 
 - update dependencies

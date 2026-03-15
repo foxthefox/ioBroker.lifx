@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "lifx",
-        "version": "1.0.10",
+        "version": "2.0.0",
         "news": {
+            "2.0.0": {
+                "en": "update lifx-lan-client 2.1.2",
+                "de": "lifx-lan-client 2.1.2 aktualisieren",
+                "ru": "обновить клиент lifx-lan-client 2.1.2",
+                "pt": "atualizar lifex-lan-client 2.1.2",
+                "nl": "update lifx-lan-client 2.1.2",
+                "fr": "mettre à jour lifx-lan-client 2.1.2",
+                "it": "aggiornamento lifx-lan-client 2.1.2",
+                "es": "actualizar lifx-lan-cliente 2.1.2",
+                "pl": "zaktualizuj klienta lifx-lan-2.1.2",
+                "uk": "оновити lifx-lan-client 2.1.2",
+                "zh-cn": "更新 lifx-lan-client 2.1.2"
+            },
             "1.0.10": {
                 "en": "update to comply with repo checker",
                 "de": "Update, um dem Repo-Checker zu entsprechen",
@@ -150,7 +163,8 @@
         "connectionType": "local",
         "dataSource": "poll",
         "restartAdapters": [
-            "vis"
+            "vis",
+            "vis-2"
         ],
         "dependencies": [
             {
