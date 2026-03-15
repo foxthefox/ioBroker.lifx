@@ -4,17 +4,17 @@
         "version": "2.0.0",
         "news": {
             "2.0.0": {
-                "en": "update lifx-lan-client 2.1.2",
-                "de": "lifx-lan-client 2.1.2 aktualisieren",
-                "ru": "обновить клиент lifx-lan-client 2.1.2",
-                "pt": "atualizar lifex-lan-client 2.1.2",
-                "nl": "update lifx-lan-client 2.1.2",
-                "fr": "mettre à jour lifx-lan-client 2.1.2",
-                "it": "aggiornamento lifx-lan-client 2.1.2",
-                "es": "actualizar lifx-lan-cliente 2.1.2",
-                "pl": "zaktualizuj klienta lifx-lan-2.1.2",
-                "uk": "оновити lifx-lan-client 2.1.2",
-                "zh-cn": "更新 lifx-lan-client 2.1.2"
+                "en": "update lifx-lan-client 2.1.2, changed state roles",
+                "de": "lifx-lan-client 2.1.2 aktualisieren, Statusrollen geändert",
+                "ru": "обновление lifx-lan-client 2.1.2, изменены государственные роли",
+                "pt": "atualizar lifex-lan-client 2.1.2, alterar funções de estado",
+                "nl": "update lifx-lan-client 2.1.2, gewijzigde statusrollen",
+                "fr": "mise à jour de lifx-lan-client 2.1.2, rôles d'état modifiés",
+                "it": "aggiornamento lifx-lan-client 2.1.2, ruoli di stato modificati",
+                "es": "actualice lifx-lan-client 2.1.2, roles de estado cambiados",
+                "pl": "zaktualizuj lifx-lan-client 2.1.2, zmieniono role stanu",
+                "uk": "оновлено lifx-lan-client 2.1.2, змінено ролі стану",
+                "zh-cn": "更新 lifx-lan-client 2.1.2，更改状态角色"
             },
             "1.0.10": {
                 "en": "update to comply with repo checker",

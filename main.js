@@ -352,8 +352,8 @@ class Lifx extends utils.Adapter {
             type: 'state',
             common: {
                 name: 'color lamp',
-                type: 'string', //bool
-                role: 'text',
+                type: 'boolean',
+                role: 'sensor',
                 read: true,
                 write: false,
                 desc: 'color Lamp',
@@ -364,8 +364,8 @@ class Lifx extends utils.Adapter {
             type: 'state',
             common: {
                 name: 'infrared lamp',
-                type: 'string', //bool
-                role: 'text',
+                type: 'boolean',
+                role: 'sensor',
                 read: true,
                 write: false,
                 desc: 'infrared lamp',
@@ -376,8 +376,8 @@ class Lifx extends utils.Adapter {
             type: 'state',
             common: {
                 name: 'multizoneLamp',
-                type: 'string', //bool
-                role: 'text',
+                type: 'boolean',
+                role: 'sensor',
                 read: true,
                 write: false,
                 desc: 'multizoneLamp',
