@@ -59,6 +59,11 @@ Lifx adapter for ioBroker
 
 ## Changelog:
 
+### 2.0.0 [BREAKING]
+
+- update lifx-lan-client 2.1.2
+- state roles (colorLamp, infraredLamp, multizoneLampe) are no longer string, corrected to boolean (delete those states when adapter is stopped and restart adapter)
+
 ### 1.0.10
 
 - update dependencies
