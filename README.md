@@ -63,6 +63,7 @@ Lifx adapter for ioBroker
 
 - update lifx-lan-client 2.1.2
 - state roles (colorLamp, infraredLamp, multizoneLampe) are no longer string, corrected to boolean (delete those states when adapter is stopped and restart adapter)
+- hue and saturation states in warm white lamp, since the states are transmitted and causing warnings
 
 ### 1.0.10
 
