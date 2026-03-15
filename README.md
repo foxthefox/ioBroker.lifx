@@ -59,6 +59,11 @@ Lifx adapter for ioBroker
 
 ## Changelog:
 
+### 1.0.10
+
+- update dependencies
+- update to comply with repo checker
+
 ### 1.0.9
 
 - update dependencies

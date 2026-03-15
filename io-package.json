@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "lifx",
-        "version": "1.0.9",
+        "version": "1.0.10",
         "news": {
+            "1.0.10": {
+                "en": "update to comply with repo checker",
+                "de": "Update, um dem Repo-Checker zu entsprechen",
+                "ru": "обновление для соответствия проверке репо",
+                "pt": "atualização para estar em conformidade com o repo checker",
+                "nl": "update om te voldoen aan de repo-checker",
+                "fr": "mise à jour pour se conformer au vérificateur de pension",
+                "it": "aggiornamento per conformarsi al controllo repo",
+                "es": "actualizar para cumplir con el verificador de repositorios",
+                "pl": "zaktualizuj, aby zachować zgodność z modułem sprawdzania repo",
+                "uk": "оновити для відповідності перевірці репо",
+                "zh-cn": "更新以符合回购检查器"
+            },
             "1.0.9": {
                 "en": "update dependencies",
                 "de": "Abhängigkeiten aktualisieren",
@@ -82,7 +95,9 @@
                 "zh-cn": "使用适配器开发进行翻译"
             }
         },
-        "authors": ["foxthefox <foxthefox@wysiwis.net>"],
+        "authors": [
+            "foxthefox <foxthefox@wysiwis.net>"
+        ],
         "titleLang": {
             "en": "lifx lamps",
             "de": "lifx-Lampen",
@@ -122,7 +137,10 @@
             "link": "https://opensource.org/license/mit/",
             "type": "free"
         },
-        "keywords": ["lifx", "light"],
+        "keywords": [
+            "lifx",
+            "light"
+        ],
         "type": "lighting",
         "icon": "lifx_logo.png",
         "extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.lifx/master/admin/lifx_logo.png",
@@ -131,7 +149,9 @@
         "noConfig": false,
         "connectionType": "local",
         "dataSource": "poll",
-        "restartAdapters": ["vis"],
+        "restartAdapters": [
+            "vis"
+        ],
         "dependencies": [
             {
                 "js-controller": ">=6.0.11"
