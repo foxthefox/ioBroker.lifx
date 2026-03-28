@@ -9,7 +9,7 @@
 const utils = require('@iobroker/adapter-core');
 
 // Load your modules here, e.g.:
-// const fs = require("fs");
+// const fs = require("node:fs");
 const LifxClient = require('lifx-lan-client').Client;
 const client = new LifxClient();
 let lifxTimeout;
