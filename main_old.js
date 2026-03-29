@@ -2,7 +2,7 @@
 /*jslint node: true */
 
 var LifxClient=require('lifx-lan-client').Client;
-var util = require('util');
+var util = require('node:util');
 var client = new LifxClient();
 var lifxTimeout;
 
