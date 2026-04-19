@@ -6,9 +6,6 @@
         "name": "@@foxthefox@@",
         "email": "foxthefox@wysiwis.net"
     },
-    "contributors": [
-        {}
-    ],
     "homepage": "https://github.com/foxthefox/ioBroker.lifx",
     "license": "MIT",
     "keywords": [
