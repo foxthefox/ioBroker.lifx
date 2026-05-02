@@ -59,6 +59,9 @@ Lifx adapter for ioBroker
 
 ## Changelog:
 
+### **WORK IN PROGRESS**
+- (copilot) Adapter requires node.js >= 22 now
+
 ### 2.0.0 [BREAKING]
 
 - update lifx-lan-client 2.1.2
