@@ -1,108 +1,106 @@
 {
-    "common": {
-        "name": "lifx",
-        "version": "2.0.0",
-        "news": {
-            "2.0.0": {
-                "en": "update lifx-lan-client 2.1.2, changed state roles",
-                "de": "lifx-lan-client 2.1.2 aktualisieren, Statusrollen geändert",
-                "ru": "обновление lifx-lan-client 2.1.2, изменены государственные роли",
-                "pt": "atualizar lifex-lan-client 2.1.2, alterar funções de estado",
-                "nl": "update lifx-lan-client 2.1.2, gewijzigde statusrollen",
-                "fr": "mise à jour de lifx-lan-client 2.1.2, rôles d'état modifiés",
-                "it": "aggiornamento lifx-lan-client 2.1.2, ruoli di stato modificati",
-                "es": "actualice lifx-lan-client 2.1.2, roles de estado cambiados",
-                "pl": "zaktualizuj lifx-lan-client 2.1.2, zmieniono role stanu",
-                "uk": "оновлено lifx-lan-client 2.1.2, змінено ролі стану",
-                "zh-cn": "更新 lifx-lan-client 2.1.2，更改状态角色"
-            },
-            "1.0.10": {
-                "en": "update to comply with repo checker",
-                "de": "Update, um dem Repo-Checker zu entsprechen",
-                "ru": "обновление для соответствия проверке репо",
-                "pt": "atualização para estar em conformidade com o repo checker",
-                "nl": "update om te voldoen aan de repo-checker",
-                "fr": "mise à jour pour se conformer au vérificateur de pension",
-                "it": "aggiornamento per conformarsi al controllo repo",
-                "es": "actualizar para cumplir con el verificador de repositorios",
-                "pl": "zaktualizuj, aby zachować zgodność z modułem sprawdzania repo",
-                "uk": "оновити для відповідності перевірці репо",
-                "zh-cn": "更新以符合回购检查器"
-            }
-            
-        },
-        "authors": [
-            "foxthefox <foxthefox@wysiwis.net>"
-        ],
-        "titleLang": {
-            "en": "lifx lamps",
-            "de": "lifx-Lampen",
-            "ru": "лифкс лампы",
-            "pt": "lâmpadas lifx",
-            "nl": "lifx lampen",
-            "fr": "lampes lifx",
-            "it": "lampade a lume di candela",
-            "es": "lámparas lifx",
-            "pl": "lampy lifx",
-            "zh-cn": "升降灯",
-            "uk": "лампи lifx"
-        },
-        "desc": {
-            "en": "lifx lamp adaptor",
-            "de": "Lifx-Lampenadapter",
-            "ru": "адаптер светильника lifx",
-            "pt": "adaptador de lâmpada lifx",
-            "nl": "lifx-lampadapter",
-            "fr": "adaptateur de lampe lifx",
-            "it": "adattatore per lampada lifx",
-            "es": "adaptador de lámpara lifx",
-            "pl": "adapter lampy Lifx",
-            "zh-cn": "lifx灯适配器",
-            "uk": "адаптер для лампи lifx"
-        },
-        "platform": "Javascript/Node.js",
-        "mode": "daemon",
-        "adminUI": {
-            "config": "json"
-        },
-        "supportCustoms": false,
-        "compact": true,
-        "tier": 3,
-        "licenseInformation": {
-            "license": "MIT",
-            "link": "https://opensource.org/license/mit/",
-            "type": "free"
-        },
-        "keywords": [
-            "lifx",
-            "light"
-        ],
-        "type": "lighting",
-        "icon": "lifx_logo.png",
-        "extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.lifx/master/admin/lifx_logo.png",
-        "readme": "https://github.com/foxthefox/ioBroker.lifx/blob/master/README.md",
-        "loglevel": "info",
-        "noConfig": false,
-        "connectionType": "local",
-        "dataSource": "poll",
-        "restartAdapters": [
-            "vis",
-            "vis-2"
-        ],
-        "dependencies": [
-            {
-                "js-controller": ">=6.0.11"
-            }
-        ],
-        "globalDependencies": [
-            {
-                "admin": ">=7.6.20"
-            }
-        ]
+  "common": {
+    "name": "lifx",
+    "version": "2.0.0",
+    "news": {
+      "2.0.0": {
+        "en": "update lifx-lan-client 2.1.2, changed state roles",
+        "de": "lifx-lan-client 2.1.2 aktualisieren, Statusrollen geändert",
+        "ru": "обновление lifx-lan-client 2.1.2, изменены государственные роли",
+        "pt": "atualizar lifex-lan-client 2.1.2, alterar funções de estado",
+        "nl": "update lifx-lan-client 2.1.2, gewijzigde statusrollen",
+        "fr": "mise à jour de lifx-lan-client 2.1.2, rôles d'état modifiés",
+        "it": "aggiornamento lifx-lan-client 2.1.2, ruoli di stato modificati",
+        "es": "actualice lifx-lan-client 2.1.2, roles de estado cambiados",
+        "pl": "zaktualizuj lifx-lan-client 2.1.2, zmieniono role stanu",
+        "uk": "оновлено lifx-lan-client 2.1.2, змінено ролі стану",
+        "zh-cn": "更新 lifx-lan-client 2.1.2，更改状态角色"
+      },
+      "1.0.10": {
+        "en": "update to comply with repo checker",
+        "de": "Update, um dem Repo-Checker zu entsprechen",
+        "ru": "обновление для соответствия проверке репо",
+        "pt": "atualização para estar em conformidade com o repo checker",
+        "nl": "update om te voldoen aan de repo-checker",
+        "fr": "mise à jour pour se conformer au vérificateur de pension",
+        "it": "aggiornamento per conformarsi al controllo repo",
+        "es": "actualizar para cumplir con el verificador de repositorios",
+        "pl": "zaktualizuj, aby zachować zgodność z modułem sprawdzania repo",
+        "uk": "оновити для відповідності перевірці репо",
+        "zh-cn": "更新以符合回购检查器"
+      }
     },
-    "native": {
-        "lifx_interval": 30
+    "authors": [
+      "foxthefox <foxthefox@wysiwis.net>"
+    ],
+    "titleLang": {
+      "en": "lifx lamps",
+      "de": "lifx-Lampen",
+      "ru": "лифкс лампы",
+      "pt": "lâmpadas lifx",
+      "nl": "lifx lampen",
+      "fr": "lampes lifx",
+      "it": "lampade a lume di candela",
+      "es": "lámparas lifx",
+      "pl": "lampy lifx",
+      "zh-cn": "升降灯",
+      "uk": "лампи lifx"
     },
-    "objects": [],
-    "instanceObjects": []
+    "desc": {
+      "en": "lifx lamp adaptor",
+      "de": "Lifx-Lampenadapter",
+      "ru": "адаптер светильника lifx",
+      "pt": "adaptador de lâmpada lifx",
+      "nl": "lifx-lampadapter",
+      "fr": "adaptateur de lampe lifx",
+      "it": "adattatore per lampada lifx",
+      "es": "adaptador de lámpara lifx",
+      "pl": "adapter lampy Lifx",
+      "zh-cn": "lifx灯适配器",
+      "uk": "адаптер для лампи lifx"
+    },
+    "platform": "Javascript/Node.js",
+    "mode": "daemon",
+    "adminUI": {
+      "config": "json"
+    },
+    "supportCustoms": false,
+    "compact": true,
+    "tier": 3,
+    "licenseInformation": {
+      "license": "MIT",
+      "link": "https://opensource.org/license/mit/",
+      "type": "free"
+    },
+    "keywords": [
+      "lifx",
+      "light"
+    ],
+    "type": "lighting",
+    "icon": "lifx_logo.png",
+    "extIcon": "https://raw.githubusercontent.com/foxthefox/ioBroker.lifx/master/admin/lifx_logo.png",
+    "readme": "https://github.com/foxthefox/ioBroker.lifx/blob/master/README.md",
+    "loglevel": "info",
+    "connectionType": "local",
+    "dataSource": "poll",
+    "restartAdapters": [
+      "vis",
+      "vis-2"
+    ],
+    "dependencies": [
+      {
+        "js-controller": ">=6.0.11"
+      }
+    ],
+    "globalDependencies": [
+      {
+        "admin": ">=7.6.20"
+      }
+    ]
+  },
+  "native": {
+    "lifx_interval": 30
+  },
+  "objects": [],
+  "instanceObjects": []
 }
