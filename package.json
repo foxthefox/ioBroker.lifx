@@ -21,7 +21,7 @@
         "node": ">= 22"
     },
     "dependencies": {
-        "@iobroker/adapter-core": "^3.4.1",
+        "@iobroker/adapter-core": "^3.4.2",
         "lifx-lan-client": "^2.1.2"
     },
     "devDependencies": {
